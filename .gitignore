@@ -5,3 +5,10 @@ target
 tmp
 .history
 dist
+.classpath
+
+.cache
+
+.settings/org.scala-ide.sdt.core.prefs
+
+.project
