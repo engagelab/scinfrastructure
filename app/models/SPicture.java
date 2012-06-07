@@ -13,7 +13,7 @@ import util.GridFsHelper;
  * @author Muhammad Fahied
  */
 @Embedded
-public class Picture {
+public class SPicture {
 
 	@Property("author")
     public String author;
@@ -29,12 +29,12 @@ public class Picture {
     public String filePath;
 
 	
-    public Picture() 
+    public SPicture() 
     {
     	
 	}
     
-    public Picture(String author, File image) throws IOException 
+    public SPicture(String author, File image) throws IOException 
     {
     	this.author = author;
     	this.fileName = image.getName();
@@ -44,7 +44,7 @@ public class Picture {
     }
     
     
-    public Picture(String author) 
+    public SPicture(String author) 
     {
         this.author = author;
     }
