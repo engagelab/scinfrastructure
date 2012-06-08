@@ -26,8 +26,8 @@ public abstract class Model {
     @Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
+    //    @JsonIgnore
     @Id
-    @JsonIgnore
     public String id;
 
     @Override

@@ -14,6 +14,12 @@ package util;
 /*
  * Java code/library for generating slugs
  * */
+
+/**
+ * @author Muhammad Fahied
+ */
+
+
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
 import java.util.Locale;

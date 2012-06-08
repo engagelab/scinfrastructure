@@ -3,7 +3,18 @@
 # ~~~~
 
 # Home page
-GET     /addUser								controllers.SUsers.addUser
+#GET     				/addUser								controllers.SUsers.addUser
+
+
+# Group Services
+GET     				/group									controllers.SGroups.fetchAllGroups
+POST     				/group									controllers.SGroups.createGroup
+
+GET     				/group/member/:groupId								controllers.SGroups.addMember(groupId:String)
+
+
+#Fake Calls
+GET     				/fgroup									controllers.SGroups.createGroup
 
 
 

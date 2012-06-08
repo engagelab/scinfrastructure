@@ -22,17 +22,17 @@ public class SGroup extends Model {
 	@Property("runId")
 	public int runId;
     
-	@Reference("groupMembers")
-    public List <SUser> sUsers;
+	@Reference()
+    public List <SUser> susers;
 	
-	@Embedded("sPostits")
-    public List <SPostit> sPostits;
+	@Embedded()
+    public List <SPostit> spostits;
 	
-	@Embedded("sPictures")
-    public List <SPicture> sPictures;
+	@Embedded()
+    public List <SPicture> spictures;
 	
-	@Embedded("sVideo")
-    public List <SVideo> sVideos;
+	@Embedded()
+    public List <SVideo> svideos;
 	
 	// FINDERS ----------
 
@@ -40,19 +40,15 @@ public class SGroup extends Model {
 	
     // Constructors
 	public SGroup() {
-		this.sUsers = new ArrayList<SUser>();
-		this.sPostits = new ArrayList<SPostit>();
-		this.sPictures = new ArrayList<SPicture>();
-		this.sVideos = new ArrayList<SVideo>();
 	}
 	
 	public SGroup(String name, int runId) {
 		this.name = name;
 		this.runId = runId;
-		this.sUsers = new ArrayList<SUser>();
-		this.sPostits = new ArrayList<SPostit>();
-		this.sPictures = new ArrayList<SPicture>();
-		this.sVideos = new ArrayList<SVideo>();
+		this.susers = new ArrayList<SUser>();
+		this.spostits = new ArrayList<SPostit>();
+		this.spictures = new ArrayList<SPicture>();
+		this.svideos = new ArrayList<SVideo>();
 	}
 	
 	@Override
@@ -60,11 +56,18 @@ public class SGroup extends Model {
         return Objects.toStringHelper(this).
         		add("_id", id)
         		.add("name", name)
-                .add("sUsers:", sUsers)
-                .add("sPostits:", sPostits)
-                .add("sPictures:", sPictures)
-                .add("sVideos:", sVideos)
+                .add("sUsers:", susers)
+                .add("sPostits:", spostits)
+                .add("sPictures:", spictures)
+                .add("sVideos:", svideos)
                 .toString();
     }
+
+	public void addMember(SUser user) {
+		
+		this.susers.add(user);
+		this.save();
+		
+	}
 
 }
