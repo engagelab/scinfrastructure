@@ -9,8 +9,11 @@ import com.google.code.morphia.annotations.Property;
 import com.google.code.morphia.annotations.Reference;
 import com.google.common.base.Objects;
 
+/**
+ * @author Muhammad Fahied
+ */
 
-@Entity(value = "placemark", noClassnameStored = true, concern = "NORMAL")
+@Entity(value = "groups", noClassnameStored = true, concern = "NORMAL")
 public class SGroup extends Model {
 	
 	@Property("name")
@@ -25,8 +28,8 @@ public class SGroup extends Model {
 	@Embedded("sPostits")
     public List <SPostit> sPostits;
 	
-	@Embedded("sImage")
-    public List <SImage> sImages;
+	@Embedded("sPictures")
+    public List <SPicture> sPictures;
 	
 	@Embedded("sVideo")
     public List <SVideo> sVideos;
@@ -39,7 +42,7 @@ public class SGroup extends Model {
 	public SGroup() {
 		this.sUsers = new ArrayList<SUser>();
 		this.sPostits = new ArrayList<SPostit>();
-		this.sImages = new ArrayList<SImage>();
+		this.sPictures = new ArrayList<SPicture>();
 		this.sVideos = new ArrayList<SVideo>();
 	}
 	
@@ -48,7 +51,7 @@ public class SGroup extends Model {
 		this.runId = runId;
 		this.sUsers = new ArrayList<SUser>();
 		this.sPostits = new ArrayList<SPostit>();
-		this.sImages = new ArrayList<SImage>();
+		this.sPictures = new ArrayList<SPicture>();
 		this.sVideos = new ArrayList<SVideo>();
 	}
 	
@@ -59,7 +62,7 @@ public class SGroup extends Model {
         		.add("name", name)
                 .add("sUsers:", sUsers)
                 .add("sPostits:", sPostits)
-                .add("sImages:", sImages)
+                .add("sPictures:", sPictures)
                 .add("sVideos:", sVideos)
                 .toString();
     }

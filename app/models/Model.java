@@ -4,12 +4,16 @@ import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.query.*;
+
 import com.google.inject.Inject;
 import com.mongodb.ReadPreference;
+
 import com.mongodb.WriteResult;
 import org.bson.types.CodeWScope;
 import org.bson.types.ObjectId;
 import org.codehaus.jackson.annotate.JsonIgnore;
+
+
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -24,7 +28,7 @@ public abstract class Model {
 
     @Id
     @JsonIgnore
-    public ObjectId id;
+    public String id;
 
     @Override
     public boolean equals(Object o) {

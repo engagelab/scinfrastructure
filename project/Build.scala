@@ -11,10 +11,13 @@ object ApplicationBuild extends Build {
       // Add your project dependencies here,
         
         
-        // Metrics
+    // Metrics
     "com.yammer.metrics" % "metrics-core" % "2.1.2",
+    
+    //Apache
+    "commons-io" % "commons-io" % "2.3",
         
-        // Guice
+    // Guice
     "com.google.inject" % "guice" % "3.0",
     "com.google.inject.extensions" % "guice-assistedinject" % "3.0",
     "com.google.inject.extensions" % "guice-multibindings" % "3.0",

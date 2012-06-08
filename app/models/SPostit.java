@@ -9,11 +9,17 @@ import com.google.code.morphia.annotations.PrePersist;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
+
+/**
+ * @author Muhammad Fahied
+ */
+
+
 @Embedded
-public class  SPostit extends Model{
+public class  SPostit{
 	
 	@Property("_id")
-	public ObjectId id;
+	public ObjectId _id;
 	
 	@Property("content")
 	public String content;
@@ -35,14 +41,12 @@ public class  SPostit extends Model{
 	
 	@PrePersist
 	public void prePersist(){
+		_id = new ObjectId();
 		postedAt = new Date();
 		wxpos = 0;
 		wypos = 0;
 	}
 	
-
-	// FINDERS ----------
-    public static final Finder<SPostit> find = new Finder<SPostit>(SPostit.class);
     
    public SPostit() {
 
@@ -61,7 +65,6 @@ public class  SPostit extends Model{
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-        		.add("_id", id)
                 .add("content", content)
                 .add("xpos", xpos)
                 .add("ypos", ypos)

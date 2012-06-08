@@ -7,8 +7,13 @@ import com.google.code.morphia.annotations.PrePersist;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
+
+/**
+ * @author Muhammad Fahied
+ */
+
 @Embedded
-public class  SComment extends Model{
+public class  SComment{
 	
 	@Property("content")
 	public String content;
@@ -20,10 +25,6 @@ public class  SComment extends Model{
 	public void prePersist(){
 		postedAt = new Date();
 	}
-	
-
-	// FINDERS ----------
-    public static final Finder<SComment> find = new Finder<SComment>(SComment.class);
     
    public SComment() {
 	   
@@ -37,7 +38,6 @@ public class  SComment extends Model{
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-        		.add("_id", id)
                 .add("content", content)
                 .toString();
     }

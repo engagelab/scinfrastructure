@@ -1,6 +1,7 @@
 package models;
 
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
@@ -10,8 +11,6 @@ import com.google.common.base.Objects;
 
 @Entity(value = "users", noClassnameStored = true)
 public class SUser extends Model {
-	
-	//@Id ObjectId id;
 	
 	@Property("name")
 	public String name;
@@ -42,11 +41,10 @@ public class SUser extends Model {
 		this.imageUri = imageUri;
 	}
 	
-
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-        		.add("_id", id)
+        		.add("id", id.toString())
                 .add("name", name)
                 .add("email", email)
                 .add("age", age)
