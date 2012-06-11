@@ -3,8 +3,10 @@ package controllers;
 import static play.libs.Json.toJson;
 import java.util.List;
 
+
 import org.bson.types.ObjectId;
 import org.codehaus.jackson.JsonNode;
+
 
 import models.SGroup;
 import models.SUser;
@@ -16,19 +18,24 @@ import play.mvc.*;
 
 public class SGroups extends Controller {
 	
+	
+	
 	public static Result fetchAllGroups() {
 
 		List<SGroup> groups = SGroup.find.asList();
 		return ok(toJson(groups));
-		
 	}
 	
-	public static Result fetchGroupsByRunId(int runId) {
-
-		List<SGroup> groups = SGroup.find.field("runId").equal(runId).asList();
+	
+	
+	public static Result fetchGroupsByRunId( String runId) {
+		
+		int runid = Integer.parseInt(runId);
+		List<SGroup> groups = SGroup.find.field("runId").equal(runid).asList();
 		return ok(toJson(groups));
 		
 	}
+	
 	
 	
 	
@@ -49,6 +56,9 @@ public class SGroups extends Controller {
 		return ok(toJson(group));
 	}
 	
+	
+	
+	
 // Expected request body : {"groupId":"4fd217d130049ddad80506f1" , "name": "Fahied", "email":"anonymous@tmail.com", "age":25, "imageurl":"/image/43d217d130049ddad98506g4" }
 	public static Result addMember() {
 		
@@ -61,14 +71,17 @@ public class SGroups extends Controller {
     	int age = node.get("age").asInt();
     	String imageUri = node.get("imageUri").asText();
     	
-		SGroup group = SGroup.find.byId(groupId);
+    	ObjectId objId = ObjectId.massageToObjectId(groupId);
+		SGroup group = SGroup.find.byId(objId);
 		SUser user = new SUser(name, email, age, imageUri);
 		user.save();
 		group.addMember(user);
+		group.save();
 		
-		return ok(toJson(group));
+		return ok(toJson(user));
 	}
 
+	
 	public static Result fetchGroupMembers(String groupId) {
 		
 		SGroup group = SGroup.find.byId(groupId);

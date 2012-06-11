@@ -11,7 +11,6 @@ import com.mongodb.ReadPreference;
 import com.mongodb.WriteResult;
 import org.bson.types.CodeWScope;
 import org.bson.types.ObjectId;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 
@@ -28,7 +27,7 @@ public abstract class Model {
 
     //    @JsonIgnore
     @Id
-    public String id;
+    public ObjectId id;
 
     @Override
     public boolean equals(Object o) {

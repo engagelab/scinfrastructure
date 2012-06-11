@@ -10,7 +10,8 @@ object ApplicationBuild extends Build {
     val appDependencies = Seq(
       // Add your project dependencies here,
         
-        
+     // FlexJson
+     "net.sf.flexjson" % "flexjson" % "2.0",
     // Metrics
     "com.yammer.metrics" % "metrics-core" % "2.1.2",
     
@@ -32,7 +33,8 @@ object ApplicationBuild extends Build {
       // Add your own project settings here  
     resolvers += "Local Maven Repository" at "file://" + Path.userHome + "/.m2/repository",
     resolvers += "Codehaus Repository" at "http://repository.codehaus.org/",
-    resolvers += "Morphia Repository" at "http://morphia.googlecode.com/svn/mavenrepo/"
+    resolvers += "Morphia Repository" at "http://morphia.googlecode.com/svn/mavenrepo/",
+    resolvers += "Java.NET" at "http://download.java.net/maven/2"
     )
 
 }

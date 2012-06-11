@@ -10,11 +10,14 @@
 GET     				/group									controllers.SGroups.fetchAllGroups
 POST     				/group									controllers.SGroups.createGroup
 
-GET     				/group/member/:groupId								controllers.SGroups.addMember(groupId:String)
+GET     				/group/:runId							controllers.SGroups.fetchGroupsByRunId(runId:String)
+
+GET     				/group/member/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
+POST     				/group/member							controllers.SGroups.addMember
 
 
 #Fake Calls
-GET     				/fgroup									controllers.SGroups.createGroup
+#GET     				/fgroup									controllers.SGroups.createGroup
 
 
 
