@@ -3,17 +3,34 @@
 # ~~~~
 
 # Home page
-#GET     				/addUser								controllers.SUsers.addUser
+
 
 
 # Group Services
 GET     				/group									controllers.SGroups.fetchAllGroups
 POST     				/group									controllers.SGroups.createGroup
 
-GET     				/group/:runId							controllers.SGroups.fetchGroupsByRunId(runId:String)
+GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:String)
+GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
 
-GET     				/group/member/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
-POST     				/group/member							controllers.SGroups.addMember
+
+# Member Services
+GET     				/member/group/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
+POST     				/member									controllers.SGroups.addMember
+
+# Postit Services
+GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
+POST     				/postit									controllers.SPostits.addPostit
+
+
+GET     				/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
+
+
+
+
+
+
+
 
 
 #Fake Calls

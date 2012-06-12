@@ -3,12 +3,14 @@ package sgroup;
 import java.util.HashMap;
 import java.util.Map;
 
-import models.SGroup;
+
 
 import org.codehaus.jackson.JsonNode;
 import org.junit.*;
+
 import play.mvc.*;
 import play.libs.Json;
+import static play.mvc.Http.Status.OK;
 import static play.test.Helpers.*;
 import static org.fest.assertions.Assertions.*;
 
@@ -43,7 +45,7 @@ public class SGroupTest {
 	
 	// Expected request body : {"groupId":"4fd217d130049ddad80506f1" , "name": "Fahied", "email":"anonymous@tmail.com", "age":25, "imageUri":"/image/43d217d130049ddad98506g4" }
 
-	@Test
+	@Ignore
 	public void addMember() {
 		running(fakeApplication(), new Runnable() {
 
@@ -70,4 +72,6 @@ public class SGroupTest {
 			}
 		});
 	}
+	
+	
 }

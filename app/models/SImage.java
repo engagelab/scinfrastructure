@@ -2,18 +2,19 @@ package models;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
-import util.GridFsHelper;
+import utils.GridFsHelper;
 
 /**
  * @author Muhammad Fahied
  */
 @Embedded
-public class SPicture {
+public class SImage {
 
 	@Property("author")
     public String author;
@@ -28,13 +29,15 @@ public class SPicture {
 	@Property("filePath")
     public String filePath;
 
+	@Embedded()
+    public List <SComment> sComments;
 	
-    public SPicture() 
+    public SImage() 
     {
     	
 	}
     
-    public SPicture(String author, File image) throws IOException 
+    public SImage(String author, File image) throws IOException 
     {
     	this.author = author;
     	this.fileName = image.getName();
@@ -44,7 +47,7 @@ public class SPicture {
     }
     
     
-    public SPicture(String author) 
+    public SImage(String author) 
     {
         this.author = author;
     }

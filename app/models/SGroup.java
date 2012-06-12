@@ -29,7 +29,7 @@ public class SGroup extends Model {
     public List <SPostit> spostits;
 	
 	@Embedded()
-    public List <SPicture> spictures;
+    public List <SImage> simages;
 	
 	@Embedded()
     public List <SVideo> svideos;
@@ -47,7 +47,7 @@ public class SGroup extends Model {
 		this.runId = runId;
 		this.susers = new ArrayList<SUser>();
 		this.spostits = new ArrayList<SPostit>();
-		this.spictures = new ArrayList<SPicture>();
+		this.simages = new ArrayList<SImage>();
 		this.svideos = new ArrayList<SVideo>();
 	}
 	
@@ -56,10 +56,10 @@ public class SGroup extends Model {
         return Objects.toStringHelper(this).
         		add("_id", id)
         		.add("name", name)
-                .add("sUsers:", susers)
-                .add("sPostits:", spostits)
-                .add("sPictures:", spictures)
-                .add("sVideos:", svideos)
+                .add("susers:", susers)
+                .add("spostits:", spostits)
+                .add("simages:", simages)
+                .add("svideos:", svideos)
                 .toString();
     }
 

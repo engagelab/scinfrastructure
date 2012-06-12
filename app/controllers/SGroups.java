@@ -18,24 +18,17 @@ import play.mvc.*;
 
 public class SGroups extends Controller {
 	
-	
+	/*
+	 * 
+	 * Group Services
+	 * 
+	 * */
 	
 	public static Result fetchAllGroups() {
 
 		List<SGroup> groups = SGroup.find.asList();
 		return ok(toJson(groups));
 	}
-	
-	
-	
-	public static Result fetchGroupsByRunId( String runId) {
-		
-		int runid = Integer.parseInt(runId);
-		List<SGroup> groups = SGroup.find.field("runId").equal(runid).asList();
-		return ok(toJson(groups));
-		
-	}
-	
 	
 	
 	
@@ -49,7 +42,6 @@ public class SGroups extends Controller {
 		
     	SGroup group = new SGroup(name, runId);
 		group.save();
-		
 		// producing customized JSON response
 		//SGroup cGroup = group.datastore.createQuery(SGroup.class).retrievedFields(true, "name").get();
 
@@ -58,6 +50,37 @@ public class SGroups extends Controller {
 	
 	
 	
+	public static Result fetchGroupById( String groupId) {
+		
+		SGroup group = SGroup.find.byId(groupId);
+		return ok(toJson(group));
+		
+	}
+	
+	
+	
+	
+	public static Result fetchGroupsByRunId( String runId) {
+		
+		int runid = Integer.parseInt(runId);
+		List<SGroup> groups = SGroup.find.field("runId").equal(runid).asList();
+		return ok(toJson(groups));
+		
+	}
+	
+	
+	/*
+	 * 
+	 * Member Services
+	 * 
+	 * */
+	public static Result fetchGroupMembers(String groupId) {
+		
+		SGroup group = SGroup.find.byId(groupId);
+		List<SUser> users = group.susers;
+		return ok(toJson(users));
+		
+	}
 	
 // Expected request body : {"groupId":"4fd217d130049ddad80506f1" , "name": "Fahied", "email":"anonymous@tmail.com", "age":25, "imageurl":"/image/43d217d130049ddad98506g4" }
 	public static Result addMember() {
@@ -80,16 +103,5 @@ public class SGroups extends Controller {
 		
 		return ok(toJson(user));
 	}
-
-	
-	public static Result fetchGroupMembers(String groupId) {
-		
-		SGroup group = SGroup.find.byId(groupId);
-		List<SUser> users = group.susers;
-		return ok(toJson(users));
-		
-	}
-	
-	
 
 }

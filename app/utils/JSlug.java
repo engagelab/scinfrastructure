@@ -9,7 +9,7 @@
  * 
  * */
 
-package util;
+package utils;
 
 /*
  * Java code/library for generating slugs
