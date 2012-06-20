@@ -21,6 +21,10 @@ POST     				/member									controllers.SGroups.addMember
 # Postit Services
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
 POST     				/postit									controllers.SPostits.addPostit
+PUT     				/postit									controllers.SPostits.updatePostitInFlash
+
+PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
+
 
 
 GET     				/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)

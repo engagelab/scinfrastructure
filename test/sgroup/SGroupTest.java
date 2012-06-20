@@ -20,7 +20,7 @@ import static org.fest.assertions.Assertions.*;
 
 public class SGroupTest {
 
-	@Ignore
+	@Test
 	public void createGroup() {
 		running(fakeApplication(), new Runnable() {
 
@@ -52,14 +52,14 @@ public class SGroupTest {
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public void run() {
 				Map gmemeber = new HashMap();
-				gmemeber.put("groupId", "4fd5e7c23004f157ced52677");
+				gmemeber.put("groupId", "4fd867b930044dadd70e89b6");
 				gmemeber.put("name", "Fahied");
 				gmemeber.put("email", "anonymous@tmail.com");
 				gmemeber.put("age", 25);
 				gmemeber.put("imageUri", "/image/43d217d130049ddad98506g4");
 			
 				JsonNode node = Json.toJson(gmemeber);
-				Result result = routeAndCall(fakeRequest("POST", "/group/member")
+				Result result = routeAndCall(fakeRequest("POST", "/member")
 						.withJsonBody(node));
 				assertThat(status(result)).isEqualTo(OK);
 				assertThat(contentType(result)).isEqualTo("application/json");

@@ -12,6 +12,7 @@ import org.codehaus.jackson.JsonNode;
 
 import com.mongodb.gridfs.GridFSDBFile;
 
+import models.SComment;
 import models.SGroup;
 import models.SImage;
 import play.mvc.Controller;
@@ -74,7 +75,7 @@ public class SImages extends Controller {
 		return Results.ok(bytes).as(file.getContentType());
 	}
 
-	// {"imageId":"3423j342kjl¿23h1", "wxpos":120, "wypos":32}
+	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
 	public static Result updateImagePosition() {
 		// parse JSON from request body
 		JsonNode node = ctx().request().body().asJson();
@@ -85,6 +86,25 @@ public class SImages extends Controller {
 		String postitIt = node.get("postitId").asText();
 
 		return ok(toJson("postit"));
+	}
+
+	
+	public static Result postCommentOnImage() {
+
+		JsonNode node = ctx().request().body().asJson();
+		String groupId = node.get("groupId").asText();
+		String imageId = node.get("ImageId").asText();
+		String content = node.get("content").asText();
+		
+		SGroup group = SGroup.find.byId(groupId);
+		
+		// Find postit
+		SImage image = new SImage();
+		image.scomments.add(new SComment());
+		
+		//SPostit postits = group.datastore.createUpdateOperations(arg0);
+		// update postit
+		return ok(toJson(group));
 	}
 
 }

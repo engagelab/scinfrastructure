@@ -11,6 +11,7 @@ import com.mongodb.ReadPreference;
 import com.mongodb.WriteResult;
 import org.bson.types.CodeWScope;
 import org.bson.types.ObjectId;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 
@@ -25,7 +26,7 @@ public abstract class Model {
     @Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
-    //    @JsonIgnore
+    @JsonIgnore
     @Id
     public ObjectId id;
 
@@ -75,6 +76,7 @@ public abstract class Model {
         public T byId(String id) {
             return datastore.get(type, ObjectId.massageToObjectId(id));
         }
+        
 
         public T byId(ObjectId objectId) {
             return datastore.get(type, objectId);

@@ -94,11 +94,11 @@ public class SGroups extends Controller {
     	int age = node.get("age").asInt();
     	String imageUri = node.get("imageUri").asText();
     	
-    	ObjectId objId = ObjectId.massageToObjectId(groupId);
-		SGroup group = SGroup.find.byId(objId);
+		SGroup group = SGroup.find.byId(groupId);
 		SUser user = new SUser(name, email, age, imageUri);
 		user.save();
-		group.addMember(user);
+		//group.addMember(user);
+		group.susers.add(user);
 		group.save();
 		
 		return ok(toJson(user));

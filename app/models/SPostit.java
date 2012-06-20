@@ -21,7 +21,7 @@ import com.google.common.base.Objects;
 public class  SPostit{
 	@Indexed
 	@Property("_id")
-	public ObjectId _id;
+	public String _id;
 	
 	@Property("content")
 	public String content;
@@ -46,7 +46,7 @@ public class  SPostit{
 	
 	@PrePersist
 	public void prePersist(){
-		_id = new ObjectId();
+		_id = new ObjectId().toString();
 		postedAt = new Date();
 		wxpos = 0;
 		wypos = 0;
@@ -75,6 +75,10 @@ public class  SPostit{
 		this.wypos = wypos;
 	}
 	
+	//delete all comments on this postit
+	public void clearSComments(){
+	    this.scomments = null;
+	}
 	
 	public SComment postComment(String content) {
 		SComment newComment = new SComment(content);
@@ -82,13 +86,20 @@ public class  SPostit{
 		return newComment;
 	}
 	
-	
+//	public SComment findCommentByAuthorId(String authorId) {
+//        if (null == authorId) return null;
+//        for (SComment comment: this.scomments) {
+//           if (authorId.equals(comment.authorId) return comment;
+//        }
+//        return null;
+//    }
 	
 	
 
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
+        		.add("_id", _id)
                 .add("content", content)
                 .add("xpos", xpos)
                 .add("ypos", ypos)

@@ -30,7 +30,7 @@ public class SImage {
     public String filePath;
 
 	@Embedded()
-    public List <SComment> sComments;
+    public List <SComment> scomments;
 	
     public SImage() 
     {
