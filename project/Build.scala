@@ -9,7 +9,8 @@ object ApplicationBuild extends Build {
 
     val appDependencies = Seq(
       // Add your project dependencies here,
-        
+      // Scala 2.9.2
+        "org.scala-lang" % "scala-compiler" % "2.9.2",
      // FlexJson
      "net.sf.flexjson" % "flexjson" % "2.0",
     // Metrics
@@ -31,6 +32,7 @@ object ApplicationBuild extends Build {
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
       // Add your own project settings here  
+    scalaVersion := "2.9.2",
     resolvers += "Local Maven Repository" at "file://" + Path.userHome + "/.m2/repository",
     resolvers += "Codehaus Repository" at "http://repository.codehaus.org/",
     resolvers += "Morphia Repository" at "http://morphia.googlecode.com/svn/mavenrepo/",

@@ -103,5 +103,19 @@ public class SPostitTest {
 	    }
 	 
 	 
+//	 @Test
+//	    public void DeletePostitById() {
+//	        running(fakeApplication(), new Runnable() {
+//				@Override
+//	            public void run() {
+////	                Result result = callAction(routes.ref.SPostits.deletePostitById(),
+////	                        fakeRequest());
+//	                assertThat(status(result)).isEqualTo(OK);
+//	                assertThat(contentType(result)).isEqualTo("application/json");
+//	            }
+//	        });
+//	    }
+	 
+	 
 	 
 }
