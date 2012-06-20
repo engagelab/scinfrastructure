@@ -8,7 +8,7 @@ import com.google.common.base.Objects;
  * @author Muhammad Fahied
  */
 
-@Entity(value = "users", noClassnameStored = true)
+@Entity(value = "users", noClassnameStored = true, concern = "NORMAL")
 public class SUser extends Model {
 	
 	@Property("name")

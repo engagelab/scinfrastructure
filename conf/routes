@@ -4,8 +4,6 @@
 
 # Home page
 
-
-
 # Group Services
 GET     				/group									controllers.SGroups.fetchAllGroups
 POST     				/group									controllers.SGroups.createGroup
@@ -22,7 +20,7 @@ POST     				/member									controllers.SGroups.addMember
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
 POST     				/postit									controllers.SPostits.addPostit
 PUT     				/postit									controllers.SPostits.updatePostitInFlash
-DELET					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
+DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
 PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
 
 
@@ -37,37 +35,10 @@ GET     				/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupI
 
 
 
-#Fake Calls
-#GET     				/fgroup									controllers.SGroups.createGroup
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Utilities for debugging server issues
+GET     /health                             controllers.Server.health()
+GET     /threaddump                         controllers.Server.threaddump()
+GET     /servermetrics                      controllers.Server.metrics(classPrefix ?= "", pretty:Boolean ?= true)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file                       controllers.Assets.at(path="/public", file)

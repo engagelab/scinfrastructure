@@ -1,4 +1,3 @@
-
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
@@ -33,6 +32,7 @@ import play.libs.Akka;
 import play.mvc.Controller;
 import utils.MoreMatchers;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -40,7 +40,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Mathias Bogaert
- * @author Muhammad Fahied (Editor)
  */
 public class Global extends GlobalSettings {
     static {
@@ -129,9 +128,7 @@ public class Global extends GlobalSettings {
                 }
 
                 // bind actor - todo use reflections for this
-//                bind(ActorRef.class).annotatedWith(Names.named("ProcessCPOCsvEntry"))
-//                        .toProvider(new TypeLiteral<ActorProvider<ProcessCPOCsvEntry>>() {
-//                        });
+
 
                 // start/stop services after injection and on shutdown of the Play app
                 bindListener(MoreMatchers.subclassesOf(Service.class), new TypeListener() {

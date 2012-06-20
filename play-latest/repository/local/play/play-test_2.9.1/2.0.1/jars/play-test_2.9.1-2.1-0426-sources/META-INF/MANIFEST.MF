@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Specification-Vendor: play
-Specification-Title: Play-Test
-Specification-Version: 2.1-0426
-
