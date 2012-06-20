@@ -33,12 +33,12 @@ public class SGroups extends Controller {
 
 		List<SGroup> groups = SGroup.find.asList();
 		
-	     JSONSerializer modelSerializer = new JSONSerializer()
-	     .include("name","_id","susers","susers.name","susers.id").exclude("*"); 
-	    String text = modelSerializer.serialize(groups.toString());
+//	     JSONSerializer modelSerializer = new JSONSerializer()
+//	     .include("name","_id","susers","susers.name","susers.id").exclude("*"); 
+//	    String text = modelSerializer.serialize(groups);
 	    response().setContentType("application/json");
 	     
-		return ok(text);
+		return ok(toJson(groups));
 	}
 	
 	
@@ -105,9 +105,9 @@ public class SGroups extends Controller {
     	int age = node.get("age").asInt();
     	String imageUri = node.get("imageUri").asText();
     	
-		//SGroup group = SGroup.find.byId(groupId);
+		SGroup group = SGroup.find.byId(groupId);
     	
-    	SGroup group = SGroup.find.filter("_id", groupId).get();
+    	//SGroup group = SGroup.find.filter("_id", groupId).get();
     	
 		SUser user = new SUser(name, email, age, imageUri);
 		user.save();

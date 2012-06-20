@@ -21,8 +21,8 @@ import com.google.common.base.Objects;
 public class  SPostit{
 	@Indexed
 	@Property("_id")
-	public String _id;
-	
+	public String _id = new ObjectId().toString();
+
 	@Property("content")
 	public String content;
 	
@@ -46,7 +46,6 @@ public class  SPostit{
 	
 	@PrePersist
 	public void prePersist(){
-		_id = new ObjectId().toString();
 		postedAt = new Date();
 		wxpos = 0;
 		wypos = 0;

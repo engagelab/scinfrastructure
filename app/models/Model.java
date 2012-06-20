@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * @author Mathias Bogaert
+ * @author Muhammad Fahied
  */
 public abstract class Model {
     @Inject
@@ -29,7 +30,7 @@ public abstract class Model {
     //@Id
     //@JsonIgnore
     //public ObjectId id;
-    @Id String id = new ObjectId().toString();
+    @Id public String id = new ObjectId().toString();
 
     @Override
     public boolean equals(Object o) {
@@ -75,8 +76,8 @@ public abstract class Model {
         }
 
         public T byId(String id) {
-            return datastore.get(type, ObjectId.massageToObjectId(id));
-           // return datastore.get(type, id);
+            //return datastore.get(type, ObjectId.massageToObjectId(id));
+            return datastore.get(type, id);
         }
 
         public T byId(ObjectId objectId) {
