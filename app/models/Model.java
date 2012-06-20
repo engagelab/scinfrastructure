@@ -26,9 +26,10 @@ public abstract class Model {
     @Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
-    @Id
-    @JsonIgnore
-    public ObjectId id;
+    //@Id
+    //@JsonIgnore
+    //public ObjectId id;
+    @Id String id = new ObjectId().toString();
 
     @Override
     public boolean equals(Object o) {
@@ -75,6 +76,7 @@ public abstract class Model {
 
         public T byId(String id) {
             return datastore.get(type, ObjectId.massageToObjectId(id));
+           // return datastore.get(type, id);
         }
 
         public T byId(ObjectId objectId) {

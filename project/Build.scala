@@ -13,6 +13,10 @@ object ApplicationBuild extends Build {
     "org.apache.camel" % "camel-jackson" % "2.9.2",
     "org.apache.camel" % "camel-http" % "2.9.2",
 
+
+	//flexJSON
+	"net.sf.flexjson" % "flexjson" % "2.1",
+	
       //Apache
     "commons-io" % "commons-io" % "2.3",
     
