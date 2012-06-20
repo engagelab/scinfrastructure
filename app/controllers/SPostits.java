@@ -83,12 +83,9 @@ public class SPostits extends Controller {
 				.set("spostits.$.wxpos", wxpos)
 				.set("spostits.$.wypos", wypos);
 		datastore.update(query, ops);
-		
 		return ok(toJson("group"));
 
 	}
-
-	
 	
 	public static Result updatePostitInFlash() {
 
@@ -109,6 +106,28 @@ public class SPostits extends Controller {
 		
 		return ok(toJson("group"));
 	}
+	
+	
+	public static Result deletePostitById(String postitId) {
+
+		// parse JSON from request body
+		JsonNode node = ctx().request().body().asJson();
+
+		String content = node.get("content").asText();
+		int xpos = node.get("xpos").asInt();
+		int ypos = node.get("xpos").asInt();
+
+		// update member of embedded object list 
+		Query<SGroup> query = datastore.createQuery(SGroup.class).field("spostits._id").equal(postitId);
+		UpdateOperations<SGroup> ops = datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.set("spostits.$.content", content)
+				.set("spostits.$.xpos", xpos)
+				.set("spostits.$.ypos", ypos);
+		datastore.update(query, ops);
+		
+		return ok(toJson("group"));
+	}
+	
 	
 	
 	public static Result postCommentOnPostit() {

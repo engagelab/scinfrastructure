@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="org.scala-tools.sbt"
+		module="boot-app"
+		revision="1.0"
+		conf="default"
+		confs="default"
+		date="20120515220919"/>
+	<dependencies>
+		<module organisation="org.scala-tools.sbt" name="sbt_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172708" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="0">
+				<metadata-artifact status="no" details="" size="2392" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/sbt_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/sbt_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/sbt_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="boot-app" conf="default" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="sbt_2.9.1" type="jar" ext="jar" status="no" details="" size="16670" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/sbt_2.9.1/0.11.2/jars/sbt_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/sbt_2.9.1/0.11.2/jars/sbt_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="precompiled-2_9_0">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="35">
+				<metadata-artifact status="no" details="" size="2052" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/precompiled-2_9_0/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_9_0/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_9_0/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="sbt_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="compiler-interface-bin" type="jar" ext="jar" extra-component="compiler-interface-bin_2.9.0.final" status="no" details="" size="131372" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_9_0/0.11.2/jars/compiler-interface-bin.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_9_0/0.11.2/jars/compiler-interface-bin.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="precompiled-2_8_0">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="34">
+				<metadata-artifact status="no" details="" size="2052" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/precompiled-2_8_0/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_0/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_0/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="sbt_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="compiler-interface-bin" type="jar" ext="jar" extra-component="compiler-interface-bin_2.8.0.final" status="no" details="" size="128939" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_0/0.11.2/jars/compiler-interface-bin.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_0/0.11.2/jars/compiler-interface-bin.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="precompiled-2_8_1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="33">
+				<metadata-artifact status="no" details="" size="2052" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/precompiled-2_8_1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="sbt_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="compiler-interface-bin" type="jar" ext="jar" extra-component="compiler-interface-bin_2.8.1.final" status="no" details="" size="128916" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_1/0.11.2/jars/compiler-interface-bin.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/precompiled-2_8_1/0.11.2/jars/compiler-interface-bin.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="compiler-interface">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="32">
+				<metadata-artifact status="no" details="" size="2462" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/compiler-interface/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compiler-interface/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compiler-interface/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="sbt_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="compiler-interface-bin" type="jar" ext="jar" extra-component="compiler-interface-bin_2.9.1.final" status="no" details="" size="131385" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compiler-interface/0.11.2/jars/compiler-interface-bin.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compiler-interface/0.11.2/jars/compiler-interface-bin.jar"/>
+					</artifact>
+					<artifact name="compiler-interface-src" type="jar" ext="jar" extra-component="compiler-interface-src" status="no" details="" size="16830" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compiler-interface/0.11.2/jars/compiler-interface-src.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compiler-interface/0.11.2/jars/compiler-interface-src.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="main_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172708" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="1">
+				<metadata-artifact status="no" details="" size="2877" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/main_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/main_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/main_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="sbt_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="main_2.9.1" type="jar" ext="jar" status="no" details="" size="1818496" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/main_2.9.1/0.11.2/jars/main_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/main_2.9.1/0.11.2/jars/main_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="actions_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172705" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="2">
+				<metadata-artifact status="no" details="" size="3864" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/actions_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/actions_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/actions_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="actions_2.9.1" type="jar" ext="jar" status="no" details="" size="278145" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/actions_2.9.1/0.11.2/jars/actions_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/actions_2.9.1/0.11.2/jars/actions_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="testing_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="30">
+				<metadata-artifact status="no" details="" size="2102" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/testing_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/testing_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/testing_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="testing_2.9.1" type="jar" ext="jar" status="no" details="" size="71642" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/testing_2.9.1/0.11.2/jars/testing_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/testing_2.9.1/0.11.2/jars/testing_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.testing" name="test-interface">
+			<revision name="0.5" status="release" pubdate="20100328003658" resolver="local" artresolver="local" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="31">
+				<metadata-artifact status="no" details="" size="2199" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.testing/test-interface/ivy-0.5.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.testing/test-interface/0.5/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="testing_2.9.1" conf="compile" rev="0.5" rev-constraint-default="0.5" rev-constraint-dynamic="0.5" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="test-interface" type="jar" ext="jar" status="no" details="" size="4407" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.testing/test-interface/0.5/jars/test-interface.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.testing/test-interface/0.5/jars/test-interface.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="tracking_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172625" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="28">
+				<metadata-artifact status="no" details="" size="1859" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/tracking_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tracking_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tracking_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="tracking_2.9.1" type="jar" ext="jar" status="no" details="" size="43081" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tracking_2.9.1/0.11.2/jars/tracking_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tracking_2.9.1/0.11.2/jars/tracking_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="cache_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="29">
+				<metadata-artifact status="no" details="" size="1965" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/cache_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/cache_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/cache_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="tracking_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="cache_2.9.1" type="jar" ext="jar" status="no" details="" size="112489" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/cache_2.9.1/0.11.2/jars/cache_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/cache_2.9.1/0.11.2/jars/cache_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="task-system_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="26">
+				<metadata-artifact status="no" details="" size="2503" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/task-system_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/task-system_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/task-system_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="task-system_2.9.1" type="jar" ext="jar" status="no" details="" size="122225" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/task-system_2.9.1/0.11.2/jars/task-system_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/task-system_2.9.1/0.11.2/jars/task-system_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="tasks_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="27">
+				<metadata-artifact status="no" details="" size="2079" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/tasks_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tasks_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tasks_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="task-system_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="tasks_2.9.1" type="jar" ext="jar" status="no" details="" size="119513" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tasks_2.9.1/0.11.2/jars/tasks_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/tasks_2.9.1/0.11.2/jars/tasks_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="run_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="25">
+				<metadata-artifact status="no" details="" size="2107" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/run_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/run_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/run_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="run_2.9.1" type="jar" ext="jar" status="no" details="" size="93301" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/run_2.9.1/0.11.2/jars/run_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/run_2.9.1/0.11.2/jars/run_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="completion_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="23">
+				<metadata-artifact status="no" details="" size="2332" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/completion_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/completion_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/completion_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="completion_2.9.1" type="jar" ext="jar" status="no" details="" size="290333" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/completion_2.9.1/0.11.2/jars/completion_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/completion_2.9.1/0.11.2/jars/completion_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="compile_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172638" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="16">
+				<metadata-artifact status="no" details="" size="2965" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/compile_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compile_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compile_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="compile_2.9.1" type="jar" ext="jar" status="no" details="" size="127441" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compile_2.9.1/0.11.2/jars/compile_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/compile_2.9.1/0.11.2/jars/compile_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="ivy_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="17">
+				<metadata-artifact status="no" details="" size="2579" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/ivy_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/ivy_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/ivy_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="compile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="ivy_2.9.1" type="jar" ext="jar" status="no" details="" size="568631" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/ivy_2.9.1/0.11.2/jars/ivy_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/ivy_2.9.1/0.11.2/jars/ivy_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-httpclient" name="commons-httpclient">
+			<revision name="3.1" status="release" pubdate="20070821154407" resolver="local" artresolver="local" homepage="http://jakarta.apache.org/httpcomponents/httpclient-3.x/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="20">
+				<license name="Apache License" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3142" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/commons-httpclient/commons-httpclient/ivy-3.1.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-httpclient/commons-httpclient/3.1/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="3.1" rev-constraint-default="3.1" rev-constraint-dynamic="3.1" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="commons-httpclient" type="jar" ext="jar" status="no" details="" size="305001" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-httpclient/commons-httpclient/3.1/jars/commons-httpclient.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-httpclient/commons-httpclient/3.1/jars/commons-httpclient.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-codec" name="commons-codec">
+			<revision name="1.2" status="release" pubdate="20051124062017" resolver="local" artresolver="local" homepage="" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="22">
+				<metadata-artifact status="no" details="" size="2527" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/commons-codec/commons-codec/ivy-1.2.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-codec/commons-codec/1.2/ivys/ivy.xml"/>
+				<caller organisation="commons-httpclient" name="commons-httpclient" conf="default, compile, runtime, master" rev="1.2" rev-constraint-default="1.2" rev-constraint-dynamic="1.2" callerrev="3.1"/>
+				<artifacts>
+					<artifact name="commons-codec" type="jar" ext="jar" status="no" details="" size="30085" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-codec/commons-codec/1.2/jars/commons-codec.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-codec/commons-codec/1.2/jars/commons-codec.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-logging" name="commons-logging">
+			<revision name="1.0.4" status="release" pubdate="20051108231641" resolver="local" artresolver="local" homepage="http://jakarta.apache.org/commons/logging/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="21">
+				<license name="The Apache Software License, Version 2.0" url="/LICENSE.txt"/>
+				<metadata-artifact status="no" details="" size="2980" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/commons-logging/commons-logging/ivy-1.0.4.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-logging/commons-logging/1.0.4/ivys/ivy.xml"/>
+				<caller organisation="commons-httpclient" name="commons-httpclient" conf="default, compile, runtime, master" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="3.1"/>
+				<artifacts>
+					<artifact name="commons-logging" type="jar" ext="jar" status="no" details="" size="38015" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-logging/commons-logging/1.0.4/jars/commons-logging.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/commons-logging/commons-logging/1.0.4/jars/commons-logging.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.ivy" name="ivy">
+			<revision name="2.2.0" status="release" pubdate="20100924000647" resolver="local" artresolver="local" homepage="http://ant.apache.org/ivy/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="18">
+				<metadata-artifact status="no" details="" size="4618" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.apache.ivy/ivy/ivy-2.2.0.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.apache.ivy/ivy/2.2.0/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="ivy" type="jar" ext="jar" status="no" details="" size="947592" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.apache.ivy/ivy/2.2.0/jars/ivy.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.apache.ivy/ivy/2.2.0/jars/ivy.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.jcraft" name="jsch">
+			<revision name="0.1.31" status="release" pubdate="20070226235708" resolver="local" artresolver="local" homepage="http://www.jcraft.com/jsch/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="19">
+				<license name="BSD" url="http://www.jcraft.com/jsch/LICENSE.txt"/>
+				<metadata-artifact status="no" details="" size="2468" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/com.jcraft/jsch/ivy-0.1.31.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/com.jcraft/jsch/0.1.31/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="0.1.31" rev-constraint-default="0.1.31" rev-constraint-dynamic="0.1.31" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="jsch" type="jar" ext="jar" status="no" details="" size="171980" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/com.jcraft/jsch/0.1.31/jars/jsch.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/com.jcraft/jsch/0.1.31/jars/jsch.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="persist_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172638" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="14">
+				<metadata-artifact status="no" details="" size="1983" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/persist_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/persist_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/persist_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="persist_2.9.1" type="jar" ext="jar" status="no" details="" size="114745" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/persist_2.9.1/0.11.2/jars/persist_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/persist_2.9.1/0.11.2/jars/persist_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbinary" name="sbinary_2.9.0">
+			<revision name="0.4.0" status="release" pubdate="20110518020638" resolver="local" artresolver="local" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="15">
+				<metadata-artifact status="no" details="" size="2359" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbinary/sbinary_2.9.0/ivy-0.4.0.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbinary/sbinary_2.9.0/0.4.0/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="cache_2.9.1" conf="compile" rev="0.4.0" rev-constraint-default="0.4.0" rev-constraint-dynamic="0.4.0" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="persist_2.9.1" conf="compile" rev="0.4.0" rev-constraint-default="0.4.0" rev-constraint-dynamic="0.4.0" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="sbinary_2.9.0" type="jar" ext="jar" status="no" details="" size="148882" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbinary/sbinary_2.9.0/0.4.0/jars/sbinary_2.9.0.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbinary/sbinary_2.9.0/0.4.0/jars/sbinary_2.9.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="incremental-compiler_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="11">
+				<metadata-artifact status="no" details="" size="2528" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/incremental-compiler_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/incremental-compiler_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/incremental-compiler_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="persist_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="incremental-compiler_2.9.1" type="jar" ext="jar" status="no" details="" size="154244" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/incremental-compiler_2.9.1/0.11.2/jars/incremental-compiler_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/incremental-compiler_2.9.1/0.11.2/jars/incremental-compiler_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="api_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="13">
+				<metadata-artifact status="no" details="" size="1951" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/api_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/api_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/api_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="incremental-compiler_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="persist_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="api_2.9.1" type="jar" ext="jar" status="no" details="" size="364033" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/api_2.9.1/0.11.2/jars/api_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/api_2.9.1/0.11.2/jars/api_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="collections_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="12">
+				<metadata-artifact status="no" details="" size="1835" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/collections_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/collections_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/collections_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="cache_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="completion_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="tasks_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="incremental-compiler_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="task-system_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="collections_2.9.1" type="jar" ext="jar" status="no" details="" size="276994" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/collections_2.9.1/0.11.2/jars/collections_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/collections_2.9.1/0.11.2/jars/collections_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="classpath_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="9">
+				<metadata-artifact status="no" details="" size="1980" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/classpath_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classpath_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classpath_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="testing_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="compile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="incremental-compiler_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="run_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="classpath_2.9.1" type="jar" ext="jar" status="no" details="" size="83290" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classpath_2.9.1/0.11.2/jars/classpath_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classpath_2.9.1/0.11.2/jars/classpath_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="launcher-interface_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="10">
+				<metadata-artifact status="no" details="" size="1642" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/launcher-interface_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/launcher-interface_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/launcher-interface_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="classpath_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="compile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="launcher-interface_2.9.1" type="jar" ext="jar" status="no" details="" size="8160" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/launcher-interface_2.9.1/0.11.2/jars/launcher-interface_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/launcher-interface_2.9.1/0.11.2/jars/launcher-interface_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="classfile_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172626" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="3">
+				<metadata-artifact status="no" details="" size="2234" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/classfile_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classfile_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classfile_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="classfile_2.9.1" type="jar" ext="jar" status="no" details="" size="83083" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classfile_2.9.1/0.11.2/jars/classfile_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/classfile_2.9.1/0.11.2/jars/classfile_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="logging_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172625" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="7">
+				<metadata-artifact status="no" details="" size="2206" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/logging_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/logging_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/logging_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="testing_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="incremental-compiler_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="run_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="classfile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="task-system_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="logging_2.9.1" type="jar" ext="jar" status="no" details="" size="70769" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/logging_2.9.1/0.11.2/jars/logging_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/logging_2.9.1/0.11.2/jars/logging_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="jline" name="jline">
+			<revision name="0.9.94" status="release" pubdate="20080222205343" resolver="local" artresolver="local" homepage="http://jline.sourceforge.net" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="24">
+				<license name="BSD" url="LICENSE.txt"/>
+				<metadata-artifact status="no" details="" size="2825" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/jline/jline/ivy-0.9.94.xml" searched="false" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/jline/jline/0.9.94/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="completion_2.9.1" conf="compile" rev="0.9.94" rev-constraint-default="0.9.94" rev-constraint-dynamic="0.9.94" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="precompiled-2_8_0" conf="compile" rev="0.9.94" rev-constraint-default="0.9.94" rev-constraint-dynamic="0.9.94" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="precompiled-2_8_1" conf="compile" rev="0.9.94" rev-constraint-default="0.9.94" rev-constraint-dynamic="0.9.94" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="compiler-interface" conf="compile" rev="0.9.94" rev-constraint-default="0.9.94" rev-constraint-dynamic="0.9.94" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="precompiled-2_9_0" conf="compile" rev="0.9.94" rev-constraint-default="0.9.94" rev-constraint-dynamic="0.9.94" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="jline" type="jar" ext="jar" status="no" details="" size="87325" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/jline/jline/0.9.94/jars/jline.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/jline/jline/0.9.94/jars/jline.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="process_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="8">
+				<metadata-artifact status="no" details="" size="1710" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/process_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/process_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/process_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="run_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="task-system_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="logging_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="process_2.9.1" type="jar" ext="jar" status="no" details="" size="111682" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/process_2.9.1/0.11.2/jars/process_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/process_2.9.1/0.11.2/jars/process_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="interface">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" extra-component="xsbti" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="6">
+				<metadata-artifact status="no" details="" size="1608" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/interface/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/interface/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/interface/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="precompiled-2_8_0" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="precompiled-2_8_1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="compiler-interface" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="compile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="precompiled-2_9_0" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="api_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="classfile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<caller organisation="org.scala-tools.sbt" name="logging_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2" extra-component="xsbti"/>
+				<artifacts>
+					<artifact name="interface" type="jar" ext="jar" status="no" details="" size="36455" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/interface/0.11.2/jars/interface.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/interface/0.11.2/jars/interface.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="io_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="4">
+				<metadata-artifact status="no" details="" size="1931" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/io_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/io_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/io_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="completion_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="cache_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="main_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="testing_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="actions_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="run_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="tracking_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="task-system_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="classpath_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="incremental-compiler_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="compile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="classfile_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="ivy_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="io_2.9.1" type="jar" ext="jar" status="no" details="" size="252271" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/io_2.9.1/0.11.2/jars/io_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/io_2.9.1/0.11.2/jars/io_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-tools.sbt" name="control_2.9.1">
+			<revision name="0.11.2" status="release" pubdate="20111127172622" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="5">
+				<metadata-artifact status="no" details="" size="1598" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/cache/org.scala-tools.sbt/control_2.9.1/ivy-0.11.2.xml" searched="true" original-local-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/control_2.9.1/0.11.2/ivys/ivy.xml" origin-is-local="true" origin-location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/control_2.9.1/0.11.2/ivys/ivy.xml"/>
+				<caller organisation="org.scala-tools.sbt" name="completion_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="tasks_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<caller organisation="org.scala-tools.sbt" name="io_2.9.1" conf="compile" rev="0.11.2" rev-constraint-default="0.11.2" rev-constraint-dynamic="0.11.2" callerrev="0.11.2"/>
+				<artifacts>
+					<artifact name="control_2.9.1" type="jar" ext="jar" status="no" details="" size="12044" time="0" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/control_2.9.1/0.11.2/jars/control_2.9.1.jar">
+						<origin-location is-local="true" location="/Users/userxd/developer/tools/play-2.0.1/framework/../repository/local/org.scala-tools.sbt/control_2.9.1/0.11.2/jars/control_2.9.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

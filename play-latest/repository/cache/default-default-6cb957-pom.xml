@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="default-6cb957"
+		revision="0.1"
+		extra-sbtVersion="0.11.0"
+		extra-scalaVersion="2.9.1"
+		conf="pom"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
+		date="20120515213900"/>
+	<dependencies>
+	</dependencies>
+</ivy-report>

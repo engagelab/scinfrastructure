@@ -22,7 +22,7 @@ POST     				/member									controllers.SGroups.addMember
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
 POST     				/postit									controllers.SPostits.addPostit
 PUT     				/postit									controllers.SPostits.updatePostitInFlash
-
+DELET					/postit									controllers.SPostits.updatePostitInFlash
 PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
 
 
