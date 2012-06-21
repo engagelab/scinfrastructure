@@ -90,5 +90,56 @@ public class SVideos extends Controller {
 		return ok(toJson(res));
 
 	}
+	
+	
+	
+	public static Result deleteVideoById(String videoId) {
+
+		// First find out the group from which you want to remove one postit:
+		// SGroup group = SGroup.find.byId(groupId);
+		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+		// Second locate the fruit and remove it:
+		for (SVideo p : group.svideos) {
+			if (p.id.equals(videoId)) {
+				group.svideos.remove(p);
+				group.save();
+				break;
+			}
+		}
+		return ok("deleted successfully");
+	}
+		
+		
+	
+	public static Result postCommentOnVideo() {
+
+		JsonNode node = ctx().request().body().asJson();
+		String videoId = node.get("videoId").asText();
+		String content = node.get("content").asText();
+
+		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+		// Second locate the fruit and remove it:
+		SVideo res = new SVideo();
+		for (SVideo p : group.svideos) {
+			if (p.id.equals(videoId)) {
+				group.svideos.remove(p);
+
+				if (p.scomments == null) {
+					p.scomments = new ArrayList<SComment>();
+				}
+				p.scomments.add(new SComment(content));
+				group.svideos.add(p);
+				group.save();
+				res = p;
+				break;
+			}
+
+		}
+
+		return ok(toJson(res));
+	}
+	
+	
+	
 
 }

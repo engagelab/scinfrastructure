@@ -33,6 +33,17 @@ GET     				/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupI
 # Video Services
 POST     				/video									controllers.SVideos.addVideo
 PUT     				/video									controllers.SVideos.updateVideoOnWeb
+DELETE     				/video/:videoId							controllers.SVideos.deleteVideoById(videoId:String)
+POST					/comment/video							controllers.SVideos.postCommentOnVideo
+
+
+# Image Services
+POST     				/image									controllers.SImage.addImage
+PUT     				/image									controllers.SImage.updateImageOnWeb
+DELETE     				/image/:imageId							controllers.SImage.deleteImageById(imageId:String)
+POST					/comment/image							controllers.SImage.postCommentOnImage
+
+
 
 
 
