@@ -27,7 +27,7 @@ public class  SPostit{
 	public String content;
 	
 	@Property("date")
-	public Date postedAt;
+	public String postedAt = new Date().toString();;
 	
 	// Variables to store xy position of  on Flash App
 	@Property("xpos")
@@ -46,7 +46,7 @@ public class  SPostit{
 	
 	@PrePersist
 	public void prePersist(){
-		postedAt = new Date();
+		//postedAt = new Date().toString();
 		wxpos = 0;
 		wypos = 0;
 	}
@@ -102,6 +102,7 @@ public class  SPostit{
                 .add("content", content)
                 .add("xpos", xpos)
                 .add("ypos", ypos)
+                .add("postedAt", postedAt)
                 .toString();
     }
 

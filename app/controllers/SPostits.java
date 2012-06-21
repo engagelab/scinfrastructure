@@ -45,6 +45,9 @@ public class SPostits extends Controller {
 
 		SGroup group = SGroup.find.byId(groupId);
 		List<SPostit> postits = group.spostits;
+		if (group.spostits == null) {
+			return ok("[]");
+		}
 		return ok(toJson(postits));
 	}
 
@@ -58,6 +61,7 @@ public class SPostits extends Controller {
 		String groupId = node.get("groupId").asText();
 
 		SPostit postit = new SPostit(content, xpos, ypos);
+		//SGroup group = SGroup.find.byId(groupId);
 		SGroup group = SGroup.find.byId(groupId);
 		if (group.spostits == null) {
 			group.spostits = new ArrayList<SPostit>();
@@ -112,7 +116,7 @@ public class SPostits extends Controller {
 
 		// First find out the group from which you want to remove one postit:
 		// SGroup group = SGroup.find.byId(groupId);
-		SGroup group = SGroup.find.filter("spostits._id", "4fd87071300453388399f0c1").get();
+		SGroup group = SGroup.find.filter("spostits._id", postitId).get();
 		// Second locate the fruit and remove it:
 		for (SPostit p : group.spostits) {
 			if (p._id.equals(postitId)) {

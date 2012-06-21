@@ -98,7 +98,6 @@ public class SGroups extends Controller {
 		
 		//parse JSON from request body
     	JsonNode node =  ctx().request().body().asJson();
-    	
     	String groupId = node.get("groupId").asText();
     	String name = node.get("name").asText();
     	String email = node.get("email").asText();

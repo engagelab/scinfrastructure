@@ -18,6 +18,7 @@ POST     				/member									controllers.SGroups.addMember
 
 # Postit Services
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
+GET						/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 POST     				/postit									controllers.SPostits.addPostit
 PUT     				/postit									controllers.SPostits.updatePostitInFlash
 DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
