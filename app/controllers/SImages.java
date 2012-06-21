@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.JsonNode;
@@ -15,6 +16,7 @@ import com.mongodb.gridfs.GridFSDBFile;
 import models.SComment;
 import models.SGroup;
 import models.SImage;
+import models.SVideo;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
@@ -46,7 +48,7 @@ public class SImages extends Controller {
 	}
 
 	@SuppressWarnings("unused")
-	public static Result storeImage(String groupId, String author) {
+	public static Result addImage(String groupId, String author) {
 
 		String pathname = "/Users/userxd/Pictures/fahied.jpg";
 		File imageData = new File(pathname);
@@ -92,19 +94,39 @@ public class SImages extends Controller {
 	public static Result postCommentOnImage() {
 
 		JsonNode node = ctx().request().body().asJson();
-		String groupId = node.get("groupId").asText();
-		String imageId = node.get("ImageId").asText();
+		String imageId = node.get("imageId").asText();
 		String content = node.get("content").asText();
-		
-		SGroup group = SGroup.find.byId(groupId);
-		
-		// Find postit
-		SImage image = new SImage();
-		image.scomments.add(new SComment());
-		
-		//SPostit postits = group.datastore.createUpdateOperations(arg0);
-		// update postit
-		return ok(toJson(group));
+
+		SGroup group = SGroup.find.filter("simages.id", imageId).get();
+		// Second locate the fruit and remove it:
+		SImage res = new SImage();
+		for (SImage p : group.simages) {
+			if (p.id.equals(imageId)) {
+				group.simages.remove(p);
+
+				if (p.scomments == null) {
+					p.scomments = new ArrayList<SComment>();
+				}
+				p.scomments.add(new SComment(content));
+				group.simages.add(p);
+				group.save();
+				res = p;
+				break;
+			}
+
+		}
+
+		return ok(toJson(res));
 	}
+	
+	public static String getFileExtension(String filePath){  
+		  StringTokenizer stk=new StringTokenizer(filePath,".");  
+		  String FileExt="";  
+		  while(stk.hasMoreTokens()){  
+		   FileExt=stk.nextToken();  
+		  }  
+		  return FileExt;  
+		 } 
+	
 
 }
