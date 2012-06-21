@@ -61,7 +61,7 @@ public class SPostits extends Controller {
 		String groupId = node.get("groupId").asText();
 
 		SPostit postit = new SPostit(content, xpos, ypos);
-		//SGroup group = SGroup.find.byId(groupId);
+		// SGroup group = SGroup.find.byId(groupId);
 		SGroup group = SGroup.find.byId(groupId);
 		if (group.spostits == null) {
 			group.spostits = new ArrayList<SPostit>();
@@ -80,14 +80,24 @@ public class SPostits extends Controller {
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wxpos").asInt();
 
-		// update member of embedded object list
-		Query<SGroup> query = datastore.createQuery(SGroup.class)
-				.field("spostits._id").equal(postitId);
-		UpdateOperations<SGroup> ops = datastore
-				.createUpdateOperations(SGroup.class).disableValidation()
-				.set("spostits.$.wxpos", wxpos).set("spostits.$.wypos", wypos);
-		datastore.update(query, ops);
-		return ok(toJson("group"));
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		// Second locate the fruit and remove it:
+		SPostit res = new SPostit();
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				res.id = p.id;
+				res.wxpos = wxpos;
+				res.wypos = wypos;
+				res.content = p.content;
+				res.xpos = p.xpos;
+				res.ypos = p.ypos;
+				group.spostits.remove(p);
+				group.spostits.add(res);
+				group.save();
+				break;
+			}
+		}
+		return ok(toJson(res));
 
 	}
 
@@ -102,55 +112,65 @@ public class SPostits extends Controller {
 
 		// update member of embedded object list
 		Query<SGroup> query = datastore.createQuery(SGroup.class)
-				.field("spostits._id").equal(postitId);
+				.field("spostits.id").equal(postitId);
 		UpdateOperations<SGroup> ops = datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("spostits.$.content", content)
 				.set("spostits.$.xpos", xpos).set("spostits.$.ypos", ypos);
 		datastore.update(query, ops);
 
-		return ok(toJson("group"));
+		return ok("success");
 	}
 
 	public static Result deletePostitById(String postitId) {
 
 		// First find out the group from which you want to remove one postit:
 		// SGroup group = SGroup.find.byId(groupId);
-		SGroup group = SGroup.find.filter("spostits._id", postitId).get();
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
 		// Second locate the fruit and remove it:
 		for (SPostit p : group.spostits) {
-			if (p._id.equals(postitId)) {
+			if (p.id.equals(postitId)) {
 				group.spostits.remove(p);
 				group.save();
 				break;
 			}
 		}
 		
-		//try this one
+		// try this one
 		/*
-		 
-		  Cart.o().removeAll("fruit.name", "apple").update(Cart.q().filter("_id", theId));
-		 
-		 * */
-		return ok(toJson("group"));
+		 * 
+		 * Cart.o().removeAll("fruit.name",
+		 * "apple").update(Cart.q().filter("_id", theId));
+		 */
+		return ok("deleted");
 	}
 
 	public static Result postCommentOnPostit() {
 
 		JsonNode node = ctx().request().body().asJson();
-		String groupId = node.get("groupId").asText();
 		String postitId = node.get("postitId").asText();
 		String content = node.get("content").asText();
 
-		SGroup group = SGroup.find.byId(groupId);
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		// Second locate the fruit and remove it:
+		SPostit res = new SPostit();
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				group.spostits.remove(p);
 
-		// Find postit
-		SPostit postit = new SPostit();
-		postit.scomments.add(new SComment());
+				if (p.scomments == null) {
+					p.scomments = new ArrayList<SComment>();
+				}
+				p.scomments.add(new SComment(content));
+				group.spostits.add(p);
+				group.save();
+				res = p;
+				break;
+			}
 
-		// SPostit postits = group.datastore.createUpdateOperations(arg0);
-		// update postit
-		return ok(toJson(group));
+		}
+
+		return ok(toJson(res));
 	}
 
 }

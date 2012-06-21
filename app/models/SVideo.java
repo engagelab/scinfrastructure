@@ -1,9 +1,12 @@
 package models;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
@@ -14,41 +17,87 @@ import com.google.common.base.Objects;
 
 
 @Embedded
-public class SVideo {
-	
+public class  SVideo{
+	@Indexed
+	@Property("id")
+	public String id = new ObjectId().toString();
+
 	@Property("title")
-    public String title;
+	public String title;
 	
 	@Property("uri")
-    public String uri;
+	public String uri;
 	
+	
+	@Property("date")
+	public String postedAt = new Date().toString();
+
+	// Variables to store xy position of  on Web App
 	@Property("wxpos")
-    public int wxpos;
+	public int wxpos;
 	
 	@Property("wypos")
-    public int wypos;
-
-	@Embedded("comments")
-	public List<SComment> sComments;
+	public int wypos;
 	
-	 public SVideo(String title, String uri, int wxpos, int wypos) {
-	    	this.title = title;
-	        this.uri = uri;
-	        this.wxpos = wxpos;
-	        this.wypos = wypos;
-	        this.sComments = new ArrayList<SComment>();
-		}
+	@Embedded()
+    public List <SComment> scomments;
+	
+//	@PrePersist
+//	public void prePersist(){
+//		//postedAt = new Date().toString();
+//		wxpos = 0;
+//		wypos = 0;
+//	}
+	
+    
+   public SVideo() {
 
+	}
 
-		@Override
-	    public String toString() {
-	        return Objects.toStringHelper(this)
-	        		.add("title", title)
-	                .add("uri", uri)
-	                .add("wxpos", wxpos)
-	                .add("wypos", wypos)
-	                .add("comments", sComments)
-	                .toString();
-	    }
+    public SVideo(String uri, String title) {
+        this.uri = uri;
+        this.title = title;
+    }
+    
+    // for flash
+    // {"content":"hurray", "xpos":120, "ypos":32}
+	public SVideo(int wxpos, int wypos){
+		this.wxpos = wxpos;
+		this.wypos = wypos;
+	}
+	
+	
+	//delete all comments on this postit
+	public void clearSComments(){
+	    this.scomments = null;
+	}
+	
+	public SComment postComment(String content) {
+		SComment newComment = new SComment(content);
+		this.scomments.add(newComment);
+		return newComment;
+	}
+	
+//	public SComment findCommentByAuthorId(String authorId) {
+//        if (null == authorId) return null;
+//        for (SComment comment: this.scomments) {
+//           if (authorId.equals(comment.authorId) return comment;
+//        }
+//        return null;
+//    }
+	
+	
+
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+        		.add("id", id)
+                .add("title", title)
+                .add("uri", uri)
+                .add("wxpos", wxpos)
+                .add("wypos", wypos)
+                .add("postedAt", postedAt)
+                .toString();
+    }
 
 }

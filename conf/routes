@@ -7,7 +7,6 @@
 # Group Services
 GET     				/group									controllers.SGroups.fetchAllGroups
 POST     				/group									controllers.SGroups.createGroup
-
 GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:String)
 GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
 
@@ -16,6 +15,8 @@ GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:
 GET     				/member/group/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
 POST     				/member									controllers.SGroups.addMember
 
+
+
 # Postit Services
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
 GET						/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
@@ -23,11 +24,15 @@ POST     				/postit									controllers.SPostits.addPostit
 PUT     				/postit									controllers.SPostits.updatePostitInFlash
 DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
 PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
-
-
-
+POST					/comment/postit							controllers.SPostits.postCommentOnPostit
 GET     				/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 
+
+
+
+# Video Services
+POST     				/video									controllers.SVideos.addVideo
+PUT     				/video									controllers.SVideos.updateVideoOnWeb
 
 
 

@@ -20,36 +20,38 @@ import com.google.common.base.Objects;
 @Embedded
 public class  SPostit{
 	@Indexed
-	@Property("_id")
-	public String _id = new ObjectId().toString();
+	@Property("id")
+	public String id = new ObjectId().toString();
 
 	@Property("content")
 	public String content;
 	
 	@Property("date")
-	public String postedAt = new Date().toString();;
+	public String postedAt = new Date().toString();
 	
 	// Variables to store xy position of  on Flash App
 	@Property("xpos")
 	public int xpos;
+	
 	@Property("ypos")
 	public int ypos;
 
 	// Variables to store xy position of  on Web App
 	@Property("wxpos")
 	public int wxpos;
+	
 	@Property("wypos")
 	public int wypos;
 	
 	@Embedded()
     public List <SComment> scomments;
 	
-	@PrePersist
-	public void prePersist(){
-		//postedAt = new Date().toString();
-		wxpos = 0;
-		wypos = 0;
-	}
+//	@PrePersist
+//	public void prePersist(){
+//		//postedAt = new Date().toString();
+//		wxpos = 0;
+//		wypos = 0;
+//	}
 	
     
    public SPostit() {
@@ -98,10 +100,12 @@ public class  SPostit{
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-        		.add("_id", _id)
+        		.add("id", id)
                 .add("content", content)
                 .add("xpos", xpos)
                 .add("ypos", ypos)
+                .add("wxpos", wxpos)
+                .add("wypos", wypos)
                 .add("postedAt", postedAt)
                 .toString();
     }

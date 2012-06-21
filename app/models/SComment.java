@@ -19,12 +19,9 @@ public class  SComment{
 	public String content;
 	
 	@Property("date")
-	public Date postedAt;
-	
-	@PrePersist
-	public void prePersist(){
-		postedAt = new Date();
-	}
+	public String postedAt = new Date().toString();;
+	//public Date postedAt;
+
     
    public SComment() {
 	   
@@ -34,7 +31,6 @@ public class  SComment{
         this.content = content;
     }
     
-
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
