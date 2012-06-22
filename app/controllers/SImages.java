@@ -95,18 +95,15 @@ public class SImages extends Controller {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
 
 	public static Result showImage(String imageId) throws IOException {
+		
 		GridFSDBFile file = GridFsHelper.getFile(imageId);
+		
 		byte[] bytes = IOUtils.toByteArray(file.getInputStream());
+		
 		return Results.ok(bytes).as(file.getContentType());
+		
 	}
 
 	

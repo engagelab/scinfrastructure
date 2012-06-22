@@ -3,7 +3,6 @@ package utils;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import org.apache.commons.io.FilenameUtils;
 import org.bson.types.ObjectId;
 
 import com.google.code.morphia.Datastore;
@@ -26,26 +25,49 @@ public class GridFsHelper {
 	@Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
+	
+	
+	
+	
 	public static GridFSDBFile getFile(String id) throws MongoException, IOException {
+		
 		GridFSDBFile file = getGridFS().findOne(new ObjectId(id));
 		return file;
 	}
+	
+	
+	
+	
+	
 	
 	public static List<GridFSDBFile> getFiles() throws MongoException, IOException {
 		return getGridFS().find(new BasicDBObject());
 	}
 
+	
+	
+	
+	
+	
+	
 	public static String  storeFile(File image, String fileName, String contentType) throws IOException {
 		GridFS fs = getGridFS();
 		fs.remove(fileName); // delete the old file
 		GridFSInputFile gridFile = fs.createFile(image);
-		gridFile.save();
+		//gridFile.save();
 		gridFile.setContentType(contentType);
 		gridFile.setFilename(fileName);
 		gridFile.save();
 		String id = gridFile.getId().toString();
 		return id;
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	private static GridFS getGridFS( ) throws IOException, MongoException {
 		
