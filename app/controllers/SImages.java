@@ -1,5 +1,6 @@
 package controllers;
 
+
 import static play.libs.Json.toJson;
 
 import java.io.File;
@@ -13,20 +14,28 @@ import org.codehaus.jackson.JsonNode;
 
 import com.mongodb.gridfs.GridFSDBFile;
 
-import models.SComment;
-import models.SGroup;
-import models.SImage;
-import models.SVideo;
+import models.*;
+
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import utils.GridFsHelper;
+
 
 /**
  * @author Muhammad Fahied
  */
 
 public class SImages extends Controller {
+
+	private static final Form<SImage> productForm = form(SImage.class);
+	
+//	public static Result showBlank(){
+//		return ok(form.render(productForm));
+//		}
+       
+    
 
 	public static Result fetchImagesById(String imageId) {
 

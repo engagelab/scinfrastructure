@@ -25,23 +25,49 @@ public class SVideos extends Controller {
 	@Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
-	public static Result fetchVideoById(String positId) {
+	
+	
+	
+	
+	
+	
+	public static Result fetchVideoById(String videoId) {
 
-		// need indexing for Video
-		// SVideo Video =
+		// need indexing for postit
+		// SPostit postit =
 		// SGroup groups = SGroup.find.;
 
-		return ok(toJson("Video"));
+		return ok(toJson("postit"));
 
 	}
+	
+	
+	
+	
+	
+	
 
 	public static Result fetchVideosByGroupId(String groupId) {
 
 		SGroup group = SGroup.find.byId(groupId);
-		List<SVideo> videos = group.svideos;
-		return ok(toJson(videos));
+		List<SPostit> postits = group.spostits;
+		if (group.spostits == null) {
+			return ok("[]");
+		}
+		return ok(toJson(postits));
 	}
 
+
+	
+	/* POST : JSON Request
+	{
+		"groupId":"4fe42505da063acbfc99d735" , 
+		"title": "My 2 video", 
+		"uri":"http://www.youtube.com/XYZ"
+	}
+	*/
+	
+	//TODO : Validation Required
 	public static Result addVideo() {
 
 		// parse JSON from request body
@@ -64,6 +90,18 @@ public class SVideos extends Controller {
 		return ok(toJson(video));
 	}
 	
+	
+	
+	/* POST : JSON request
+	
+	{
+	"videoId":"4fe43023da063acbfc99d764" , 
+	"wxpos": 400, 
+	"wypos":400
+	}	
+	*/
+	
+	//TODO : Validation required
 	public static Result updateVideoOnWeb() {
 
 		JsonNode node = ctx().request().body().asJson();
@@ -93,6 +131,11 @@ public class SVideos extends Controller {
 	
 	
 	
+	
+	
+	
+	
+	
 	public static Result deleteVideoById(String videoId) {
 
 		// First find out the group from which you want to remove one postit:
@@ -110,6 +153,11 @@ public class SVideos extends Controller {
 	}
 		
 		
+	
+	
+	
+	
+	
 	
 	public static Result postCommentOnVideo() {
 

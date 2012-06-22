@@ -11,9 +11,16 @@ GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:Str
 GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
 
 
+
+
+
+
 # Member Services
 GET     				/member/group/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
 POST     				/member									controllers.SGroups.addMember
+
+
+
 
 
 
@@ -22,26 +29,34 @@ GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId
 GET						/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 POST     				/postit									controllers.SPostits.addPostit
 PUT     				/postit									controllers.SPostits.updatePostitInFlash
-DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
 PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
+DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
 POST					/comment/postit							controllers.SPostits.postCommentOnPostit
-GET     				/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
+
+
 
 
 
 
 # Video Services
+GET     				/video/:videoId							controllers.SVideos.fetchVideoById(videoId:String)
+GET						/video/group/:groupId					controllers.SVideos.fetchVideosByGroupId(groupId:String)
 POST     				/video									controllers.SVideos.addVideo
 PUT     				/video									controllers.SVideos.updateVideoOnWeb
 DELETE     				/video/:videoId							controllers.SVideos.deleteVideoById(videoId:String)
 POST					/comment/video							controllers.SVideos.postCommentOnVideo
 
 
+
+
+
+
 # Image Services
-POST     				/image									controllers.SImage.addImage
-PUT     				/image									controllers.SImage.updateImageOnWeb
-DELETE     				/image/:imageId							controllers.SImage.deleteImageById(imageId:String)
-POST					/comment/image							controllers.SImage.postCommentOnImage
+#POST     				/image									controllers.SImages.addImage
+#PUT     				/image									controllers.SImages.updateImageOnWeb
+#DELETE     			/image/:imageId							controllers.SImages.deleteImageById(imageId:String)
+#POST					/comment/image							controllers.SImages.postCommentOnImage
+
 
 
 

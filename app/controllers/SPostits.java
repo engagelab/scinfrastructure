@@ -31,16 +31,24 @@ public class SPostits extends Controller {
 	@Inject
 	public static Datastore datastore; // requestStaticInjection(..)
 
+	
+	
+	
+	
+	//FIXME 
 	public static Result fetchPostitById(String positId) {
 
 		// need indexing for postit
 		// SPostit postit =
 		// SGroup groups = SGroup.find.;
 
-		return ok(toJson("postit"));
+		return ok("not available yet");
 
 	}
 
+	
+	
+	
 	public static Result fetchPostitsByGroupId(String groupId) {
 
 		SGroup group = SGroup.find.byId(groupId);
@@ -51,6 +59,17 @@ public class SPostits extends Controller {
 		return ok(toJson(postits));
 	}
 
+	/* POST : JSON Request
+	
+	{
+		"groupId":"4fe42505da063acbfc99d735" , 
+		"content": "My 1 posit", 
+		"xpos":100, 
+		"ypos":100 
+	}
+	
+	*/
+	
 	public static Result addPostit() {
 
 		// parse JSON from request body
@@ -72,6 +91,47 @@ public class SPostits extends Controller {
 		return ok(toJson(postit));
 	}
 
+	
+	/* POST : JSON Request
+	{
+		"postitId":"4fe4298dda063acbfc99d74b" , 
+		"content": "My 1 modified posit", 
+		"xpos":105, 
+		"ypos":105 
+	}
+	*/
+	
+	public static Result updatePostitInFlash() {
+
+		// parse JSON from request body
+		JsonNode node = ctx().request().body().asJson();
+		String postitId = node.get("postitId").asText();
+		String content = node.get("content").asText();
+		int xpos = node.get("xpos").asInt();
+		int ypos = node.get("xpos").asInt();
+
+		// update member of embedded object list
+		Query<SGroup> query = datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
+		UpdateOperations<SGroup> ops = datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.set("spostits.$.content", content)
+				.set("spostits.$.xpos", xpos)
+				.set("spostits.$.ypos", ypos);
+		datastore.update(query, ops);
+		return ok("success");
+		
+	}
+
+	
+	/* POST : JSON Request
+	
+	{
+		"postitId":"4fe4298dda063acbfc99d74b" , 
+		"wxpos":105, 
+		"wypos":105 
+	}
+	
+	*/
+	
 	public static Result updatePostitOnWeb() {
 
 		// parse JSON from request body
@@ -101,26 +161,6 @@ public class SPostits extends Controller {
 
 	}
 
-	public static Result updatePostitInFlash() {
-
-		// parse JSON from request body
-		JsonNode node = ctx().request().body().asJson();
-		String postitId = node.get("postitId").asText();
-		String content = node.get("content").asText();
-		int xpos = node.get("xpos").asInt();
-		int ypos = node.get("xpos").asInt();
-
-		// update member of embedded object list
-		Query<SGroup> query = datastore.createQuery(SGroup.class)
-				.field("spostits.id").equal(postitId);
-		UpdateOperations<SGroup> ops = datastore
-				.createUpdateOperations(SGroup.class).disableValidation()
-				.set("spostits.$.content", content)
-				.set("spostits.$.xpos", xpos).set("spostits.$.ypos", ypos);
-		datastore.update(query, ops);
-
-		return ok("success");
-	}
 
 	public static Result deletePostitById(String postitId) {
 
@@ -145,6 +185,17 @@ public class SPostits extends Controller {
 		return ok("deleted");
 	}
 
+	
+	
+	/* POST
+	
+	{
+		"postitId":"4fe4298dda063acbfc99d74b" , 
+		"content": "My 1 comment"
+	}
+	
+	*/
+	
 	public static Result postCommentOnPostit() {
 
 		JsonNode node = ctx().request().body().asJson();

@@ -2,18 +2,10 @@ package controllers;
 
 import static play.libs.Json.toJson;
 
-//import flexjson.JSONSerializer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.codehaus.jackson.JsonNode;
-
-import flexjson.JSONSerializer;
-
-
 import models.SGroup;
-import models.SPostit;
 import models.SUser;
 import play.mvc.*;
 
@@ -41,7 +33,14 @@ public class SGroups extends Controller {
 		return ok(toJson(groups));
 	}
 	
+	/* POST :  JSON Request
+	 
+	{
+		"name":"Group 1",
+		"runId":1
+	}
 	
+	*/
 	
 	public static Result createGroup() {
 		
@@ -93,7 +92,17 @@ public class SGroups extends Controller {
 		
 	}
 	
-// Expected request body : {"groupId":"4fd217d130049ddad80506f1" , "name": "Fahied", "email":"anonymous@tmail.com", "age":25, "imageurl":"/image/43d217d130049ddad98506g4" }
+	/* POST : JSON request
+
+	{
+		"groupId":"4fe424f7da063acbfc99d734" , 
+		"name": "Fahied", 
+		"email":"anonymous@tmail.com", 
+		"age":25, 
+		"imageUri":"/image/43d217d130049ddad98506g4" 
+	}
+	
+	*/
 	public static Result addMember() {
 		
 		//parse JSON from request body

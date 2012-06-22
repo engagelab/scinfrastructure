@@ -17,7 +17,8 @@ package controllers;
 //import play.data.Form;
 //import play.data.validation.Constraints;
 import play.mvc.Controller;
-//import play.mvc.Result;
+import play.mvc.Result;
+import views.html.*;
 //
 //import javax.annotation.Nullable;
 //import java.util.ArrayList;
@@ -26,6 +27,13 @@ import play.mvc.Controller;
 //import static play.libs.Json.toJson;
 
 public class Application extends Controller {
+	
+	
+//	  public static Result index() {
+//		    return ok(index.render("Your new application is ready."));
+//		  }
+	  
+	  
 //    @Inject
 //    public static Morphia morphia;
 //
