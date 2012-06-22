@@ -10,6 +10,7 @@ import com.google.code.morphia.Datastore;
 import com.google.inject.Inject;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
+import com.mongodb.Mongo;
 
 import com.mongodb.MongoException;
 import com.mongodb.gridfs.GridFS;
@@ -34,23 +35,25 @@ public class GridFsHelper {
 		return getGridFS().find(new BasicDBObject());
 	}
 
-	public static String  storeFile(File image) throws IOException {
+	public static String  storeFile(File image, String fileName, String contentType) throws IOException {
 		GridFS fs = getGridFS();
-		fs.remove(image.getName()); // delete the old file
+		fs.remove(fileName); // delete the old file
 		GridFSInputFile gridFile = fs.createFile(image);
 		gridFile.save();
-		gridFile.setContentType("image/" + FilenameUtils.getExtension(image.getName()));
-		gridFile.setFilename(image.getName());
+		gridFile.setContentType(contentType);
+		gridFile.setFilename(fileName);
 		gridFile.save();
 		String id = gridFile.getId().toString();
 		return id;
 	}
 
 	private static GridFS getGridFS( ) throws IOException, MongoException {
-		//String host = "127.0.0.1";
-		//Mongo mongo = new Mongo(host , 27017);
-		//DB db = mongo.getDB("scinfra");
-		DB db = datastore.getDB();
+		
+		String host = "imedialab18.uio.no";
+		Mongo mongo = new Mongo(host , 27017);
+		DB db = mongo.getDB("scinfrastructure");
+		
+		//DB db = datastore.getDB();
 		// GridfsCollectionName = upload; define whater you like
 		GridFS fs = new GridFS(db, "upload");
 		return fs;

@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
+import play.mvc.Http.MultipartFormData.FilePart;
+
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
@@ -27,8 +29,8 @@ public class SImage {
 	@Property("date")
 	public String postedAt = new Date().toString();
 	
-	@Property("author")
-    public String author;
+//	@Property("author")
+//    public String author;
 	
 	@Property("fileId")
     public String fileId;
@@ -37,37 +39,40 @@ public class SImage {
 	@Property("fileName")
     public String fileName;
 	
+
+	@Property("contentType")
+	public String contentType;
+	
 	@Property("filePath")
     public String filePath;
 
 	@Embedded()
     public List <SComment> scomments;
+
+
+	public SImage() {
+		
+	}
 	
-    public SImage() 
+	
+    public SImage(File file, String fileName, String contentType) throws IOException 
     {
+    	this.fileName = fileName;
+    	this.contentType = contentType;
+    	//save file in GridFS and retrieve its ID to be stored in fileId
+    	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
+    	this.filePath = createUriForFile(fileId);
     	
 	}
-    
-    public SImage(String author, File image) throws IOException 
-    {
-    	this.author = author;
-    	this.fileName = image.getName();
-    	//save file in GridFS and retrieve its ID to be stored in fileId
-    	this.fileId = GridFsHelper.storeFile(image);
-    	this.filePath = createUriForFile(fileId);
-    }
+ 
     
     
-    public SImage(String author) 
-    {
-        this.author = author;
-    }
+
 
     @Override
     public String toString() 
     {
         return Objects.toStringHelper(this)
-                .add("author", author)
                 .add("fileName", fileName)
                 .add("fileId", fileId)
                 .add("filePath", filePath)

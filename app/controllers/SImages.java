@@ -20,6 +20,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
+import play.mvc.Http.MultipartFormData.FilePart;
 import utils.GridFsHelper;
 
 
@@ -28,14 +29,15 @@ import utils.GridFsHelper;
  */
 
 public class SImages extends Controller {
-
-	private static final Form<SImage> productForm = form(SImage.class);
 	
 //	public static Result showBlank(){
 //		return ok(form.render(productForm));
 //		}
-       
-    
+	
+	
+	
+	
+	
 
 	public static Result fetchImagesById(String imageId) {
 
@@ -47,6 +49,12 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
 	public static Result fetchImagesByGroupId(String groupId) {
 		SGroup group = SGroup.find.byId(groupId);
 		List<SImage> images = group.simages;
@@ -56,16 +64,22 @@ public class SImages extends Controller {
 			return ok(toJson(images));
 	}
 
-	@SuppressWarnings("unused")
-	public static Result addImage(String groupId, String author) {
 
-		String pathname = "/Users/userxd/Pictures/fahied.jpg";
-		File imageData = new File(pathname);
+	
+	
+	
+	
+	
+	
+	public static Result addImage(String groupId) {
+
+		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
-		if (imageData == null)
+
+		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			image = new SImage(author, imageData);
+			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType());
 			SGroup group = SGroup.find.byId(groupId);
 
 			if (group.simages == null) {
@@ -79,6 +93,15 @@ public class SImages extends Controller {
 		}
 		return ok(toJson(image));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public static Result showImage(String imageId) throws IOException {
 		GridFSDBFile file = GridFsHelper.getFile(imageId);
@@ -86,6 +109,16 @@ public class SImages extends Controller {
 		return Results.ok(bytes).as(file.getContentType());
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
 	public static Result updateImagePosition() {
 		// parse JSON from request body
