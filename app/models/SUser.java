@@ -1,6 +1,9 @@
 package models;
 
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
@@ -8,7 +11,7 @@ import com.google.common.base.Objects;
  * @author Muhammad Fahied
  */
 
-@Entity(value = "users", noClassnameStored = true)
+@Entity(value = "users", noClassnameStored = true, concern = "NORMAL")
 public class SUser extends Model {
 	
 	@Property("name")
@@ -45,7 +48,7 @@ public class SUser extends Model {
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-        		.add("id", id.toString())
+        		.add("id", id)
                 .add("name", name)
                 .add("email", email)
                 .add("age", age)

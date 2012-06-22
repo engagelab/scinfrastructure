@@ -1,13 +1,10 @@
 package controllers;
 
 import static play.libs.Json.toJson;
+
+import java.util.ArrayList;
 import java.util.List;
-
-
-import org.bson.types.ObjectId;
 import org.codehaus.jackson.JsonNode;
-
-
 import models.SGroup;
 import models.SUser;
 import play.mvc.*;
@@ -27,10 +24,23 @@ public class SGroups extends Controller {
 	public static Result fetchAllGroups() {
 
 		List<SGroup> groups = SGroup.find.asList();
+		
+//	     JSONSerializer modelSerializer = new JSONSerializer()
+//	     .include("name","_id","susers","susers.name","susers.id").exclude("*"); 
+//	    String text = modelSerializer.serialize(groups);
+	    response().setContentType("application/json");
+	     
 		return ok(toJson(groups));
 	}
 	
+	/* POST :  JSON Request
+	 
+	{
+		"name":"Group 1",
+		"runId":1
+	}
 	
+	*/
 	
 	public static Result createGroup() {
 		
@@ -82,12 +92,21 @@ public class SGroups extends Controller {
 		
 	}
 	
-// Expected request body : {"groupId":"4fd217d130049ddad80506f1" , "name": "Fahied", "email":"anonymous@tmail.com", "age":25, "imageurl":"/image/43d217d130049ddad98506g4" }
+	/* POST : JSON request
+
+	{
+		"groupId":"4fe424f7da063acbfc99d734" , 
+		"name": "Fahied", 
+		"email":"anonymous@tmail.com", 
+		"age":25, 
+		"imageUri":"/image/43d217d130049ddad98506g4" 
+	}
+	
+	*/
 	public static Result addMember() {
 		
 		//parse JSON from request body
     	JsonNode node =  ctx().request().body().asJson();
-    	
     	String groupId = node.get("groupId").asText();
     	String name = node.get("name").asText();
     	String email = node.get("email").asText();
@@ -95,12 +114,19 @@ public class SGroups extends Controller {
     	String imageUri = node.get("imageUri").asText();
     	
 		SGroup group = SGroup.find.byId(groupId);
+    	
+    	//SGroup group = SGroup.find.filter("_id", groupId).get();
+    	
 		SUser user = new SUser(name, email, age, imageUri);
 		user.save();
 		//group.addMember(user);
+		if (group.susers == null) {
+			group.susers = new ArrayList<SUser>();
+		}
 		group.susers.add(user);
 		group.save();
 		
+		response().setContentType("application/json");
 		return ok(toJson(user));
 	}
 

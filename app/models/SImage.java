@@ -2,9 +2,13 @@ package models;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
@@ -16,6 +20,13 @@ import utils.GridFsHelper;
 @Embedded
 public class SImage {
 
+	@Indexed
+	@Property("id")
+	public String id = new ObjectId().toString();
+	
+	@Property("date")
+	public String postedAt = new Date().toString();
+	
 	@Property("author")
     public String author;
 	
