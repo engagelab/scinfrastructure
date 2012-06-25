@@ -40,6 +40,16 @@ public class GridFsHelper {
 	
 	
 	
+	public static void deleteFile(String id) throws MongoException, IOException {
+		
+		getGridFS().remove(new ObjectId(id));
+	
+	}
+	
+	
+	
+	
+	
 	public static List<GridFSDBFile> getFiles() throws MongoException, IOException {
 		return getGridFS().find(new BasicDBObject());
 	}

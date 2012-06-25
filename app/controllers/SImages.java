@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.JsonNode;
 
+import com.mongodb.MongoException;
 import com.mongodb.gridfs.GridFSDBFile;
 
 import models.*;
@@ -117,18 +118,61 @@ public class SImages extends Controller {
 	
 	
 	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
-	public static Result updateImagePosition() {
-		// parse JSON from request body
+	public static Result updateImageOnWeb() {
+		
 		JsonNode node = ctx().request().body().asJson();
+		String imageId = node.get("imageId").asText();
 		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wypos").asInt();
-		String groupId = node.get("groupId").asText();
-		SGroup group = SGroup.find.byId(groupId);
-		String postitIt = node.get("postitId").asText();
+		int wypos = node.get("wxpos").asInt();
 
-		return ok(toJson("postit"));
+		SGroup group = SGroup.find.filter("simages.id",imageId ).get();
+		// Second locate the fruit and remove it:
+		SImage res = new SImage();
+		for (SImage p : group.simages) {
+			if (p.id.equals(imageId)) {
+				res.id = p.id;
+				res.wxpos = wxpos;
+				res.wypos = wypos;
+				res.contentType = p.contentType;
+				res.fileId = p.fileId;
+				res.fileName = p.fileName;
+				res.filePath = p.filePath;		
+				group.simages.remove(p);
+				group.simages.add(res);
+				group.save();
+				break;
+			}
+		}
+		return ok(toJson(res));
 	}
 
+	
+	
+	
+	public static Result deleteImageById(String imageId) throws MongoException, IOException {
+
+		SGroup group = SGroup.find.filter("simages.id", imageId).get();
+		// Second locate the fruit and remove it:
+		for (SImage p : group.simages) 
+		{
+			if (p.id.equals(imageId)) 
+			{
+				//delete file from gridFS
+				p.deleteImage(p.fileId);
+				//Remove meta info and Group Document
+				group.simages.remove(p);
+				group.save();
+				break;
+			}
+		}
+		
+		return ok("deleted successfully");
+	}
+		
+	
+	
+	
+	
 	
 	public static Result postCommentOnImage() {
 

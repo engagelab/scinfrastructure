@@ -23,8 +23,8 @@ public class SUser extends Model {
 	@Property("age")
 	public int age;
 	
-	@Property("imageUri")
-	public String imageUri;
+//	@Property("imageUri")
+//	public String imageUri;
 	
 	
     // FINDERS ----------
@@ -42,7 +42,7 @@ public class SUser extends Model {
 		this.name = name;
 		this.email = email;
 		this.age = age;
-		this.imageUri = imageUri;
+//		this.imageUri = imageUri;
 	}
 	
     @Override
@@ -52,7 +52,7 @@ public class SUser extends Model {
                 .add("name", name)
                 .add("email", email)
                 .add("age", age)
-                .add("imageUri", imageUri )
+//                .add("imageUri", imageUri )
                 .toString();
     }
 }

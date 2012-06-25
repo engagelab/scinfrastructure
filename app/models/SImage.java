@@ -13,6 +13,7 @@ import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
+import com.mongodb.MongoException;
 
 import utils.GridFsHelper;
 
@@ -45,14 +46,26 @@ public class SImage {
 	
 	@Property("filePath")
     public String filePath;
+	
+	@Property("wxpos")
+    public int wxpos;
+	
+	@Property("wypos")
+    public int wypos;
+	
 
 	@Embedded()
     public List <SComment> scomments;
 
-
+	
+	
+	
 	public SImage() {
 		
 	}
+	
+	
+	
 	
 	
     public SImage(File file, String fileName, String contentType) throws IOException 
@@ -65,7 +78,11 @@ public class SImage {
     	
 	}
  
-    
+    public void deleteImage(String fileId) throws MongoException, IOException 
+    {
+    	GridFsHelper.deleteFile(fileId);
+    	
+	}
     
 
 
@@ -73,11 +90,16 @@ public class SImage {
     public String toString() 
     {
         return Objects.toStringHelper(this)
+        		
                 .add("fileName", fileName)
                 .add("fileId", fileId)
                 .add("filePath", filePath)
                 .toString();
     }
+    
+    
+    
+    
     
 	private String createUriForFile(String gridfsId) throws IOException {
 		//Map<String,Object> map = new HashMap<String,Object>();

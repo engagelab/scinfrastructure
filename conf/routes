@@ -54,9 +54,9 @@ POST					/comment/video							controllers.SVideos.postCommentOnVideo
 # Image Services
 POST     				/image/:groupId							controllers.SImages.addImage(groupId:String)
 GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
-#PUT     				/image									controllers.SImages.updateImageOnWeb
-#DELETE     			/image/:imageId							controllers.SImages.deleteImageById(imageId:String)
-#POST					/comment/image							controllers.SImages.postCommentOnImage
+PUT     				/image									controllers.SImages.updateImageOnWeb
+DELETE     				/image/:imageId							controllers.SImages.deleteImageById(imageId:String)
+POST					/comment/image							controllers.SImages.postCommentOnImage
 
 
 
