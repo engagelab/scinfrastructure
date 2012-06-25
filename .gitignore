@@ -12,3 +12,5 @@ dist
 .settings/org.scala-ide.sdt.core.prefs
 
 .project
+
+.DS_Store
