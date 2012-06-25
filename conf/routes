@@ -3,6 +3,14 @@
 # ~~~~
 
 # Home page
+GET     				/										controllers.Application.index
+
+
+
+
+
+
+
 
 # Group Services
 GET     				/group									controllers.SGroups.fetchAllGroups
