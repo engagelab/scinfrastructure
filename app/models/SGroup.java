@@ -62,6 +62,57 @@ public class SGroup extends Model {
 		this.svideos = new ArrayList<SVideo>();
 	}
 	
+	
+	
+	
+	
+	//Queries
+	
+	
+	
+	public void addMember(SUser user) {
+		this.susers.add(user);
+	}
+	
+	
+	public void addPostit(SPostit postit) {
+		this.spostits.add(postit);
+	}
+	
+	public void addImage(SImage image) {
+		this.simages.add(image);
+	}
+	
+	public void addVideo(SVideo video) {
+		this.svideos.add(video);
+	}
+	
+	
+	
+	
+	
+	public void removeMember(SUser user) {
+		this.susers.remove(user);
+	}
+	
+	
+	public void removePostit(SPostit postit) {
+		this.spostits.remove(postit);
+	}
+	
+	public void removeImage(SImage image) {
+		this.simages.remove(image);
+	}
+	
+	public void removeVideo(SVideo video) {
+		this.svideos.remove(video);
+	}
+	
+	
+
+	
+	
+	
 	@Override
     public String toString() {
         return Objects.toStringHelper(this).
@@ -74,11 +125,6 @@ public class SGroup extends Model {
                 .toString();
     }
 
-	public void addMember(SUser user) {
-		this.susers.add(user);
-		//this.save();
-		
-	}
-	
+
 
 }

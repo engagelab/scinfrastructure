@@ -84,7 +84,7 @@ public class SVideos extends Controller {
 		if (group.svideos == null) {
 			group.svideos = new ArrayList<SVideo>();
 		}
-		group.svideos.add(video);
+		group.addVideo(video);
 		group.save();
 
 		return ok(toJson(video));

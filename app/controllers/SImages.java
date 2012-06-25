@@ -87,7 +87,7 @@ public class SImages extends Controller {
 				group.simages = new ArrayList<SImage>();
 			}
 
-			group.simages.add(image);
+			group.addImage(image);
 			group.save();
 		} catch (IOException e) {
 			flash("uploadError", e.getMessage());

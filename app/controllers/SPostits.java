@@ -85,7 +85,7 @@ public class SPostits extends Controller {
 		if (group.spostits == null) {
 			group.spostits = new ArrayList<SPostit>();
 		}
-		group.spostits.add(postit);
+		group.addPostit(postit);
 		group.save();
 
 		return ok(toJson(postit));

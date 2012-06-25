@@ -59,6 +59,7 @@ POST					/comment/video							controllers.SVideos.postCommentOnVideo
 
 
 
+
 # Image Services
 POST     				/image/:groupId							controllers.SImages.addImage(groupId:String)
 GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
