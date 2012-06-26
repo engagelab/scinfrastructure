@@ -96,6 +96,7 @@ POST					/scene/project/:projectId					controllers.SProjects.addScene(projectId:
 
 # Task Services
 POST					/task/project/:projectId					controllers.SProjects.addTask(projectId:String)
+GET						/task/project/:projectId					controllers.SProjects.fetchTasksByProject(projectId:String)
 
 
 

@@ -98,8 +98,7 @@ public class SGroups extends Controller {
 		"groupId":"4fe424f7da063acbfc99d734" , 
 		"name": "Fahied", 
 		"email":"anonymous@tmail.com", 
-		"age":25, 
-		"imageUri":"/image/43d217d130049ddad98506g4" 
+		"age":25 
 	}
 	
 	*/
@@ -111,13 +110,12 @@ public class SGroups extends Controller {
     	String name = node.get("name").asText();
     	String email = node.get("email").asText();
     	int age = node.get("age").asInt();
-    	String imageUri = node.get("imageUri").asText();
     	
 		SGroup group = SGroup.find.byId(groupId);
     	
     	//SGroup group = SGroup.find.filter("_id", groupId).get();
     	
-		SUser user = new SUser(name, email, age, imageUri);
+		SUser user = new SUser(name, email, age);
 		user.save();
 		//group.addMember(user);
 		if (group.susers == null) {
