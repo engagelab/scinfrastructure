@@ -39,6 +39,9 @@ public class  SVideo{
 	@Property("wypos")
 	public int wypos;
 	
+	@Property("taskId")
+	public String taskId;
+	
 	@Embedded()
     public List <SComment> scomments;
 	
@@ -49,14 +52,14 @@ public class  SVideo{
 //		wypos = 0;
 //	}
 	
-    
-   public SVideo() {
-
+    public SVideo() {
+		// TODO Auto-generated constructor stub
 	}
 
-    public SVideo(String uri, String title) {
+    public SVideo(String uri, String title, String taskId) {
         this.uri = uri;
         this.title = title;
+        this.taskId = taskId;
     }
     
     // for flash

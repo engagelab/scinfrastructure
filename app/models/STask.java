@@ -2,8 +2,10 @@ package models;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.Embedded;
-import com.google.code.morphia.annotations.PrePersist;
+import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
@@ -15,26 +17,51 @@ import com.google.common.base.Objects;
 @Embedded
 public class  STask{
 	
-	@Property("content")
-	public String content;
-	
+	@Indexed
+	@Property("id")
+	public String id = new ObjectId().toString();
+
 	@Property("date")
-	public String postedAt = new Date().toString();;
-	//public Date postedAt;
+	public String postedAt = new Date().toString();
+	
+	@Property("title")
+	public String title;
+	
+	@Property("description")
+	public String description;
+	
+	@Property("sceneId")
+	public String sceneId;
+	
+	@Property("actId")
+	public String actId;
+	
 
     
+	
    public STask() {
 	   
 	}
 
-    public STask(String content) {
-        this.content = content;
+   
+   
+    public STask(String title, String sceneId) {
+        this.title = title;
+        this.sceneId = sceneId;
     }
+    
+    
+    
     
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-                .add("content", content)
+        		.add("id", id)
+        		.add("postedAt", postedAt)
+                .add("title", title)
+                .add("description", description)
+                .add("sceneId", sceneId)
+                .add("actId", actId)
                 .toString();
     }
 

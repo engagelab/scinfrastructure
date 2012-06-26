@@ -6,7 +6,6 @@ import java.util.List;
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
-import com.google.code.morphia.annotations.Reference;
 import com.google.common.base.Objects;
 
 
@@ -22,13 +21,13 @@ public class SProject extends Model {
 	
 	
 	@Embedded()
-    public List <SAct> sActs;
+    public List <SAct> sacts;
 	
 	@Embedded()
-    public List <SScene> sScenes;
+    public List <SScene> sscenes;
 	
 	@Embedded()
-    public List <STask> sTasks;
+    public List <STask> staks;
 	
 	// FINDERS ----------
 
@@ -43,26 +42,26 @@ public class SProject extends Model {
 	
 	
 	
-	public SProject(String name, int runId) {
+	public SProject(String title) {
 		super();
-		this.title = name;
-		this.sActs = new ArrayList<SAct>();
-		this.sScenes = new ArrayList<SScene>();
-		this.sTasks = new ArrayList<STask>();
+		this.title = title;
+		this.sacts = new ArrayList<SAct>();
+		this.sscenes = new ArrayList<SScene>();
+		this.staks = new ArrayList<STask>();
 	}
 	
 	
 	
 	public void addAct(SAct act) {
-		this.sActs.add(act);
+		this.sacts.add(act);
 	}
 	
 	public void addScene(SScene scene) {
-		this.sScenes.add(scene);
+		this.sscenes.add(scene);
 	}
 	
 	public void addTask(STask task) {
-		this.sTasks.add(task);
+		this.staks.add(task);
 	}
 	
 	
@@ -70,15 +69,15 @@ public class SProject extends Model {
 	
 	
 	public void removeAct(SAct act) {
-		this.sActs.remove(act);
+		this.sacts.remove(act);
 	}
 	
 	public void removeScene(SScene scene) {
-		this.sScenes.remove(scene);
+		this.sscenes.remove(scene);
 	}
 	
 	public void removeTask(STask task) {
-		this.sTasks.remove(task);
+		this.staks.remove(task);
 	}
 	
 	
@@ -90,9 +89,9 @@ public class SProject extends Model {
         return Objects.toStringHelper(this).
         		add("id", id.toString())
         		.add("title", title)
-                .add("sActs:", sActs)
-                .add("sScenes:", sScenes)
-                .add("sTasks:", sTasks)
+                .add("sacts:", sacts)
+                .add("sscenes:", sscenes)
+                .add("staks:", staks)
                 .toString();
     }
 	

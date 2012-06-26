@@ -2,8 +2,10 @@ package models;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.Embedded;
-import com.google.code.morphia.annotations.PrePersist;
+import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
@@ -15,26 +17,36 @@ import com.google.common.base.Objects;
 @Embedded
 public class  SAct{
 	
-	@Property("content")
-	public String content;
-	
+	@Indexed
+	@Property("id")
+	public String id = new ObjectId().toString();
+
 	@Property("date")
-	public String postedAt = new Date().toString();;
-	//public Date postedAt;
+	public String postedAt = new Date().toString();
+	
+	@Property("title")
+	public String title;
+	
 
     
+	
    public SAct() {
 	   
 	}
 
-    public SAct(String content) {
-        this.content = content;
+   
+   
+    public SAct(String title) {
+        this.title = title;
     }
+    
+    
+    
     
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-                .add("content", content)
+                .add("title", title)
                 .toString();
     }
 

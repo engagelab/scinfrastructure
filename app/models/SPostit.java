@@ -43,6 +43,9 @@ public class  SPostit{
 	@Property("wypos")
 	public int wypos;
 	
+	@Property("taskId")
+	public String taskId;
+	
 	@Embedded()
     public List <SComment> scomments;
 	
@@ -64,10 +67,11 @@ public class  SPostit{
     
     // for flash
     // {"content":"hurray", "xpos":120, "ypos":32}
-	public SPostit(String content, int xpos, int ypos){
+	public SPostit(String content, int xpos, int ypos, String taskId){
 		this.content = content;
 		this.xpos = xpos;
 		this.ypos = ypos;
+		this.taskId = taskId;
 	}
 	
 	// for web

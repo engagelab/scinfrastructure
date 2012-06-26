@@ -72,7 +72,7 @@ public class SImages extends Controller {
 	
 	
 	
-	public static Result addImage(String groupId) {
+	public static Result addImage(String groupId, String taskId) {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
@@ -80,7 +80,7 @@ public class SImages extends Controller {
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType());
+			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId);
 			SGroup group = SGroup.find.byId(groupId);
 
 			if (group.simages == null) {
