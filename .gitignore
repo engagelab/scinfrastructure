@@ -14,3 +14,11 @@ dist
 .project
 
 .DS_Store
+
+.idea/.name
+
+.idea/encodings.xml
+
+public/fahied
+
+.idea
