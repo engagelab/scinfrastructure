@@ -49,12 +49,14 @@ public class SVideos extends Controller {
 
 	public static Result fetchVideosByGroupId(String groupId) {
 
+		
+		//String groupId = ctx().request().queryString().get("groupId").toString();
 		SGroup group = SGroup.find.byId(groupId);
-		List<SPostit> postits = group.spostits;
-		if (group.spostits == null) {
+		List<SVideo> videos = group.svideos;
+		if (group.svideos == null) {
 			return ok("[]");
 		}
-		return ok(toJson(postits));
+		return ok(toJson(videos));
 	}
 
 
