@@ -20,6 +20,6 @@ window.HeaderView = Backbone.View.extend({
     },
     
     goHome:function(event) {
-    	app.navigate("/#/groups");
+    	app.navigate("/#/group");
     }
 });

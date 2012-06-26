@@ -2,7 +2,7 @@
 window.Group = Backbone.Model.extend({});
 window.GroupCollection = Backbone.Collection.extend({
 	model : Group,
-	url : "/groups"
+	url : "/group"
 });
 
 
@@ -16,7 +16,7 @@ window.PostitComment = Backbone.Model.extend({
 	urlRoot:"/postit/comments",
 	defaults:{
         "content":"",
-        "postit_id":""
+        "postitId":""
     }
 });
 window.PostitCommentCollection = Backbone.Collection.extend({
@@ -29,13 +29,13 @@ window.PostitCommentCollection = Backbone.Collection.extend({
 window.Video = Backbone.Model.extend({});
 window.VideoCollection = Backbone.Collection.extend({
 	model : Video,
-	url : "/group/videos"
+	url : "/video/group"
 });
 window.VideoComment = Backbone.Model.extend({
 	urlRoot:"/video/comments",
 	defaults:{
         "content":"",
-        "video_id":""
+        "videoId":""
     }
 });
 window.VideoCommentCollection = Backbone.Collection.extend({
@@ -54,7 +54,7 @@ window.PictureComment = Backbone.Model.extend({
 	urlRoot:"/image/comments",
 	defaults:{
         "content":"",
-        "image_id":""
+        "imageId":""
     }
 });
 window.PictureCommentCollection = Backbone.Collection.extend({
