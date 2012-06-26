@@ -35,7 +35,7 @@ window.GroupListItemView = Backbone.View.extend({
 	
 	render : function(eventName) {
 		$(this.el).html(this.template(this.model.toJSON()));
-		_.each(this.model.attributes.members, function(member) {
+		_.each(this.model.attributes.susers, function(member) {
 			$(this.el).append(new MemberListItemView({model : member}).render().el);
 		}, this);
 		return this;
@@ -54,7 +54,7 @@ window.MemberListItemView = Backbone.View.extend({
 	},
 
 	render : function(eventName) {
-		$(this.el).html(this.template(this.model.user));
+		$(this.el).html(this.template(this.model));
 		return this;
 	}
 });
