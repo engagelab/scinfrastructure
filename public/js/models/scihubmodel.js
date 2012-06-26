@@ -16,7 +16,7 @@ window.PostitComment = Backbone.Model.extend({
 	urlRoot:"/postit/comments",
 	defaults:{
         "content":"",
-        "postit_id":""
+        "postitId":""
     }
 });
 window.PostitCommentCollection = Backbone.Collection.extend({
@@ -35,7 +35,7 @@ window.VideoComment = Backbone.Model.extend({
 	urlRoot:"/video/comments",
 	defaults:{
         "content":"",
-        "video_id":""
+        "videoId":""
     }
 });
 window.VideoCommentCollection = Backbone.Collection.extend({
@@ -54,7 +54,7 @@ window.PictureComment = Backbone.Model.extend({
 	urlRoot:"/image/comments",
 	defaults:{
         "content":"",
-        "image_id":""
+        "imageId":""
     }
 });
 window.PictureCommentCollection = Backbone.Collection.extend({
