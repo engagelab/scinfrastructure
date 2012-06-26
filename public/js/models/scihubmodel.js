@@ -2,7 +2,7 @@
 window.Group = Backbone.Model.extend({});
 window.GroupCollection = Backbone.Collection.extend({
 	model : Group,
-	url : "/groups"
+	url : "/group"
 });
 
 
@@ -29,7 +29,7 @@ window.PostitCommentCollection = Backbone.Collection.extend({
 window.Video = Backbone.Model.extend({});
 window.VideoCollection = Backbone.Collection.extend({
 	model : Video,
-	url : "/group/videos"
+	url : "/video/group"
 });
 window.VideoComment = Backbone.Model.extend({
 	urlRoot:"/video/comments",
