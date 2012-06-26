@@ -56,7 +56,7 @@ public class  SVideo{
 		// TODO Auto-generated constructor stub
 	}
 
-    public SVideo(String uri, String title, String taskId) {
+    public SVideo(String title,String uri, String taskId) {
         this.uri = uri;
         this.title = title;
         this.taskId = taskId;
