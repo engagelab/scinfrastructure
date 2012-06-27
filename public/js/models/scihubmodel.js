@@ -60,4 +60,4 @@ window.PictureComment = Backbone.Model.extend({
 window.PictureCommentCollection = Backbone.Collection.extend({
 	model : PictureComment,
 	url : "/image/comments"
-}); 
+});
