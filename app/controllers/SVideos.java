@@ -76,11 +76,14 @@ public class SVideos extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		String title = node.get("title").asText();
 		String uri = node.get("uri").asText();
-		String taskId = node.get("taskId").asText();
+		String taskName = node.get("taskName").asText();
+		
 		String groupId = node.get("groupId").asText();
+		
+		String groupName = node.get("groupName").asText();
 
-		SVideo video = new SVideo(title, uri, taskId);
-		SGroup group = SGroup.find.byId(groupId);
+		SVideo video = new SVideo(title,uri, taskName);
+		SGroup group = SGroup.find.byId("4fe9b7be30045a331901ea11"); //GUL
 		if (group.svideos == null) {
 			group.svideos = new ArrayList<SVideo>();
 		}

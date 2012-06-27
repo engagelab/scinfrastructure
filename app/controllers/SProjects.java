@@ -158,10 +158,13 @@ public class SProjects extends Controller {
 	 * Task Service
 	 * 
 	 * */
-	public static Result fetchTasks(String projectId) {
+	public static Result fetchTasksByProject(String projectId) {
 		
 		SProject project = SProject.find.byId(projectId);
 		List<STask> tasks = project.staks;
+		if (tasks == null) {
+			return ok("[]");
+		}
 		return ok(toJson(tasks));
 	}
 	

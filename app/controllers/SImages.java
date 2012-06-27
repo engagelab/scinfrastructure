@@ -60,7 +60,7 @@ public class SImages extends Controller {
 		SGroup group = SGroup.find.byId(groupId);
 		List<SImage> images = group.simages;
 		if (images == null)
-			return ok(toJson("{status: No Picture added yet}"));
+			return ok("[]");
 		else
 			return ok(toJson(images));
 	}
