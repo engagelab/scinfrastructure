@@ -204,6 +204,9 @@ public class SVideos extends Controller {
 
 		}
 
+		if (comments == null) {
+			return ok("[]");
+		}
 		return ok(toJson(comments));
 	}
 	
