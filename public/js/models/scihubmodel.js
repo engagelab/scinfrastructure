@@ -32,7 +32,7 @@ window.VideoCollection = Backbone.Collection.extend({
 	url : "/video/group/"
 });
 window.VideoComment = Backbone.Model.extend({
-	urlRoot:"/video/comments",
+	urlRoot:"/comment/video/",
 	defaults:{
         "content":"",
         "videoId":""
@@ -40,7 +40,7 @@ window.VideoComment = Backbone.Model.extend({
 });
 window.VideoCommentCollection = Backbone.Collection.extend({
 	model : VideoComment,
-	url : "/video/comments"
+	url : "/comment/video/"
 });
 
 

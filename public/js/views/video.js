@@ -74,7 +74,7 @@ window.VideoItemView = Backbone.View.extend({
 	refreshVideoComments : function() {
 		$('#videoComment-'+this.model.id).html('');
 		this.videoCommentList = new VideoCommentCollection();
-		this.videoCommentList.fetch({ data: $.param({ video_id: this.model.id }),
+		this.videoCommentList.fetch({ data: $.param({ videoId: this.model.id }),
 			success : this.createVideoComments,
 			wait: true
 		});
