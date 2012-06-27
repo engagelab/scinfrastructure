@@ -22,3 +22,7 @@ dist
 public/fahied
 
 .idea
+
+app/views/main.scala.html
+
+public/js/models/scihubmodel.js
