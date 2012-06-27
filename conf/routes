@@ -34,7 +34,7 @@ POST     				/member									controllers.SGroups.addMember
 
 # Postit Services
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
-GET						/postit/group/:groupId					controllers.SPostits.fetchPostitsByGroupId(groupId:String)
+GET						/postit/group/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 POST     				/postit									controllers.SPostits.addPostit
 PUT     				/postit									controllers.SPostits.updatePostitInFlash
 PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
@@ -48,8 +48,8 @@ POST					/comment/postit							controllers.SPostits.postCommentOnPostit
 
 # Video Services
 #GET     				/video/:videoId							controllers.SVideos.fetchVideoById(videoId:String)
-GET						/video/group							controllers.SVideos.fetchVideosByGroupId(groupId:String)
-POST     				/video									controllers.SVideos.addVideo
+GET						/video/group/							controllers.SVideos.fetchVideosByGroupId(groupId:String)
+POST     				/video/									controllers.SVideos.addVideo
 PUT     				/video									controllers.SVideos.updateVideoOnWeb
 DELETE     				/video/:videoId							controllers.SVideos.deleteVideoById(videoId:String)
 POST					/comment/video							controllers.SVideos.postCommentOnVideo
@@ -63,6 +63,7 @@ POST					/comment/video							controllers.SVideos.postCommentOnVideo
 # Image Services
 POST     				/image/:groupId/:taskId					controllers.SImages.addImage(groupId:String, taskId:String)
 GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
+GET						/image/group/							controllers.SImages.fetchImagesByGroupId(groupId:String)
 PUT     				/image									controllers.SImages.updateImageOnWeb
 DELETE     				/image/:imageId							controllers.SImages.deleteImageById(imageId:String)
 POST					/comment/image							controllers.SImages.postCommentOnImage
@@ -96,6 +97,7 @@ POST					/scene/project/:projectId					controllers.SProjects.addScene(projectId:
 
 # Task Services
 POST					/task/project/:projectId					controllers.SProjects.addTask(projectId:String)
+GET						/task/project/:projectId					controllers.SProjects.fetchTasksByProject(projectId:String)
 
 
 

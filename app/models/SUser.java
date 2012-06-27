@@ -37,7 +37,7 @@ public class SUser extends Model {
         this.name = name;
     }
     
-	public SUser(String name,String email, int age, String imageUri){
+	public SUser(String name,String email, int age){
 		super();
 		this.name = name;
 		this.email = email;
