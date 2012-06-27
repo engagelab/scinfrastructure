@@ -191,6 +191,23 @@ public class SVideos extends Controller {
 	}
 	
 	
+	public static Result fetchCommentByVideo(String videoId) {
+
+		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+		
+		List<SComment> comments = null;
+		for (SVideo p : group.svideos) {
+			if (p.id.equals(videoId)) {
+				comments = p.scomments;
+				break;
+			}
+
+		}
+
+		return ok(toJson(comments));
+	}
+	
+	
 	
 
 }
