@@ -10,7 +10,7 @@ window.GroupCollection = Backbone.Collection.extend({
 window.Postit = Backbone.Model.extend({});
 window.PostitCollection = Backbone.Collection.extend({
 	model : Postit,
-	url : "/group/postits"
+	url : "/postit/group/"
 });
 window.PostitComment = Backbone.Model.extend({
 	urlRoot:"/postit/comments",
@@ -29,7 +29,7 @@ window.PostitCommentCollection = Backbone.Collection.extend({
 window.Video = Backbone.Model.extend({});
 window.VideoCollection = Backbone.Collection.extend({
 	model : Video,
-	url : "/video/group"
+	url : "/video/group/"
 });
 window.VideoComment = Backbone.Model.extend({
 	urlRoot:"/video/comments",
@@ -48,7 +48,7 @@ window.VideoCommentCollection = Backbone.Collection.extend({
 window.Picture = Backbone.Model.extend({});
 window.PictureCollection = Backbone.Collection.extend({
 	model : Picture,
-	url : "/group/images"
+	url : "/image/group/"
 });
 window.PictureComment = Backbone.Model.extend({
 	urlRoot:"/image/comments",
