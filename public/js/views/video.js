@@ -49,7 +49,7 @@ window.VideoItemView = Backbone.View.extend({
 		if(key==13 && event.currentTarget.value!='') {
 			var vc = new VideoComment();
 			vc.attributes.content = event.currentTarget.value;
-			vc.attributes.video_id = this.model.id;
+			vc.attributes.videoId = this.model.id;
 			vc.save({wait: true});
 			this.commentModel.add(vc);
 		}

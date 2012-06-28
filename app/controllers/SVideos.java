@@ -111,21 +111,21 @@ public class SVideos extends Controller {
 		int wypos = node.get("wxpos").asInt();
 
 		SGroup group = SGroup.find.filter("svideos.id",videoId ).get();
-		// Second locate the fruit and remove it:
-		SVideo res = new SVideo();
+		
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class).field("svideos.id").equal(videoId);
+		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.set("svideos.$.wxpos", wxpos)
+				.set("svideos.$.wypos", wypos);
+		group.datastore.update(query, ops);
+		
+		SVideo video = null;
 		for (SVideo p : group.svideos) {
 			if (p.id.equals(videoId)) {
-				res = p;
-				res.wxpos = wxpos;
-				res.wypos = wypos;
-				
-				group.svideos.remove(p);
-				group.svideos.add(res);
-				group.save();
+				video = p;
 				break;
 			}
 		}
-		return ok(toJson(res));
+		return ok(toJson(video));
 
 	}
 	
@@ -157,7 +157,9 @@ public class SVideos extends Controller {
 	
 	
 	
-	
+	/*
+	 
+	 */
 	
 	public static Result postCommentOnVideo() {
 
@@ -169,10 +171,10 @@ public class SVideos extends Controller {
 		// Second locate the fruit and remove it:
 		SComment comment = new SComment(content);
 		// update member of embedded object list
-				Query<SGroup> query = datastore.createQuery(SGroup.class).field("svideos.id").equal(videoId);
-				UpdateOperations<SGroup> ops = datastore.createUpdateOperations(SGroup.class).disableValidation()
-						.add("spostits.$.scomments", comment);
-				datastore.update(query, ops);
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class).field("svideos.id").equal(videoId);
+		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.add("svideos.$.scomments", comment);
+		group.datastore.update(query, ops);
 		
 		SVideo video = null;
 		for (SVideo p : group.svideos) {
@@ -180,10 +182,9 @@ public class SVideos extends Controller {
 				video = p;
 				break;
 			}
-
 		}
-
 		return ok(toJson(video));
+
 	}
 	
 	
