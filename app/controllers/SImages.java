@@ -141,7 +141,7 @@ public class SImages extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		
 		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wxpos").asInt();
+		int wypos = node.get("wypos").asInt();
 
 		SGroup group = SGroup.find.filter("simages.id",imageId ).get();
 		
