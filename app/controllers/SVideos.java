@@ -76,14 +76,12 @@ public class SVideos extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		String title = node.get("title").asText();
 		String uri = node.get("uri").asText();
-		String taskName = node.get("taskName").asText();
+		String taskId = node.get("taskId").asText();
 		
 		String groupId = node.get("groupId").asText();
-		
-		String groupName = node.get("groupName").asText();
 
-		SVideo video = new SVideo(title,uri, taskName);
-		SGroup group = SGroup.find.byId("4fe9b7be30045a331901ea11"); //GUL
+		SVideo video = new SVideo(title,uri, taskId);
+		SGroup group = SGroup.find.byId(groupId); //GUL
 		if (group.svideos == null) {
 			group.svideos = new ArrayList<SVideo>();
 		}
@@ -105,10 +103,10 @@ public class SVideos extends Controller {
 	*/
 	
 	//TODO : Validation required
-	public static Result updateVideoOnWeb() {
+	public static Result updateVideoOnWeb(String videoId) {
 
 		JsonNode node = ctx().request().body().asJson();
-		String videoId = node.get("videoId").asText();
+		//String videoId2 = node.get("videoId").asText();
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wxpos").asInt();
 
@@ -117,11 +115,10 @@ public class SVideos extends Controller {
 		SVideo res = new SVideo();
 		for (SVideo p : group.svideos) {
 			if (p.id.equals(videoId)) {
-				res.id = p.id;
+				res = p;
 				res.wxpos = wxpos;
 				res.wypos = wypos;
-				res.title = p.title;
-				res.uri = p.uri;
+				
 				group.svideos.remove(p);
 				group.svideos.add(res);
 				group.save();
@@ -170,24 +167,23 @@ public class SVideos extends Controller {
 
 		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
 		// Second locate the fruit and remove it:
-		SVideo res = new SVideo();
+		SComment comment = new SComment(content);
+		// update member of embedded object list
+				Query<SGroup> query = datastore.createQuery(SGroup.class).field("svideos.id").equal(videoId);
+				UpdateOperations<SGroup> ops = datastore.createUpdateOperations(SGroup.class).disableValidation()
+						.add("spostits.$.scomments", comment);
+				datastore.update(query, ops);
+		
+		SVideo video = null;
 		for (SVideo p : group.svideos) {
 			if (p.id.equals(videoId)) {
-				group.svideos.remove(p);
-
-				if (p.scomments == null) {
-					p.scomments = new ArrayList<SComment>();
-				}
-				p.scomments.add(new SComment(content));
-				group.svideos.add(p);
-				group.save();
-				res = p;
+				video = p;
 				break;
 			}
 
 		}
 
-		return ok(toJson(res));
+		return ok(toJson(video));
 	}
 	
 	

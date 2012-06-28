@@ -26,23 +26,24 @@ import play.mvc.Result;
  * @author Muhammad Fahied
  */
 
-public class SPostits extends Controller {
-
-	@Inject
-	public static Datastore datastore; // requestStaticInjection(..)
-
+public class SPostits extends Controller {	
 	
-	
-	
-	
-	//FIXME 
-	public static Result fetchPostitById(String positId) {
+	 
+	public static Result fetchPostitById(String postitId) {
 
-		// need indexing for postit
-		// SPostit postit =
-		// SGroup groups = SGroup.find.;
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		SPostit res = null;
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				res = p;
+				break;
+			}
+		}
 
-		return ok("not available yet");
+		if (res == null) {
+			return ok("{}");
+		}
+		return ok(toJson(res));
 
 	}
 
@@ -111,16 +112,28 @@ public class SPostits extends Controller {
 		String content = node.get("content").asText();
 		int xpos = node.get("xpos").asInt();
 		int ypos = node.get("xpos").asInt();
-
-		// update member of embedded object list
-		Query<SGroup> query = datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
-		UpdateOperations<SGroup> ops = datastore.createUpdateOperations(SGroup.class).disableValidation()
+		
+		//new
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
+		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
 				.set("spostits.$.content", content)
 				.set("spostits.$.xpos", xpos)
 				.set("spostits.$.ypos", ypos);
-		datastore.update(query, ops);
-		return ok("success");
+		group.datastore.update(query, ops);
 		
+		SPostit res = null;
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				res = p;
+				break;
+			}
+		}
+
+		if (res == null) {
+			return ok("{}");
+		}
+		return ok(toJson(res));
 	}
 
 	

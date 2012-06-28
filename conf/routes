@@ -50,7 +50,9 @@ POST					/comment/postit							controllers.SPostits.postCommentOnPostit
 #GET     				/video/:videoId							controllers.SVideos.fetchVideoById(videoId:String)
 GET						/video/group/							controllers.SVideos.fetchVideosByGroupId(groupId:String)
 POST     				/video/									controllers.SVideos.addVideo
-PUT     				/video									controllers.SVideos.updateVideoOnWeb
+PUT     				/video/group/:videoId					controllers.SVideos.updateVideoOnWeb(videoId:String)
+
+
 DELETE     				/video/:videoId							controllers.SVideos.deleteVideoById(videoId:String)
 POST					/comment/video/							controllers.SVideos.postCommentOnVideo
 GET						/comment/video/							controllers.SVideos.fetchCommentByVideo(videoId:String)
