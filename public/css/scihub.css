@@ -25,7 +25,7 @@ body > div#content {
 #header {
 	height: 30px;
 	display: block;
-	background-image: url(../images/banner.jpg);
+	background-image: url('/assets/images/banner.jpg');
 	-webkit-box-shadow: 0px 2px 5px gray;
 	box-shadow: 0px 2px 5px gray;
 	text-align: left;
@@ -33,7 +33,7 @@ body > div#content {
 }
 
 #headline1 {
-	background-image: url(../images/icon.png);
+	background-image: url('/assets/images/icon.png');
 	background-repeat: no-repeat;
 	background-position: left top;
 	padding-top: 0px;
