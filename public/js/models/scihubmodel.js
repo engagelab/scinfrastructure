@@ -13,7 +13,7 @@ window.PostitCollection = Backbone.Collection.extend({
 	url : "/postit/group/"
 });
 window.PostitComment = Backbone.Model.extend({
-	urlRoot:"/postit/comments",
+	urlRoot:"/postit/comment/",
 	defaults:{
         "content":"",
         "postitId":""
@@ -21,7 +21,7 @@ window.PostitComment = Backbone.Model.extend({
 });
 window.PostitCommentCollection = Backbone.Collection.extend({
 	model : PostitComment,
-	url : "/postit/comments"
+	url : "/postit/comment/"
 });
 
 
