@@ -51,7 +51,7 @@ window.PictureCollection = Backbone.Collection.extend({
 	url : "/group/image/"
 });
 window.PictureComment = Backbone.Model.extend({
-	urlRoot:"/group/image/",
+	urlRoot:"/comment/image/",
 	defaults:{
         "content":"",
         "imageId":""

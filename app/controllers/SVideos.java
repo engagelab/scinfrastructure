@@ -158,7 +158,7 @@ public class SVideos extends Controller {
 
 	}
 
-	public static Result fetchCommentByVideo(String videoId) {
+	public static Result fetchCommentsByVideo(String videoId) {
 
 		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
 

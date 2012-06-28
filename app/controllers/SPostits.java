@@ -6,20 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.codehaus.jackson.JsonNode;
-
-import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
-import com.google.inject.Inject;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
-
 import models.SComment;
 import models.SGroup;
 import models.SPostit;
-import models.SVideo;
+
 import play.mvc.Controller;
 import play.mvc.Result;
 
