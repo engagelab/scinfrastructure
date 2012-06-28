@@ -28,27 +28,24 @@ import play.mvc.Result;
 
 public class SPostits extends Controller {
 
-	@Inject
-	public static Datastore datastore; // requestStaticInjection(..)
+	public static Result fetchPostitById(String postitId) {
 
-	
-	
-	
-	
-	//FIXME 
-	public static Result fetchPostitById(String positId) {
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		SPostit res = null;
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				res = p;
+				break;
+			}
+		}
 
-		// need indexing for postit
-		// SPostit postit =
-		// SGroup groups = SGroup.find.;
-
-		return ok("not available yet");
+		if (res == null) {
+			return ok("{}");
+		}
+		return ok(toJson(res));
 
 	}
 
-	
-	
-	
 	public static Result fetchPostitsByGroupId(String groupId) {
 
 		SGroup group = SGroup.find.byId(groupId);
@@ -59,17 +56,13 @@ public class SPostits extends Controller {
 		return ok(toJson(postits));
 	}
 
-	/* POST : JSON Request
-	
-	{
-		"groupId":"4fe42505da063acbfc99d735" , 
-		"content": "My 1 posit", 
-		"xpos":100, 
-		"ypos":100 
-	}
-	
-	*/
-	
+	/*
+	 * POST : JSON Request
+	 * 
+	 * { "groupId":"4fe42505da063acbfc99d735" , "content": "My 1 posit",
+	 * "xpos":100, "ypos":100 }
+	 */
+
 	public static Result addPostit() {
 
 		// parse JSON from request body
@@ -79,7 +72,6 @@ public class SPostits extends Controller {
 		int ypos = node.get("xpos").asInt();
 		String groupId = node.get("groupId").asText();
 		String taskId = node.get("taskId").asText();
-
 
 		SPostit postit = new SPostit(content, xpos, ypos, taskId);
 		// SGroup group = SGroup.find.byId(groupId);
@@ -93,16 +85,11 @@ public class SPostits extends Controller {
 		return ok(toJson(postit));
 	}
 
-	
-	/* POST : JSON Request
-	{
-		"postitId":"4fe4298dda063acbfc99d74b" , 
-		"content": "My 1 modified posit", 
-		"xpos":105, 
-		"ypos":105 
-	}
-	*/
-	
+	/*
+	 * POST : JSON Request { "postitId":"4fe4298dda063acbfc99d74b" , "content":
+	 * "My 1 modified posit", "xpos":105, "ypos":105 }
+	 */
+
 	public static Result updatePostitInFlash() {
 
 		// parse JSON from request body
@@ -112,28 +99,36 @@ public class SPostits extends Controller {
 		int xpos = node.get("xpos").asInt();
 		int ypos = node.get("xpos").asInt();
 
-		// update member of embedded object list
-		Query<SGroup> query = datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
-		UpdateOperations<SGroup> ops = datastore.createUpdateOperations(SGroup.class).disableValidation()
+		// new
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+				.field("spostits.id").equal(postitId);
+		UpdateOperations<SGroup> ops = group.datastore
+				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("spostits.$.content", content)
-				.set("spostits.$.xpos", xpos)
-				.set("spostits.$.ypos", ypos);
-		datastore.update(query, ops);
-		return ok("success");
-		
+				.set("spostits.$.xpos", xpos).set("spostits.$.ypos", ypos);
+		group.datastore.update(query, ops);
+
+		SPostit res = null;
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				res = p;
+				break;
+			}
+		}
+
+		if (res == null) {
+			return ok("{}");
+		}
+		return ok(toJson(res));
 	}
 
-	
-	/* POST : JSON Request
-	
-	{
-		"postitId":"4fe4298dda063acbfc99d74b" , 
-		"wxpos":105, 
-		"wypos":105 
-	}
-	
-	*/
-	
+	/*
+	 * POST : JSON Request
+	 * 
+	 * { "postitId":"4fe4298dda063acbfc99d74b" , "wxpos":105, "wypos":105 }
+	 */
+
 	public static Result updatePostitOnWeb() {
 
 		// parse JSON from request body
@@ -143,27 +138,27 @@ public class SPostits extends Controller {
 		int wypos = node.get("wxpos").asInt();
 
 		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
-		// Second locate the fruit and remove it:
-		SPostit res = new SPostit();
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+				.field("spostits.id").equal(postitId);
+		UpdateOperations<SGroup> ops = group.datastore
+				.createUpdateOperations(SGroup.class).disableValidation()
+				.set("spostits.$.wxpos", wxpos).set("spostits.$.wypos", wypos);
+		group.datastore.update(query, ops);
+
+		SPostit res = null;
 		for (SPostit p : group.spostits) {
 			if (p.id.equals(postitId)) {
-				res.id = p.id;
-				res.wxpos = wxpos;
-				res.wypos = wypos;
-				res.content = p.content;
-				res.xpos = p.xpos;
-				res.ypos = p.ypos;
-				res.taskId = p.taskId;
-				group.spostits.remove(p);
-				group.spostits.add(res);
-				group.save();
+				res = p;
 				break;
 			}
+		}
+
+		if (res == null) {
+			return ok("{}");
 		}
 		return ok(toJson(res));
 
 	}
-
 
 	public static Result deletePostitById(String postitId) {
 
@@ -178,7 +173,7 @@ public class SPostits extends Controller {
 				break;
 			}
 		}
-		
+
 		// try this one
 		/*
 		 * 
@@ -188,42 +183,38 @@ public class SPostits extends Controller {
 		return ok("deleted");
 	}
 
-	
-	
-	/* POST
-	
-	{
-		"postitId":"4fe4298dda063acbfc99d74b" , 
-		"content": "My 1 comment"
-	}
-	
-	*/
-	
+	/*
+	 * POST
+	 * 
+	 * { "postitId":"4fe4298dda063acbfc99d74b" , "content": "My 1 comment" }
+	 */
+
 	public static Result postCommentOnPostit() {
 
 		JsonNode node = ctx().request().body().asJson();
 		String postitId = node.get("postitId").asText();
 		String content = node.get("content").asText();
 
+		SComment comment = new SComment(content);
 		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
-		// Second locate the fruit and remove it:
-		SPostit res = new SPostit();
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+				.field("spostits.id").equal(postitId);
+		UpdateOperations<SGroup> ops = group.datastore
+				.createUpdateOperations(SGroup.class).disableValidation()
+				.add("spostits.$.scomments", comment);
+		group.datastore.update(query, ops);
+
+		SPostit res = null;
 		for (SPostit p : group.spostits) {
 			if (p.id.equals(postitId)) {
-				group.spostits.remove(p);
-
-				if (p.scomments == null) {
-					p.scomments = new ArrayList<SComment>();
-				}
-				p.scomments.add(new SComment(content));
-				group.spostits.add(p);
-				group.save();
 				res = p;
 				break;
 			}
-
 		}
 
+		if (res == null) {
+			return ok("{}");
+		}
 		return ok(toJson(res));
 	}
 

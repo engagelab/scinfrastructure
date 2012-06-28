@@ -12,6 +12,8 @@ import java.util.StringTokenizer;
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.JsonNode;
 
+import com.google.code.morphia.query.Query;
+import com.google.code.morphia.query.UpdateOperations;
 import com.mongodb.MongoException;
 import com.mongodb.gridfs.GridFSDBFile;
 
@@ -42,11 +44,19 @@ public class SImages extends Controller {
 
 	public static Result fetchImagesById(String imageId) {
 
-		// need indexing for postit
-		// SPostit postit =
-		// SGroup groups = SGroup.find.;
+		SGroup group = SGroup.find.filter("simages.id", imageId).get();
+		SImage res = null;
+		for (SImage p : group.simages) {
+			if (p.id.equals(imageId)) {
+				res = p;
+				break;
+			}
+		}
 
-		return ok(toJson("imageInfo"));
+		if (res == null) {
+			return ok("{}");
+		}
+		return ok(toJson(res));
 
 	}
 
@@ -126,24 +136,22 @@ public class SImages extends Controller {
 		int wypos = node.get("wxpos").asInt();
 
 		SGroup group = SGroup.find.filter("simages.id",imageId ).get();
-		// Second locate the fruit and remove it:
-		SImage res = new SImage();
+		
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+				.field("simages.id").equal(imageId);
+		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.set("simages.$.wxpos", wxpos)
+				.set("simages.$.wypos", wypos);
+		group.datastore.update(query, ops);
+
+		SImage image = null;
 		for (SImage p : group.simages) {
 			if (p.id.equals(imageId)) {
-				res.id = p.id;
-				res.wxpos = wxpos;
-				res.wypos = wypos;
-				res.contentType = p.contentType;
-				res.fileId = p.fileId;
-				res.fileName = p.fileName;
-				res.filePath = p.filePath;		
-				group.simages.remove(p);
-				group.simages.add(res);
-				group.save();
+				image = p;
 				break;
 			}
 		}
-		return ok(toJson(res));
+		return ok(toJson(image));
 	}
 
 	
@@ -182,24 +190,23 @@ public class SImages extends Controller {
 
 		SGroup group = SGroup.find.filter("simages.id", imageId).get();
 		// Second locate the fruit and remove it:
-		SImage res = new SImage();
+		SComment comment = new SComment(content);
+		// update member of embedded object list
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+				.field("simages.id").equal(imageId);
+		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.add("simages.$.scomments", comment);
+		group.datastore.update(query, ops);
+
+		SImage image = null;
 		for (SImage p : group.simages) {
 			if (p.id.equals(imageId)) {
-				group.simages.remove(p);
-
-				if (p.scomments == null) {
-					p.scomments = new ArrayList<SComment>();
-				}
-				p.scomments.add(new SComment(content));
-				group.simages.add(p);
-				group.save();
-				res = p;
+				image = p;
 				break;
 			}
-
 		}
-
-		return ok(toJson(res));
+		return ok(toJson(image));
+		
 	}
 	
 	public static String getFileExtension(String filePath){  
