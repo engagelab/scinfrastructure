@@ -138,14 +138,14 @@ public class SPostits extends Controller {
 		// parse JSON from request body
 		JsonNode node = ctx().request().body().asJson();
 		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wxpos").asInt();
+		int wypos = node.get("wypos").asInt();
 
 		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
-				.field("spostits.id").equal(postitId);
-		UpdateOperations<SGroup> ops = group.datastore
-				.createUpdateOperations(SGroup.class).disableValidation()
-				.set("spostits.$.wxpos", wxpos).set("spostits.$.wypos", wypos);
+		Query<SGroup> query = group.datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
+		
+		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+				.set("spostits.$.wxpos", wxpos)
+				.set("spostits.$.wypos", wypos);
 		group.datastore.update(query, ops);
 
 		SPostit res = null;
@@ -225,7 +225,7 @@ public class SPostits extends Controller {
 	
 	public static Result fetchCommentOnPostit(String postitId) {
 
-		SGroup group = SGroup.find.filter("spostit.id", postitId).get();
+		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
 
 		List<SComment> comments = null;
 		for (SPostit p : group.spostits) {

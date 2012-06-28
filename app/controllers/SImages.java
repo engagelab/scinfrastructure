@@ -128,10 +128,10 @@ public class SImages extends Controller {
 	
 	
 	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
-	public static Result updateImageOnWeb() {
+	public static Result updateImageOnWeb(String imageId ) {
 		
 		JsonNode node = ctx().request().body().asJson();
-		String imageId = node.get("imageId").asText();
+		
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wxpos").asInt();
 
