@@ -90,7 +90,7 @@ public class SVideos extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		// String videoId2 = node.get("videoId").asText();
 		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wxpos").asInt();
+		int wypos = node.get("wypos").asInt();
 
 		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
 
