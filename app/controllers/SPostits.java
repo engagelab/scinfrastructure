@@ -19,6 +19,7 @@ import com.mongodb.util.JSON;
 import models.SComment;
 import models.SGroup;
 import models.SPostit;
+import models.SVideo;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -55,6 +56,9 @@ public class SPostits extends Controller {
 		}
 		return ok(toJson(postits));
 	}
+	
+
+	
 
 	/*
 	 * POST : JSON Request
@@ -129,11 +133,10 @@ public class SPostits extends Controller {
 	 * { "postitId":"4fe4298dda063acbfc99d74b" , "wxpos":105, "wypos":105 }
 	 */
 
-	public static Result updatePostitOnWeb() {
+	public static Result updatePostitOnWeb(String postitId) {
 
 		// parse JSON from request body
 		JsonNode node = ctx().request().body().asJson();
-		String postitId = node.get("postitId").asText();
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wxpos").asInt();
 
@@ -218,6 +221,29 @@ public class SPostits extends Controller {
 		return ok(toJson(res));
 	}
 
+	
+	
+	public static Result fetchCommentOnPostit(String postitId) {
+
+		SGroup group = SGroup.find.filter("spostit.id", postitId).get();
+
+		List<SComment> comments = null;
+		for (SPostit p : group.spostits) {
+			if (p.id.equals(postitId)) {
+				comments = p.scomments;
+				break;
+			}
+
+		}
+
+		if (comments == null) {
+			return ok("[]");
+		}
+		return ok(toJson(comments));
+	}
+	
+	
+	
 }
 
 /*
