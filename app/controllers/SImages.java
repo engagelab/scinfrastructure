@@ -151,9 +151,11 @@ public class SImages extends Controller {
 				.set("simages.$.wxpos", wxpos)
 				.set("simages.$.wypos", wypos);
 		group.datastore.update(query, ops);
-
+		
+		
+		SGroup ngroup = SGroup.find.filter("simages.id",imageId ).get();
 		SImage image = null;
-		for (SImage p : group.simages) {
+		for (SImage p : ngroup.simages) {
 			if (p.id.equals(imageId)) {
 				image = p;
 				break;
@@ -206,8 +208,10 @@ public class SImages extends Controller {
 				.add("simages.$.scomments", comment);
 		group.datastore.update(query, ops);
 
+		//load updated group data
+		SGroup ngroup = SGroup.find.filter("simages.id", imageId).get();
 		SImage image = null;
-		for (SImage p : group.simages) {
+		for (SImage p : ngroup.simages) {
 			if (p.id.equals(imageId)) {
 				image = p;
 				break;

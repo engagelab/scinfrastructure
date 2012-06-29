@@ -105,8 +105,10 @@ public class SPostits extends Controller {
 				.set("spostits.$.xpos", xpos).set("spostits.$.ypos", ypos);
 		group.datastore.update(query, ops);
 
+		
+		SGroup ngroup = SGroup.find.filter("spostits.id", postitId).get();
 		SPostit res = null;
-		for (SPostit p : group.spostits) {
+		for (SPostit p : ngroup.spostits) {
 			if (p.id.equals(postitId)) {
 				res = p;
 				break;
@@ -140,8 +142,9 @@ public class SPostits extends Controller {
 				.set("spostits.$.wypos", wypos);
 		group.datastore.update(query, ops);
 
+		SGroup ngroup = SGroup.find.filter("spostits.id", postitId).get();
 		SPostit res = null;
-		for (SPostit p : group.spostits) {
+		for (SPostit p : ngroup.spostits) {
 			if (p.id.equals(postitId)) {
 				res = p;
 				break;
@@ -199,8 +202,10 @@ public class SPostits extends Controller {
 				.add("spostits.$.scomments", comment);
 		group.datastore.update(query, ops);
 
+		
+		SGroup ngroup = SGroup.find.filter("spostits.id", postitId).get();
 		SPostit res = null;
-		for (SPostit p : group.spostits) {
+		for (SPostit p : ngroup.spostits) {
 			if (p.id.equals(postitId)) {
 				res = p;
 				break;

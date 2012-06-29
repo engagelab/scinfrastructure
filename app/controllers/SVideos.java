@@ -93,7 +93,7 @@ public class SVideos extends Controller {
 		int wypos = node.get("wypos").asInt();
 
 		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
-
+		
 		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
 				.field("svideos.id").equal(videoId);
 		UpdateOperations<SGroup> ops = group.datastore
@@ -101,8 +101,11 @@ public class SVideos extends Controller {
 				.set("svideos.$.wxpos", wxpos).set("svideos.$.wypos", wypos);
 		group.datastore.update(query, ops);
 
+		
+		SGroup ngroup = SGroup.find.filter("svideos.id", videoId).get();
+
 		SVideo video = null;
-		for (SVideo p : group.svideos) {
+		for (SVideo p : ngroup.svideos) {
 			if (p.id.equals(videoId)) {
 				video = p;
 				break;
@@ -147,8 +150,10 @@ public class SVideos extends Controller {
 				.add("svideos.$.scomments", comment);
 		group.datastore.update(query, ops);
 
+		
+		SGroup ngroup = SGroup.find.filter("svideos.id", videoId).get();
 		SVideo video = null;
-		for (SVideo p : group.svideos) {
+		for (SVideo p : ngroup.svideos) {
 			if (p.id.equals(videoId)) {
 				video = p;
 				break;
