@@ -201,9 +201,10 @@ public class SProjects extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		String title = node.get("title").asText();
 		String sceneId = node.get("sceneId").asText();
+		String actId = node.get("actId").asText();
 
 		SProject project = SProject.find.byId(projectId);
-		STask task = new STask(title, sceneId);
+		STask task = new STask(title, actId, sceneId);
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}

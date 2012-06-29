@@ -46,7 +46,7 @@ PUT     				/group/postit/:postitId					controllers.SPostits.updatePostitOnWeb(p
 GET						/comment/postit/						controllers.SPostits.fetchCommentOnPostit(postitId:String)
 POST					/comment/postit/						controllers.SPostits.postCommentOnPostit
 
-
+GET						/task/postit/							controllers.SPostits.fetchPostitsByTPRG(taskId:String, runId:String, groupId:String)
 
 
 

@@ -49,6 +49,27 @@ public class SPostits extends Controller {
 		return ok(toJson(postits));
 	}
 	
+	
+	public static Result fetchPostitsByTPRG(String taskId, String runId, String groupId ) {
+
+		SGroup group1 = SGroup.find.filter("runId", runId).get();
+		//SGroup group2 = SGroup.find.byId(groupId);
+		SGroup group3 = SGroup.find.filter("spostits.taskId", taskId).get();
+		
+		SGroup group = SGroup.find.filter("runId", runId).filter("id", groupId ).filter("spostits.taskId", taskId).get();
+		
+		List<SPostit> postits = group.spostits;
+		if (group.spostits == null) {
+			return ok("[]");
+		}
+		return ok(toJson(postits));
+	}
+	
+	
+	
+	
+	
+	
 
 	
 
