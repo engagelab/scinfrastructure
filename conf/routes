@@ -34,12 +34,17 @@ POST     				/member									controllers.SGroups.addMember
 
 # Postit Services
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
-GET						/postit/group/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
-POST     				/postit									controllers.SPostits.addPostit
-PUT     				/postit									controllers.SPostits.updatePostitInFlash
-PUT     				/web/postit								controllers.SPostits.updatePostitOnWeb
+GET						/group/postit/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
+
+POST     				/group/postit/							controllers.SPostits.addPostit
 DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
-POST					/comment/postit							controllers.SPostits.postCommentOnPostit
+
+PUT     				/postit/								controllers.SPostits.updatePostitInFlash
+PUT     				/group/postit/:postitId					controllers.SPostits.updatePostitOnWeb(postitId:String)
+
+
+GET						/comment/postit/						controllers.SPostits.fetchCommentOnPostit(postitId:String)
+POST					/comment/postit/						controllers.SPostits.postCommentOnPostit
 
 
 
@@ -47,13 +52,16 @@ POST					/comment/postit							controllers.SPostits.postCommentOnPostit
 
 
 # Video Services
-#GET     				/video/:videoId							controllers.SVideos.fetchVideoById(videoId:String)
-GET						/video/group/							controllers.SVideos.fetchVideosByGroupId(groupId:String)
-POST     				/video/									controllers.SVideos.addVideo
-PUT     				/video/group/:videoId					controllers.SVideos.updateVideoOnWeb(videoId:String)
+GET     				/video/:videoId							controllers.SVideos.fetchVideoById(videoId:String)
+GET						/group/video/							controllers.SVideos.fetchVideosByGroupId(groupId:String)
 
-
+POST     				/group/video/							controllers.SVideos.addVideo
 DELETE     				/video/:videoId							controllers.SVideos.deleteVideoById(videoId:String)
+
+
+PUT     				/group/video/:videoId					controllers.SVideos.updateVideoOnWeb(videoId:String)
+
+
 POST					/comment/video/							controllers.SVideos.postCommentOnVideo
 GET						/comment/video/							controllers.SVideos.fetchCommentByVideo(videoId:String)
 
@@ -63,12 +71,17 @@ GET						/comment/video/							controllers.SVideos.fetchCommentByVideo(videoId:S
 
 
 # Image Services
+
+GET						/group/image/							controllers.SImages.fetchImagesByGroupId(groupId:String)
+
 POST     				/image/:groupId/:taskId					controllers.SImages.addImage(groupId:String, taskId:String)
-GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
-GET						/image/group/							controllers.SImages.fetchImagesByGroupId(groupId:String)
-PUT     				/image									controllers.SImages.updateImageOnWeb
 DELETE     				/image/:imageId							controllers.SImages.deleteImageById(imageId:String)
-POST					/comment/image							controllers.SImages.postCommentOnImage
+
+
+GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
+PUT     				/group/image/:imageId					controllers.SImages.updateImageOnWeb(imageId:String)
+
+POST					/comment/image/							controllers.SImages.postCommentOnImage
 
 
 

@@ -10,10 +10,11 @@ window.GroupCollection = Backbone.Collection.extend({
 window.Postit = Backbone.Model.extend({});
 window.PostitCollection = Backbone.Collection.extend({
 	model : Postit,
-	url : "/postit/group/"
+	url : "/group/postit/"
 });
 window.PostitComment = Backbone.Model.extend({
-	urlRoot:"/postit/comment/",
+	//urlRoot:"/postit/comment/",
+	urlRoot:"/comment/postit/",
 	defaults:{
         "content":"",
         "postitId":""
@@ -21,7 +22,8 @@ window.PostitComment = Backbone.Model.extend({
 });
 window.PostitCommentCollection = Backbone.Collection.extend({
 	model : PostitComment,
-	url : "/postit/comment/"
+	//url : "/postit/comment/"
+	url : "/comment/postit/"
 });
 
 
@@ -29,7 +31,7 @@ window.PostitCommentCollection = Backbone.Collection.extend({
 window.Video = Backbone.Model.extend({});
 window.VideoCollection = Backbone.Collection.extend({
 	model : Video,
-	url : "/video/group/"
+	url : "/group/video/"
 });
 window.VideoComment = Backbone.Model.extend({
 	urlRoot:"/comment/video/",
@@ -48,10 +50,10 @@ window.VideoCommentCollection = Backbone.Collection.extend({
 window.Picture = Backbone.Model.extend({});
 window.PictureCollection = Backbone.Collection.extend({
 	model : Picture,
-	url : "/image/group/"
+	url : "/group/image/"
 });
 window.PictureComment = Backbone.Model.extend({
-	urlRoot:"/image/comments",
+	urlRoot:"/group/image/",
 	defaults:{
         "content":"",
         "imageId":""
@@ -59,5 +61,5 @@ window.PictureComment = Backbone.Model.extend({
 });
 window.PictureCommentCollection = Backbone.Collection.extend({
 	model : PictureComment,
-	url : "/image/comments"
+	url : "/comment/image/"
 });
