@@ -106,6 +106,14 @@ public class SImages extends Controller {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public static Result showImage(String imageId) throws IOException {
 		
@@ -133,7 +141,7 @@ public class SImages extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		
 		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wxpos").asInt();
+		int wypos = node.get("wypos").asInt();
 
 		SGroup group = SGroup.find.filter("simages.id",imageId ).get();
 		
@@ -208,6 +216,38 @@ public class SImages extends Controller {
 		return ok(toJson(image));
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	public static Result fetchCommentsByImage(String imageId) {
+
+		SGroup group = SGroup.find.filter("simages.id", imageId).get();
+
+		List<SComment> comments = null;
+		for (SImage p : group.simages) {
+			if (p.id.equals(imageId)) {
+				comments = p.scomments;
+				break;
+			}
+
+		}
+
+		if (comments == null) {
+			return ok("[]");
+		}
+		return ok(toJson(comments));
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	public static String getFileExtension(String filePath){  
 		  StringTokenizer stk=new StringTokenizer(filePath,".");  

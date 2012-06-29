@@ -49,7 +49,7 @@ window.PicItemView = Backbone.View.extend({
 		if(key==13 && event.currentTarget.value!='') {
 			var pc = new PictureComment();
 			pc.attributes.content = event.currentTarget.value;
-			pc.attributes.image_id = this.model.id;
+			pc.attributes.imageId = this.model.id;
 			pc.save({ wait: true });
 			this.commentModel.add(pc);
 		}

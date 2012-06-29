@@ -63,7 +63,7 @@ PUT     				/group/video/:videoId					controllers.SVideos.updateVideoOnWeb(video
 
 
 POST					/comment/video/							controllers.SVideos.postCommentOnVideo
-GET						/comment/video/							controllers.SVideos.fetchCommentByVideo(videoId:String)
+GET						/comment/video/							controllers.SVideos.fetchCommentsByVideo(videoId:String)
 
 
 
@@ -81,6 +81,7 @@ DELETE     				/image/:imageId							controllers.SImages.deleteImageById(imageId
 GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
 PUT     				/group/image/:imageId					controllers.SImages.updateImageOnWeb(imageId:String)
 
+GET						/comment/image/							controllers.SImages.fetchCommentsByImage(imageId:String)
 POST					/comment/image/							controllers.SImages.postCommentOnImage
 
 
