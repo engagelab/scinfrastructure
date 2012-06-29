@@ -31,8 +31,8 @@ window.VideoItemView = Backbone.View.extend({
 	updatePosition : function(event) {
 		var pleft = this.el.style.left;
 		var ptop = this.el.style.top;
-		this.model.attributes.wxpos = pleft.substring(0, pleft.length-2);;
-		this.model.attributes.wypos = ptop.substring(0, ptop.length-2);
+		this.model.attributes.wxpos = new Number(pleft.substring(0, pleft.length-2));
+		this.model.attributes.wypos = new Number(ptop.substring(0, ptop.length-2));
 		this.model.save();
 	},
 	
