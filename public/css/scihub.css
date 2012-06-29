@@ -33,7 +33,7 @@ body > div#content {
 }
 
 #headline1 {
-	background-image: url('/assets/images/icon.png');
+	/*background-image: url('/assets/images/icon.png');*/
 	background-repeat: no-repeat;
 	background-position: left top;
 	padding-top: 0px;
