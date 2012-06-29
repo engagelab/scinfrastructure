@@ -74,7 +74,7 @@ window.PicItemView = Backbone.View.extend({
 	refreshPictureComments : function() {
 		$('#pictureComment-'+this.model.id).html('');
 		this.fbpcList = new PictureCommentCollection();
-		this.fbpcList.fetch({ data: $.param({ image_id: this.model.id}),
+		this.fbpcList.fetch({ data: $.param({ imageId: this.model.id}),
 			success : this.createPictureComments,
 			wait: true
 		});
