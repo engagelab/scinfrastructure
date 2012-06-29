@@ -84,6 +84,19 @@ public class SImages extends Controller {
 	
 	public static Result addImage(String groupId, String taskId) {
 
+//		Form<UploadResource> filledForm = uploadForm.bindFromRequest();
+//
+//	    if (filledForm.hasErrors()) {
+//	        return badRequest(views.html.upload.render(filledForm));
+//	    } else {
+//	        UploadResource resource = filledForm.get();
+//	        MultipartFormData body = request().body().asMultipartFormData();
+//	        FilePart resourceFile = body.getFile("resourceFile");
+//
+//	        /* Check resourceFile for null, then extract the File object and process it */
+//	     }
+	    
+	    
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
 

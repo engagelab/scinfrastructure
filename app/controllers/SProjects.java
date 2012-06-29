@@ -61,6 +61,21 @@ public class SProjects extends Controller {
 	
 	
 	
+	
+	
+	
+	
+	
+	public static Result fetchProjectByTitle( String title) {
+		
+		SProject project = SProject.find.filter("title", title).get();
+		return ok(toJson(project));
+		
+	}
+	
+	
+	
+	
 	/*
 	 * 
 	 * Act Service

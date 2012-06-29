@@ -98,6 +98,7 @@ POST					/comment/image/							controllers.SImages.postCommentOnImage
 # Group Services
 GET     				/project								controllers.SProjects.fetchAllProjects
 POST					/project								controllers.SProjects.addProject
+GET     				/project/title/:title					controllers.SProjects.fetchProjectByTitle(title:String)
 
 
 

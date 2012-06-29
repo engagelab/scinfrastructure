@@ -27,7 +27,7 @@ public class SProject extends Model {
     public List <SScene> sscenes;
 	
 	@Embedded()
-    public List <STask> staks;
+    public List <STask> stasks;
 	
 	// FINDERS ----------
 
@@ -47,7 +47,7 @@ public class SProject extends Model {
 		this.title = title;
 		this.sacts = new ArrayList<SAct>();
 		this.sscenes = new ArrayList<SScene>();
-		this.staks = new ArrayList<STask>();
+		this.stasks = new ArrayList<STask>();
 	}
 	
 	
@@ -61,7 +61,7 @@ public class SProject extends Model {
 	}
 	
 	public void addTask(STask task) {
-		this.staks.add(task);
+		this.stasks.add(task);
 	}
 	
 	
@@ -77,7 +77,7 @@ public class SProject extends Model {
 	}
 	
 	public void removeTask(STask task) {
-		this.staks.remove(task);
+		this.stasks.remove(task);
 	}
 	
 	
@@ -91,7 +91,7 @@ public class SProject extends Model {
         		.add("title", title)
                 .add("sacts:", sacts)
                 .add("sscenes:", sscenes)
-                .add("staks:", staks)
+                .add("staks:", stasks)
                 .toString();
     }
 	
