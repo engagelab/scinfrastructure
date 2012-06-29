@@ -176,7 +176,7 @@ public class SProjects extends Controller {
 	public static Result fetchTasksByProject(String projectId) {
 		
 		SProject project = SProject.find.byId(projectId);
-		List<STask> tasks = project.staks;
+		List<STask> tasks = project.stasks;
 		if (tasks == null) {
 			return ok("[]");
 		}
@@ -204,8 +204,8 @@ public class SProjects extends Controller {
 
 		SProject project = SProject.find.byId(projectId);
 		STask task = new STask(title, sceneId);
-		if (project.staks == null) {
-			project.staks = new ArrayList<STask>();
+		if (project.stasks == null) {
+			project.stasks = new ArrayList<STask>();
 		}
 		project.addTask(task);
 		project.save();
@@ -223,7 +223,7 @@ public class SProjects extends Controller {
 		SProject project =  SProject.find.field("taskId").equal(taskId).get();
 		
 		STask task = null;
-		for (STask p : project.staks) {
+		for (STask p : project.stasks) {
 			if (p.id.equals(taskId)) {
 				task = p;
 				break;
