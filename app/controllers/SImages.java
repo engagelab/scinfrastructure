@@ -19,7 +19,6 @@ import com.mongodb.gridfs.GridFSDBFile;
 
 import models.*;
 
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
@@ -82,7 +81,7 @@ public class SImages extends Controller {
 	
 	
 	
-	public static Result addImage(String groupId, String taskId) {
+	public static Result addImage(String groupId, String taskId, String runId) {
 
 //		Form<UploadResource> filledForm = uploadForm.bindFromRequest();
 //
@@ -96,14 +95,14 @@ public class SImages extends Controller {
 //	        /* Check resourceFile for null, then extract the File object and process it */
 //	     }
 	    
-	    
+	    int runIdINT = Integer.getInteger(runId);
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
 
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId);
+			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId, runIdINT);
 			SGroup group = SGroup.find.byId(groupId);
 
 			if (group.simages == null) {

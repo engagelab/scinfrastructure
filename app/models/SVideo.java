@@ -42,6 +42,9 @@ public class  SVideo{
 	@Property("taskId")
 	public String taskId;
 	
+	@Property("runId")
+	public int runId;
+	
 	@Embedded()
     public List <SComment> scomments;
 	
@@ -56,10 +59,11 @@ public class  SVideo{
 		// TODO Auto-generated constructor stub
 	}
 
-    public SVideo(String title,String uri, String taskId) {
+    public SVideo(String title,String uri, String taskId, int runId) {
         this.uri = uri;
         this.title = title;
         this.taskId = taskId;
+        this.runId = runId;
     }
     
     // for flash
@@ -100,6 +104,8 @@ public class  SVideo{
                 .add("wxpos", wxpos)
                 .add("wypos", wypos)
                 .add("postedAt", postedAt)
+                .add("taskId", taskId)
+                .add("runId", runId)
                 .toString();
     }
 

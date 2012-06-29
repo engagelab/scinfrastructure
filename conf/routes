@@ -74,7 +74,7 @@ GET						/comment/video/							controllers.SVideos.fetchCommentsByVideo(videoId:
 
 GET						/group/image/							controllers.SImages.fetchImagesByGroupId(groupId:String)
 
-POST     				/image/:groupId/:taskId					controllers.SImages.addImage(groupId:String, taskId:String)
+POST     				/image/:groupId/:taskId					controllers.SImages.addImage(groupId:String, taskId:String, runId:String)
 DELETE     				/image/:imageId							controllers.SImages.deleteImageById(imageId:String)
 
 

@@ -55,6 +55,9 @@ public class SImage {
 	
 	@Property("taskId")
 	public String taskId;
+	
+	@Property("runId")
+	public int runId;
 
 	@Embedded()
     public List <SComment> scomments;
@@ -70,7 +73,7 @@ public class SImage {
 	
 	
 	
-    public SImage(File file, String fileName, String contentType, String taskId) throws IOException 
+    public SImage(File file, String fileName, String contentType, String taskId, int runId) throws IOException 
     {
     	this.fileName = fileName;
     	this.contentType = contentType;
@@ -78,6 +81,7 @@ public class SImage {
     	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
     	this.filePath = createUriForFile(fileId);
     	this.taskId = taskId;
+    	this.runId = runId;
     	
 	}
     
@@ -104,6 +108,8 @@ public class SImage {
                 .add("fileName", fileName)
                 .add("fileId", fileId)
                 .add("filePath", filePath)
+                .add("taskId", taskId)
+                .add("runId", runId)
                 .toString();
     }
     

@@ -53,10 +53,12 @@ public class SPostits extends Controller {
 	public static Result fetchPostitsByTPRG(String taskId, String runId, String groupId ) {
 
 		SGroup group1 = SGroup.find.filter("runId", runId).get();
-		//SGroup group2 = SGroup.find.byId(groupId);
+		SGroup group2 = SGroup.find.byId(groupId);
+		
+		
 		SGroup group3 = SGroup.find.filter("spostits.taskId", taskId).get();
 		
-		SGroup group = SGroup.find.filter("runId", runId).filter("id", groupId ).filter("spostits.taskId", taskId).get();
+		SGroup group = SGroup.find.filter("spostits.taskId", taskId).filter("spostits.runId", runId).get();
 		
 		List<SPostit> postits = group.spostits;
 		if (group.spostits == null) {
@@ -89,8 +91,9 @@ public class SPostits extends Controller {
 		int ypos = node.get("xpos").asInt();
 		String groupId = node.get("groupId").asText();
 		String taskId = node.get("taskId").asText();
+		int runId = node.get("runId").asInt();
 
-		SPostit postit = new SPostit(content, xpos, ypos, taskId);
+		SPostit postit = new SPostit(content, xpos, ypos, taskId, runId);
 		// SGroup group = SGroup.find.byId(groupId);
 		SGroup group = SGroup.find.byId(groupId);
 		if (group.spostits == null) {
