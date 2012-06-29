@@ -121,6 +121,24 @@ GET						/task/project/:projectId					controllers.SProjects.fetchTasksByProject(
 
 
 
+
+
+#------------------------------ Rollcall Services ---------------------------------------#
+
+GET						/rollcall/runId/					controllers.RollCalls.GetCurrentRunId
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Utilities for debugging server issues
 GET     /health                             controllers.Server.health()
 GET     /threaddump                         controllers.Server.threaddump()
