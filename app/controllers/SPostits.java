@@ -8,12 +8,17 @@ import java.util.List;
 import org.codehaus.jackson.JsonNode;
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCursor;
+
 import models.SComment;
 import models.SGroup;
 import models.SPostit;
 
 import play.mvc.Controller;
 import play.mvc.Result;
+import scala.sys.process.ProcessBuilderImpl.DaemonBuilder;
 
 /**
  * @author Muhammad Fahied
@@ -52,13 +57,23 @@ public class SPostits extends Controller {
 	
 	public static Result fetchPostitsByTPRG(String taskId, String runId, String groupId ) {
 
-		SGroup group1 = SGroup.find.filter("runId", runId).get();
-		SGroup group2 = SGroup.find.byId(groupId);
 		
 		
-		SGroup group3 = SGroup.find.filter("spostits.taskId", taskId).get();
+		SGroup group = SGroup.find.byId(groupId);
 		
-		SGroup group = SGroup.find.filter("spostits.taskId", taskId).filter("spostits.runId", runId).get();
+		DB nDb = group.datastore.getDB();
+		
+		
+		
+		
+		BasicDBObject doc = new BasicDBObject();
+        doc.put("spostits.taskId", taskId);
+
+        DBCursor cur = nDb.getCollection("groups").find(doc);
+		
+        
+        SPostit postit = group.datastore.find(SPostit.class).field("taskId").equal(taskId).get();
+		//db.blogs.find({"posts.title":"Mongodb!"}, {posts:{$slice: 1}})
 		
 		List<SPostit> postits = group.spostits;
 		if (group.spostits == null) {
