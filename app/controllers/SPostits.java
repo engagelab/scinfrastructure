@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.codehaus.jackson.JsonNode;
+
+import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
+import com.google.inject.Inject;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCursor;
@@ -26,8 +29,18 @@ import sun.security.action.PutAllAction;
  */
 
 public class SPostits extends Controller {
+	
+	
+	
+	// @Inject
+	 //public static Datastore datastore; // requestStaticInjection(..)
+	 
+	 
 
 	public static Result fetchPostitById(String postitId) {
+		
+		
+		//SPostit postit = SPostit.datastore.find(SPostit.class).get();
 
 		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
 		SPostit res = null;
@@ -60,7 +73,8 @@ public class SPostits extends Controller {
 
 		
 		
-		SGroup group = SGroup.find.byId(groupId);
+		SGroup group1 = SGroup.find.byId(groupId);
+		SGroup group = SGroup.datastore.find(SGroup.class, "spostits.taskId", taskId).get();
 		
 		DB nDb = group.datastore.getDB();
 		
@@ -73,7 +87,7 @@ public class SPostits extends Controller {
         doc.put("spostits.taskId", taskId);
         doc.put("spostits", edoc);
 
-        List<Integer> sized = nDb.getCollection("groups").find(doc).getSizes();
+       // SGroup testGroup = SGroup.find.byId(groupId).field("spostits.taskId").equals(taskId);
         
 //       while(cur.hasNext()) {
 //           System.out.println(cur.next());
@@ -131,6 +145,14 @@ public class SPostits extends Controller {
 		return ok(toJson(postit));
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * POST : JSON Request { "postitId":"4fe4298dda063acbfc99d74b" , "content":
 	 * "My 1 modified posit", "xpos":105, "ypos":105 }
@@ -146,19 +168,18 @@ public class SPostits extends Controller {
 		int ypos = node.get("xpos").asInt();
 
 		// new
-		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+		//SGroup group = SGroup.find.filter("spostits.id", postitId).get();
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("spostits.id").equal(postitId);
-		UpdateOperations<SGroup> ops = group.datastore
+		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("spostits.$.content", content)
 				.set("spostits.$.xpos", xpos).set("spostits.$.ypos", ypos);
-		group.datastore.update(query, ops);
 
-		
-		SGroup ngroup = SGroup.find.filter("spostits.id", postitId).get();
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
+
 		SPostit res = null;
-		for (SPostit p : ngroup.spostits) {
+		for (SPostit p : group.spostits) {
 			if (p.id.equals(postitId)) {
 				res = p;
 				break;
@@ -171,6 +192,16 @@ public class SPostits extends Controller {
 		return ok(toJson(res));
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * POST : JSON Request
 	 * 
@@ -184,17 +215,17 @@ public class SPostits extends Controller {
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wypos").asInt();
 
-		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class).field("spostits.id").equal(postitId);
 		
-		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+		UpdateOperations<SGroup> ops = SGroup.datastore.createUpdateOperations(SGroup.class).disableValidation()
 				.set("spostits.$.wxpos", wxpos)
 				.set("spostits.$.wypos", wypos);
-		group.datastore.update(query, ops);
 
-		SGroup ngroup = SGroup.find.filter("spostits.id", postitId).get();
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
+
+		
 		SPostit res = null;
-		for (SPostit p : ngroup.spostits) {
+		for (SPostit p : group.spostits) {
 			if (p.id.equals(postitId)) {
 				res = p;
 				break;
@@ -221,6 +252,9 @@ public class SPostits extends Controller {
 				break;
 			}
 		}
+		
+		
+		
 
 		// try this one
 		/*

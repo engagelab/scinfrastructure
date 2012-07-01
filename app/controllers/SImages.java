@@ -154,20 +154,17 @@ public class SImages extends Controller {
 		
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wypos").asInt();
-
-		SGroup group = SGroup.find.filter("simages.id",imageId ).get();
 		
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("simages.id").equal(imageId);
-		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+		UpdateOperations<SGroup> ops = SGroup.datastore.createUpdateOperations(SGroup.class).disableValidation()
 				.set("simages.$.wxpos", wxpos)
 				.set("simages.$.wypos", wypos);
-		group.datastore.update(query, ops);
 		
-		
-		SGroup ngroup = SGroup.find.filter("simages.id",imageId ).get();
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
+
 		SImage image = null;
-		for (SImage p : ngroup.simages) {
+		for (SImage p : group.simages) {
 			if (p.id.equals(imageId)) {
 				image = p;
 				break;
@@ -210,20 +207,20 @@ public class SImages extends Controller {
 		String imageId = node.get("imageId").asText();
 		String content = node.get("content").asText();
 
-		SGroup group = SGroup.find.filter("simages.id", imageId).get();
+	
 		// Second locate the fruit and remove it:
 		SComment comment = new SComment(content);
 		// update member of embedded object list
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("simages.id").equal(imageId);
-		UpdateOperations<SGroup> ops = group.datastore.createUpdateOperations(SGroup.class).disableValidation()
+		UpdateOperations<SGroup> ops = SGroup.datastore.createUpdateOperations(SGroup.class).disableValidation()
 				.add("simages.$.scomments", comment);
-		group.datastore.update(query, ops);
+		
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
 
-		//load updated group data
-		SGroup ngroup = SGroup.find.filter("simages.id", imageId).get();
+		
 		SImage image = null;
-		for (SImage p : ngroup.simages) {
+		for (SImage p : group.simages) {
 			if (p.id.equals(imageId)) {
 				image = p;
 				break;

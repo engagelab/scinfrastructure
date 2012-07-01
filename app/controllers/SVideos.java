@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.*;
+
 import org.codehaus.jackson.JsonNode;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -20,6 +21,10 @@ import com.google.code.morphia.query.UpdateOperations;
 
 
 public class SVideos extends Controller {
+	
+	
+	
+	
 
 	public static Result fetchVideoById(String videoId) {
 
@@ -38,6 +43,15 @@ public class SVideos extends Controller {
 		return ok(toJson(res));
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public static Result fetchVideosByGroupId(String groupId) {
 
@@ -50,6 +64,17 @@ public class SVideos extends Controller {
 		}
 		return ok(toJson(videos));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/*
 	 * POST : JSON Request { "groupId":"4fe42505da063acbfc99d735" , "title":
@@ -78,6 +103,21 @@ public class SVideos extends Controller {
 
 		return ok(toJson(video));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/*
 	 * POST : JSON request
@@ -93,20 +133,18 @@ public class SVideos extends Controller {
 		int wxpos = node.get("wxpos").asInt();
 		int wypos = node.get("wypos").asInt();
 
-		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+	
 		
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("svideos.id").equal(videoId);
-		UpdateOperations<SGroup> ops = group.datastore
+		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("svideos.$.wxpos", wxpos).set("svideos.$.wypos", wypos);
-		group.datastore.update(query, ops);
-
 		
-		SGroup ngroup = SGroup.find.filter("svideos.id", videoId).get();
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
 
 		SVideo video = null;
-		for (SVideo p : ngroup.svideos) {
+		for (SVideo p : group.svideos) {
 			if (p.id.equals(videoId)) {
 				video = p;
 				break;
@@ -140,21 +178,21 @@ public class SVideos extends Controller {
 		String videoId = node.get("videoId").asText();
 		String content = node.get("content").asText();
 
-		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+		
 		// Second locate the fruit and remove it:
 		SComment comment = new SComment(content);
 		// update member of embedded object list
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("svideos.id").equal(videoId);
-		UpdateOperations<SGroup> ops = group.datastore
+		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.add("svideos.$.scomments", comment);
-		group.datastore.update(query, ops);
+		
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
 
 		
-		SGroup ngroup = SGroup.find.filter("svideos.id", videoId).get();
 		SVideo video = null;
-		for (SVideo p : ngroup.svideos) {
+		for (SVideo p : group.svideos) {
 			if (p.id.equals(videoId)) {
 				video = p;
 				break;
@@ -167,6 +205,8 @@ public class SVideos extends Controller {
 	public static Result fetchCommentsByVideo(String videoId) {
 
 		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+		
+		
 
 		List<SComment> comments = null;
 		for (SVideo p : group.svideos) {

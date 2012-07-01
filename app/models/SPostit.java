@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
+import com.google.code.morphia.Datastore;
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.PrePersist;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
+import com.google.inject.Inject;
 
 
 /**
@@ -19,6 +21,7 @@ import com.google.common.base.Objects;
 
 @Embedded
 public class  SPostit{
+	
 	@Indexed
 	@Property("id")
 	public String id = new ObjectId().toString();
