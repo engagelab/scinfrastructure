@@ -19,6 +19,7 @@ import models.SPostit;
 import play.mvc.Controller;
 import play.mvc.Result;
 import scala.sys.process.ProcessBuilderImpl.DaemonBuilder;
+import sun.security.action.PutAllAction;
 
 /**
  * @author Muhammad Fahied
@@ -67,12 +68,22 @@ public class SPostits extends Controller {
 		
 		
 		BasicDBObject doc = new BasicDBObject();
+		BasicDBObject edoc = new BasicDBObject();
+		edoc.put("$slice", 1);
         doc.put("spostits.taskId", taskId);
+        doc.put("spostits", edoc);
 
-        DBCursor cur = nDb.getCollection("groups").find(doc);
+        List<Integer> sized = nDb.getCollection("groups").find(doc).getSizes();
+        
+//       while(cur.hasNext()) {
+//           System.out.println(cur.next());
+//       }
 		
         
-        SPostit postit = group.datastore.find(SPostit.class).field("taskId").equal(taskId).get();
+        //SPostit postit = group.datastore.find(SPostit.class).get();
+        
+      
+        
 		//db.blogs.find({"posts.title":"Mongodb!"}, {posts:{$slice: 1}})
 		
 		List<SPostit> postits = group.spostits;
@@ -103,7 +114,7 @@ public class SPostits extends Controller {
 		JsonNode node = ctx().request().body().asJson();
 		String content = node.get("content").asText();
 		int xpos = node.get("xpos").asInt();
-		int ypos = node.get("xpos").asInt();
+		int ypos = node.get("ypos").asInt();
 		String groupId = node.get("groupId").asText();
 		String taskId = node.get("taskId").asText();
 		int runId = node.get("runId").asInt();
