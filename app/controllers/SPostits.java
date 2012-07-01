@@ -3,26 +3,26 @@ package controllers;
 import static play.libs.Json.toJson;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.codehaus.jackson.JsonNode;
+import org.jbfilter.bean.FilterBean;
+import org.jbfilter.bean.PropertyAccessor;
+import org.jbfilter.bean.factory.FilterBeans;
+import org.jbfilter.bean.factory.FilterComponentBeans;
+import org.jbfilter.core.FilterComponent;
+import org.jbfilter.core.fcomps.single.ContainsStringFilterComponent;
 
-import com.google.code.morphia.Datastore;
+
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
-import com.google.inject.Inject;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCursor;
-
 import models.SComment;
 import models.SGroup;
 import models.SPostit;
 
 import play.mvc.Controller;
 import play.mvc.Result;
-import scala.sys.process.ProcessBuilderImpl.DaemonBuilder;
-import sun.security.action.PutAllAction;
 
 /**
  * @author Muhammad Fahied
@@ -38,10 +38,8 @@ public class SPostits extends Controller {
 	 
 
 	public static Result fetchPostitById(String postitId) {
-		
-		
-		//SPostit postit = SPostit.datastore.find(SPostit.class).get();
 
+		//SPostit postit = SPostit.datastore.find(SPostit.class).get();
 		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
 		SPostit res = null;
 		for (SPostit p : group.spostits) {
@@ -58,6 +56,14 @@ public class SPostits extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Result fetchPostitsByGroupId(String groupId) {
 
 		SGroup group = SGroup.find.byId(groupId);
@@ -69,42 +75,53 @@ public class SPostits extends Controller {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * http://code.google.com/p/jbfilter/source/browse/trunk/jbfilter-bean/src/test/java/org/jbfilter/test/demo/IntroExample.java
+	 * */
+	
+	
 	public static Result fetchPostitsByTPRG(String taskId, String runId, String groupId ) {
 
+		SGroup group = SGroup.find.byId(groupId);
 		
+		Collection<SPostit> cp = group.spostits;
 		
-		SGroup group1 = SGroup.find.byId(groupId);
-		SGroup group = SGroup.datastore.find(SGroup.class, "spostits.taskId", taskId).get();
+		// Filter results using jbfilter libs
 		
-		DB nDb = group.datastore.getDB();
+		//create a filter
+		FilterBean<SPostit> filter = FilterBeans.newFilter();
+        
+		// 1st possibility : use reflection to access property
+		FilterComponent<SPostit> filterComponent = FilterComponentBeans.newContainsStringFilterComponent("taskId");
 		
+        // 2nd possibility (preferred) : create component with PropertyAccessor interface
+		PropertyAccessor<SPostit, String> propAcc = new PropertyAccessor<SPostit, String>() {
+            public String getPropertyValue(SPostit postit) {
+                    return postit.taskId;
+            }
+		};
 		
-		
-		
-		BasicDBObject doc = new BasicDBObject();
-		BasicDBObject edoc = new BasicDBObject();
-		edoc.put("$slice", 1);
-        doc.put("spostits.taskId", taskId);
-        doc.put("spostits", edoc);
+        ContainsStringFilterComponent<SPostit> fc1b = FilterComponentBeans.newContainsStringFilterComponent("taskId", propAcc);
 
-       // SGroup testGroup = SGroup.find.byId(groupId).field("spostits.taskId").equals(taskId);
+        // attach the filter components to the filter
+        filter.addFilterComponent(fc1b);
         
-//       while(cur.hasNext()) {
-//           System.out.println(cur.next());
-//       }
-		
-        
-        //SPostit postit = group.datastore.find(SPostit.class).get();
-        
-      
-        
-		//db.blogs.find({"posts.title":"Mongodb!"}, {posts:{$slice: 1}})
-		
-		List<SPostit> postits = group.spostits;
-		if (group.spostits == null) {
+        // set the components relevant settings
+        fc1b.setValue(taskId);
+        // filter
+        List<SPostit> filteredPostits = filter.filter(cp);
+
+		if (filteredPostits == null) {
 			return ok("[]");
 		}
-		return ok(toJson(postits));
+		return ok(toJson(filteredPostits));
 	}
 	
 	
@@ -112,7 +129,6 @@ public class SPostits extends Controller {
 	
 	
 	
-
 	
 
 	/*
@@ -400,4 +416,26 @@ public class SPostits extends Controller {
 // UpdateOperations operations =
 // group.datastore.createUpdateOperations(SGroup.class).set("spostits.$.wxpos",
 // 1);
+
+//SGroup group = SGroup.datastore.find(SGroup.class, "spostits.taskId", taskId).get();		
+//DB nDb = group.datastore.getDB();
+//
+//BasicDBObject doc = new BasicDBObject();
+//BasicDBObject edoc = new BasicDBObject();
+//edoc.put("$slice", 1);
+//doc.put("spostits.taskId", taskId);
+//doc.put("spostits", edoc);
+
+// SGroup testGroup = SGroup.find.byId(groupId).field("spostits.taskId").equals(taskId);
+
+//while(cur.hasNext()) {
+//   System.out.println(cur.next());
+//}
+
+
+//SPostit postit = group.datastore.find(SPostit.class).get();
+
+
+
+//db.blogs.find({"posts.title":"Mongodb!"}, {posts:{$slice: 1}})
 

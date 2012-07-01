@@ -14,6 +14,9 @@ object ApplicationBuild extends Build {
     "org.apache.camel" % "camel-http" % "2.9.2",
 
 
+	//jbfilter
+	//"org.jbfilter" % "jbfilter" % "1.6.1-SNAPSHOT",
+
 	//flexJSON
 	"net.sf.flexjson" % "flexjson" % "2.1",
 	
