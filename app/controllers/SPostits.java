@@ -173,11 +173,11 @@ public class SPostits extends Controller {
 	 * "My 1 modified posit", "xpos":105, "ypos":105 }
 	 */
 
-	public static Result updatePostitInFlash() {
+	public static Result updatePostitInFlash(String postitId) {
 
 		// parse JSON from request body
 		JsonNode node = ctx().request().body().asJson();
-		String postitId = node.get("postitId").asText();
+		//String postitId = node.get("postitId").asText();
 		String content = node.get("content").asText();
 		int xpos = node.get("xpos").asInt();
 		int ypos = node.get("xpos").asInt();
