@@ -2,6 +2,7 @@ package controllers;
 
 import static play.libs.Json.toJson;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import org.codehaus.jackson.JsonNode;
@@ -15,8 +16,6 @@ import play.mvc.*;
  */
 
 public class SGroups extends Controller {
-	
-	
 	
 	/*
 	 * 
