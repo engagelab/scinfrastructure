@@ -3,7 +3,6 @@ package controllers;
 
 import static play.libs.Json.toJson;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +30,7 @@ import utils.GridFsHelper;
  */
 
 public class SImages extends Controller {
-	
-//	public static Result showBlank(){
-//		return ok(form.render(productForm));
-//		}
-	
-	
-	
-	
+
 	
 
 	public static Result fetchImagesById(String imageId) {
@@ -83,7 +75,7 @@ public class SImages extends Controller {
 	
 	public static Result addImage(String groupId, String taskId, String runId) {
 
-//		Form<UploadResource> filledForm = uploadForm.bindFromRequest();
+		
 //
 //	    if (filledForm.hasErrors()) {
 //	        return badRequest(views.html.upload.render(filledForm));

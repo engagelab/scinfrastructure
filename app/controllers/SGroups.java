@@ -9,11 +9,14 @@ import models.SGroup;
 import models.SUser;
 import play.mvc.*;
 
+
 /**
  * @author Muhammad Fahied
  */
 
 public class SGroups extends Controller {
+	
+	
 	
 	/*
 	 * 

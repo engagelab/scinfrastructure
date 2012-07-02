@@ -298,7 +298,7 @@ public class Server extends Controller {
                         writer.format("! %s: ERROR\n!  %s\n", entry.getKey(), result.getMessage());
                     }
 
-                    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
+                   // @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
                     final Throwable error = result.getError();
                     if (error != null) {
                         writer.println();

@@ -67,7 +67,7 @@ public class SPostitTest {
 				postit.put("ypos", 222);
 				JsonNode node = Json.toJson(postit);
 				
-				Result result = callAction(routes.ref.SPostits.updatePostitOnWeb(),
+				Result result = callAction(routes.ref.SPostits.updatePostitOnWeb(""),
                         fakeRequest().withJsonBody(node, "PUT"));
                 assertThat(status(result)).isEqualTo(OK);
                 assertThat(contentType(result)).isEqualTo("application/json");
@@ -91,7 +91,7 @@ public class SPostitTest {
 					postit.put("wypos", 222);
 					JsonNode node = Json.toJson(postit);
 					
-	                Result result = callAction(routes.ref.SPostits.updatePostitOnWeb(),
+	                Result result = callAction(routes.ref.SPostits.updatePostitOnWeb(""),
 	                        fakeRequest().withJsonBody(node, "PUT"));
 	                assertThat(status(result)).isEqualTo(OK);
 	                assertThat(contentType(result)).isEqualTo("application/json");

@@ -32,7 +32,6 @@ import play.libs.Akka;
 import play.mvc.Controller;
 import utils.MoreMatchers;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -57,7 +56,8 @@ public class Global extends GlobalSettings {
             this.injector = injector;
         }
 
-        @Override
+        @SuppressWarnings("serial")
+		@Override
         public ActorRef get() {
             return Akka.system().actorOf(new Props(new UntypedActorFactory() {
                 public T create() {

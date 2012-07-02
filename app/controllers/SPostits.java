@@ -11,7 +11,6 @@ import org.jbfilter.bean.FilterBean;
 import org.jbfilter.bean.PropertyAccessor;
 import org.jbfilter.bean.factory.FilterBeans;
 import org.jbfilter.bean.factory.FilterComponentBeans;
-import org.jbfilter.core.FilterComponent;
 import org.jbfilter.core.fcomps.single.ContainsStringFilterComponent;
 
 
@@ -90,16 +89,14 @@ public class SPostits extends Controller {
 	public static Result fetchPostitsByTPRG(String taskId, String runId, String groupId ) {
 
 		SGroup group = SGroup.find.byId(groupId);
-		
 		Collection<SPostit> cp = group.spostits;
 		
 		// Filter results using jbfilter libs
-		
 		//create a filter
 		FilterBean<SPostit> filter = FilterBeans.newFilter();
         
 		// 1st possibility : use reflection to access property
-		FilterComponent<SPostit> filterComponent = FilterComponentBeans.newContainsStringFilterComponent("taskId");
+		//FilterComponent<SPostit> filterComponent = FilterComponentBeans.newContainsStringFilterComponent("taskId");
 		
         // 2nd possibility (preferred) : create component with PropertyAccessor interface
 		PropertyAccessor<SPostit, String> propAcc = new PropertyAccessor<SPostit, String>() {
@@ -122,6 +119,8 @@ public class SPostits extends Controller {
 			return ok("[]");
 		}
 		return ok(toJson(filteredPostits));
+		
+		
 	}
 	
 	
@@ -294,18 +293,17 @@ public class SPostits extends Controller {
 		String content = node.get("content").asText();
 
 		SComment comment = new SComment(content);
-		SGroup group = SGroup.find.filter("spostits.id", postitId).get();
-		Query<SGroup> query = group.datastore.createQuery(SGroup.class)
+		
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("spostits.id").equal(postitId);
-		UpdateOperations<SGroup> ops = group.datastore
+		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.add("spostits.$.scomments", comment);
-		group.datastore.update(query, ops);
+	
+		SGroup group = SGroup.datastore.findAndModify(query, ops);
 
-		
-		SGroup ngroup = SGroup.find.filter("spostits.id", postitId).get();
 		SPostit res = null;
-		for (SPostit p : ngroup.spostits) {
+		for (SPostit p : group.spostits) {
 			if (p.id.equals(postitId)) {
 				res = p;
 				break;

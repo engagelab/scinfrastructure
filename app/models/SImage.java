@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
-import play.mvc.Http.MultipartFormData.FilePart;
-
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;

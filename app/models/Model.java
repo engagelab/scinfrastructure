@@ -4,17 +4,11 @@ import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.query.*;
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.mongodb.ReadPreference;
-import com.mongodb.WriteConcern;
 import com.mongodb.WriteResult;
 import org.bson.types.CodeWScope;
 import org.bson.types.ObjectId;
-import org.codehaus.jackson.annotate.JsonIgnore;
-
-import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -49,7 +43,8 @@ public abstract class Model {
         return id != null ? id.hashCode() : 0;
     }
 
-    public Key key() {
+    @SuppressWarnings("rawtypes")
+	public Key key() {
         return datastore.getKey(this);
     }
 

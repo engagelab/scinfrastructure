@@ -3,7 +3,6 @@ package models;
 import java.util.Date;
 
 import com.google.code.morphia.annotations.Embedded;
-import com.google.code.morphia.annotations.PrePersist;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 

@@ -1,9 +1,6 @@
 package models;
 
-import org.bson.types.ObjectId;
-
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 
