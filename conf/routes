@@ -36,10 +36,10 @@ POST     				/member									controllers.SGroups.addMember
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
 GET						/group/postit/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 
-POST     				/group/postit/							controllers.SPostits.addPostit
+POST     				/task/postit/							controllers.SPostits.addPostit
 DELETE					/postit/:postitId						controllers.SPostits.deletePostitById(postitId:String)
 
-PUT     				/postit/								controllers.SPostits.updatePostitInFlash
+PUT     				/task/postit/								controllers.SPostits.updatePostitInFlash
 PUT     				/group/postit/:postitId					controllers.SPostits.updatePostitOnWeb(postitId:String)
 
 
