@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <update xmlns="http://ns.adobe.com/air/framework/update/description/2.5">
-  <versionNumber>1.1.9</versionNumber>
-  <url>http://scihub.uio.no/public/simulation/simuApril2012.air</url>
+  <versionNumber>1.2.0</versionNumber>
+  <url>http://scihub.uio.no/assets/simulation/simuApril2012.air</url>
   <description>
-    <![CDATA[Version 1.1.9:
-        * updated delete confirmation message for post-its
+    <![CDATA[Version 1.2.0:
+        * version working with new Play 2.0.2 services
     ]]>
   </description>
 </update>

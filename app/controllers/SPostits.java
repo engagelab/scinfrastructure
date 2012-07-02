@@ -180,7 +180,7 @@ public class SPostits extends Controller {
 		//String postitId = node.get("postitId").asText();
 		String content = node.get("content").asText();
 		int xpos = node.get("xpos").asInt();
-		int ypos = node.get("xpos").asInt();
+		int ypos = node.get("ypos").asInt();
 
 		// new
 		//SGroup group = SGroup.find.filter("spostits.id", postitId).get();
