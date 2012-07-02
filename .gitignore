@@ -22,3 +22,7 @@ dist
 public/fahied
 
 .idea
+.target
+.target/controllers/SPostits$1.class
+
+.target/controllers/SPostits.class

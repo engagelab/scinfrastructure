@@ -86,13 +86,7 @@ public class SPostits extends Controller {
 	 * */
 	
 	
-	public static Result fetchPostitsByTPRG( ) {
-		
-		JsonNode node = ctx().request().body().asJson();
-		String taskId = node.get("taskId").asText();
-		
-		String runId = node.get("runId").asText();
-		String groupId = node.get("groupId").asText();
+	public static Result fetchPostitsByTPRG(String taskId, String runId, String groupId ) {
 
 		SGroup group = SGroup.find.byId(groupId);
 		Collection<SPostit> cp = group.spostits;
