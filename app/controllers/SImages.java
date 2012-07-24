@@ -18,11 +18,13 @@ import com.mongodb.gridfs.GridFSDBFile;
 
 import models.*;
 
+
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Http.MultipartFormData.FilePart;
 import utils.GridFsHelper;
+
 
 
 /**
@@ -70,7 +72,12 @@ public class SImages extends Controller {
 	
 	
 	
-	
+//	
+//	private static final Form<SImage> uploadForm = form(SImage.class);
+//
+//	public static Result showBlank(){
+//		return ok(upload.render(uploadForm));
+//		}
 	
 	
 	public static Result addImage(String groupId, String taskId, String runId) {
@@ -86,7 +93,7 @@ public class SImages extends Controller {
 //
 //	        /* Check resourceFile for null, then extract the File object and process it */
 //	     }
-	    
+		String parm = ctx().request().body().asMultipartFormData().asFormUrlEncoded().toString();
 	    int runIdINT = Integer.getInteger(runId);
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
