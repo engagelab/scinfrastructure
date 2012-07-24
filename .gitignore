@@ -12,6 +12,7 @@ dist
 .settings/org.scala-ide.sdt.core.prefs
 
 .project
+<<<<<<< HEAD
 
 .DS_Store
 
@@ -24,3 +25,7 @@ public/fahied
 .idea
 .target
 
+=======
+.target
+.settings
+>>>>>>> update ignore
