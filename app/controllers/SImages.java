@@ -93,15 +93,15 @@ public class SImages extends Controller {
 //
 //	        /* Check resourceFile for null, then extract the File object and process it */
 //	     }
-		String parm = ctx().request().body().asMultipartFormData().asFormUrlEncoded().toString();
-	    int runIdINT = Integer.getInteger(runId);
+		//String parm = ctx().request().body().asMultipartFormData().asFormUrlEncoded().toString();
+	   // int runIdINT = Integer.getInteger(runId);
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
 
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId, runIdINT);
+			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId, 2);
 			SGroup group = SGroup.find.byId(groupId);
 
 			if (group.simages == null) {

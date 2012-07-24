@@ -28,6 +28,7 @@ import play.mvc.Controller;
 public class Application extends Controller {
 	
 
+	
 	  
 //    @Inject
 //    public static Morphia morphia;
