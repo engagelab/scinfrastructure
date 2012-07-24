@@ -31,3 +31,52 @@ public/fahied
 
 
 RUNNING_PID
+
+.target/Global$1$1.class
+	.target/Global$1$2$1$1$1.class
+	.target/Global$1$2$1$1.class
+	.target/Global$1$2$1.class
+	.target/Global$1$2.class
+	.target/Global$1.class
+	.target/Global$ActorProvider$1.class
+	.target/Global$ActorProvider.class
+	.target/Global$OnStartListener.class
+	.target/Global$OnStopListener.class
+	.target/Global.class
+	.target/controllers/Application.class
+	.target/controllers/RollCalls.class
+	.target/controllers/SGroups.class
+	.target/controllers/SImages.class
+	.target/controllers/SProjects.class
+	.target/controllers/SUsers.class
+	.target/controllers/SVideos.class
+	.target/controllers/Server$Context.class
+	.target/controllers/Server$ServerMetrics.class
+	.target/controllers/Server.class
+	.target/models/Model$Finder.class
+	.target/models/Model.class
+	.target/models/SAct.class
+	.target/models/SComment.class
+	.target/models/SFile.class
+	.target/models/SGroup.class
+	.target/models/SImage.class
+	.target/models/SPostit.class
+	.target/models/SProject.class
+	.target/models/SScene.class
+	.target/models/STask.class
+	.target/models/SUser.class
+	.target/models/SVideo.class
+	.target/modules/CamelcodeModule.class
+	.target/modules/MorphiaModule$1.class
+	.target/modules/MorphiaModule.class
+	.target/services/MongoService$1.class
+	.target/services/MongoService.class
+	.target/sgroup/SGroupTest$1.class
+	.target/sgroup/SGroupTest$2.class
+	.target/sgroup/SGroupTest.class
+	.target/utils/GridFsHelper.class
+	.target/utils/JSlug.class
+	.target/utils/MoreMatchers$SubClassesOf.class
+	.target/utils/MoreMatchers.class
+	.target/views/index.scala.html
+	.target/views/main.scala.html
