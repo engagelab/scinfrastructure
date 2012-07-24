@@ -13,6 +13,7 @@ dist
 
 .project
 
+
 .DS_Store
 
 .idea/.name
@@ -25,4 +26,8 @@ public/fahied
 .target
 
 
-project/.DS_Store
+.target
+.settings
+
+
+RUNNING_PID
