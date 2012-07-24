@@ -31,6 +31,7 @@ public/fahied
 
 
 RUNNING_PID
+<<<<<<< HEAD
 
 .target/Global$1$1.class
 	.target/Global$1$2$1$1$1.class
@@ -80,3 +81,5 @@ RUNNING_PID
 	.target/utils/MoreMatchers.class
 	.target/views/index.scala.html
 	.target/views/main.scala.html
+=======
+>>>>>>> dev
