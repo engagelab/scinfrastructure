@@ -81,7 +81,7 @@ public class GridFsHelper {
 
 	private static GridFS getGridFS( ) throws IOException, MongoException {
 		
-		String host = "imedialab18.uio.no";
+		String host = "localhost";
 		Mongo mongo = new Mongo(host , 27017);
 		DB db = mongo.getDB("scinfrastructure");
 		
