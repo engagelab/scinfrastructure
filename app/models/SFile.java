@@ -76,7 +76,7 @@ public class SFile extends Model{
     
     
  
-    public void deleteImage(String fileId) throws MongoException, IOException 
+    public void deleteFile(String fileId) throws MongoException, IOException 
     {
     	GridFsHelper.deleteFile(fileId);
     	

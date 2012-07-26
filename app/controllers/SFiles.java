@@ -64,6 +64,9 @@ public class SFiles extends Controller {
 
 	
 	
+	
+	
+	
 	public static Result uploadFile(String taskId, String runId) {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("file");
@@ -93,7 +96,7 @@ public class SFiles extends Controller {
 	
 	
 
-	public static Result showImage(String fileId) throws IOException {
+	public static Result downloadFile(String fileId) throws IOException {
 		
 		GridFSDBFile file = GridFsHelper.getFile(fileId);
 		
@@ -112,8 +115,11 @@ public class SFiles extends Controller {
 	
 	public static Result deleteFileById(String fileId) throws MongoException, IOException {
 		
-		WriteResult res = SFile.find.byId(fileId).delete();
-		return ok(res.getError());
+		SFile file = SFile.find.byId(fileId);
+		file.deleteFile(fileId);
+		
+		
+		return ok("deleted");
 	}
 		
 	
@@ -131,3 +137,4 @@ public class SFiles extends Controller {
 	
 
 }
+
