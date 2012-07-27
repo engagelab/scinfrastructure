@@ -138,16 +138,18 @@ GET						/rollcall/runId/					controllers.RollCalls.GetCurrentRunId
 
 
 #------------------------------ Document upload services ---------------------------------------#
-GET						/file/:fileId								controllers.SFiles.fetchFileById(fileId:String)
+GET							/doc										controllers.SDocuments.fetchAllDocuments
 
-GET						/file/task/:taskId							controllers.SFiles.fetchFilesByTaskId(taskId:String)
+GET							/doc/:docId								controllers.SDocuments.fetchDocumentById(docId:String)
 
-POST						/file/:taskId/:runId						controllers.SFiles.uploadFile(taskId:String, runId:String)
+GET							/doc/task/:taskId							controllers.SDocuments.fetchDocumentsByTaskId(taskId:String)
 
-DELETE						/file/:fileId								controllers.SFiles.deleteFileById(fileId:String)
+POST						/doc/:taskId/:runId						controllers.SDocuments.uploadDocument(taskId:String, runId:String)
+
+DELETE						/doc/:docId								controllers.SDocuments.deleteDocumentById(docId:String)
 
 
-GET						/downloadFile/:fileId						controllers.SFiles.downloadFile(fileId:String)
+GET							/getDco/:docId						controllers.SDocuments.getDocument(docId:String)
 
 
 

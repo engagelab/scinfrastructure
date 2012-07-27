@@ -5,12 +5,9 @@ import java.io.IOException;
 
 import java.util.Date;
 
-import org.bson.types.ObjectId;
-
 import utils.GridFsHelper;
 
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Indexed;
 import com.google.code.morphia.annotations.Property;
 import com.google.common.base.Objects;
 import com.mongodb.MongoException;
@@ -20,13 +17,9 @@ import com.mongodb.MongoException;
  * @author Muhammad Fahied
  */
 
-@Entity(value = "files", noClassnameStored = true, concern = "NORMAL")
+@Entity(value = "documents", noClassnameStored = true, concern = "NORMAL")
 
-public class SFile extends Model{
-	
-	@Indexed
-	@Property("id")
-	public String id = new ObjectId().toString();
+public class SDocument extends Model{
 	
 	@Property("date")
 	public String postedAt = new Date().toString();
@@ -51,16 +44,16 @@ public class SFile extends Model{
 
 	// FINDERS ----------
 
-    public static final Finder<SFile> find = new Finder<SFile>(SFile.class);
+    public static final Finder<SDocument> find = new Finder<SDocument>(SDocument.class);
 	
     // Constructors
-    public SFile() {
+    public SDocument() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
-    public SFile(File file, String fileName, String contentType, String taskId, int runId) throws IOException 
+    public SDocument(File file, String fileName, String contentType, String taskId, int runId) throws IOException 
     {
     	this.fileName = fileName;
     	this.contentType = contentType;
@@ -76,8 +69,9 @@ public class SFile extends Model{
     
     
  
-    public void deleteFile(String fileId) throws MongoException, IOException 
+    public void deleteDocument(String fileId) throws MongoException, IOException 
     {
+    	this.delete();
     	GridFsHelper.deleteFile(fileId);
     	
 	}
@@ -107,7 +101,7 @@ public class SFile extends Model{
 		//map.put("id", file.getId().toString());
 		//return Router.getFullUrl("Application.showImage", map);
 		
-		String uri = "/file/"+gridfsId;
+		String uri = "/doc/"+gridfsId;
 		return uri;
 		
 	}
