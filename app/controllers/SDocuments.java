@@ -135,10 +135,29 @@ public class SDocuments extends Controller {
 		SDocument doc = SDocument.find.filter("id", docId).get();
 		doc.deleteDocument(doc.fileId);
 		
-		
-		
 		return ok("deleted");
 	}
+	
+	
+	
+	
+public static Result deleteDocumentsByTaskId(String taskId) throws MongoException, IOException {
+		
+		// Remove our users
+        //Query<SDocument> doc = SDocument.datastore.createQuery( SDocument.class ).filter("id", docId);
+        //SDocument.datastore.delete( doc );
+		
+		List<SDocument> docs = SDocument.find.filter("taskId", taskId).asList();
+		
+		for (SDocument doc : docs) 
+		{
+			doc.deleteDocument(doc.fileId);
+
+		}
+		
+		return ok("deleted successfully");
+	}
+	
 	
 }
 
