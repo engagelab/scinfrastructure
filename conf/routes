@@ -120,6 +120,9 @@ POST					/scene/project/:projectId					controllers.SProjects.addScene(projectId:
 POST					/task/project/:projectId					controllers.SProjects.addTask(projectId:String)
 GET						/task/project/:projectId					controllers.SProjects.fetchTasksByProject(projectId:String)
 
+GET						/task/:taskId								controllers.SProjects.getNameOfTask(taskId:String)
+
+
 
 
 
@@ -140,16 +143,19 @@ GET						/rollcall/runId/					controllers.RollCalls.GetCurrentRunId
 #------------------------------ Document upload services ---------------------------------------#
 GET							/doc										controllers.SDocuments.fetchAllDocuments
 
-GET							/doc/:docId								controllers.SDocuments.fetchDocumentById(docId:String)
+GET							/doc/:docId									controllers.SDocuments.fetchDocumentById(docId:String)
 
 GET							/doc/task/:taskId							controllers.SDocuments.fetchDocumentsByTaskId(taskId:String)
 
-POST						/doc/:taskId/:runId						controllers.SDocuments.uploadDocument(taskId:String, runId:String)
+POST						/doc/:taskId/:taskName/:runId				controllers.SDocuments.uploadDocument(taskId:String, taskName:String, runId:String)
 
-DELETE						/doc/:docId								controllers.SDocuments.deleteDocumentById(docId:String)
+DELETE						/doc/:docId									controllers.SDocuments.deleteDocumentById(docId:String)
 
 
-GET							/getDco/:docId						controllers.SDocuments.getDocument(docId:String)
+GET							/getDoc/:docId								controllers.SDocuments.getDocument(docId:String)
+
+GET							/list/doc									controllers.SDocuments.list
+
 
 
 

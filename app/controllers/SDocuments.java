@@ -3,8 +3,13 @@ package controllers;
 
 import static play.libs.Json.toJson;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.apache.commons.io.IOUtils;
 
 import com.mongodb.MongoException;
@@ -18,8 +23,8 @@ import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Http.MultipartFormData.FilePart;
 import utils.GridFsHelper;
-
-
+import views.html.*;
+import views.html.*;
 
 /**
  * @author Muhammad Fahied
@@ -27,7 +32,14 @@ import utils.GridFsHelper;
 
 public class SDocuments extends Controller {
 
-	
+	public static Result list() {
+		
+		List<SDocument> docs = SDocument.find.asList();
+		
+		Set docSet = new HashSet(docs);
+
+		return ok(list.render(docSet));
+		}
 
 	public static Result fetchAllDocuments() {
 
@@ -80,7 +92,7 @@ public class SDocuments extends Controller {
 	
 	
 	
-	public static Result uploadDocument(String taskId, String runId) {
+	public static Result uploadDocument(String taskId, String taskName, String runId) {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("file");
 		
@@ -91,7 +103,7 @@ public class SDocuments extends Controller {
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			doc = new SDocument(filePart.getFile(), filePart.getFilename(), filePart.getContentType(), taskId, runIdINT);
+			doc = new SDocument(filePart.getFile(), filePart.getFilename(), filePart.getContentType(), taskId, taskName, runIdINT);
 			doc.save();
 		} catch (IOException e) {
 			flash("uploadError", e.getMessage());
@@ -109,10 +121,22 @@ public class SDocuments extends Controller {
 	
 	
 
-	public static Result getDocument(String docId) throws IOException {
+	public static Result getDocument(String fileId) throws IOException {
 		
-		GridFSDBFile file = GridFsHelper.getFile(docId);
+		GridFSDBFile file = GridFsHelper.getFile(fileId);
 		
+		//InputStream is = file.getInputStream();
+		 //return ok(is);
+		if (file == null) {
+			
+			return ok("No Document found!!");
+		}
+		
+		//custom filename signatures for Play 2.0.2
+		String filenameString = "attachment; filename="+file.getFilename();
+		
+		response().setHeader("Content-Disposition", filenameString);
+
 		byte[] bytes = IOUtils.toByteArray(file.getInputStream());
 		
 		return Results.ok(bytes).as(file.getContentType());

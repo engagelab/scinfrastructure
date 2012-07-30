@@ -1,0 +1,22 @@
+
+
+@(docSet: Set[SDocument])
+@default("Document by teachers") {
+<h1>All documents</h1>
+
+<dl>
+
+@for(doc <- docSet) {
+<dt>
+<a href="@routes.SDocuments.getDocument(doc.fileId)">
+@doc.fileName - @doc.taskName 
+</a>
+
+
+</dt>
+<dd>@doc.contentType</dd>
+}
+</dl>
+<a href="#" class="btn">
+<i class="icon-plus"></i> New Document</a>
+}

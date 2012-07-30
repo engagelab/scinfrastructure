@@ -221,7 +221,7 @@ public class SProjects extends Controller {
 	
 	public static Result fetchTaskById(String taskId) {
 		
-		SProject project =  SProject.find.field("taskId").equal(taskId).get();
+		SProject project =  SProject.find.disableValidation().field("stasks.id").equal(taskId).get();
 		
 		STask task = null;
 		for (STask p : project.stasks) {
@@ -232,6 +232,21 @@ public class SProjects extends Controller {
 		}
 		return ok(toJson(task));
 		
+	}
+	
+	
+	public static Result getNameOfTask(String taskId) {
+		
+		SProject project =  SProject.find.disableValidation().field("stasks.id").equal(taskId).get();
+		
+		STask task = null;
+		for (STask p : project.stasks) {
+			if (p.id.equals(taskId)) {
+				task = p;
+				break;
+			}
+		}
+		return ok(task.title);
 	}
 	
 	

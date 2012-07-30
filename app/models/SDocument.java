@@ -39,6 +39,9 @@ public class SDocument extends Model{
 	@Property("taskId")
 	public String taskId;
 	
+	@Property("taskName")
+	public String taskName;
+	
 	@Property("runId")
 	public int runId;
 
@@ -53,7 +56,7 @@ public class SDocument extends Model{
 	
 	
 	
-    public SDocument(File file, String fileName, String contentType, String taskId, int runId) throws IOException 
+    public SDocument(File file, String fileName, String contentType, String taskId, String taskName, int runId) throws IOException 
     {
     	this.fileName = fileName;
     	this.contentType = contentType;
@@ -61,6 +64,7 @@ public class SDocument extends Model{
     	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
     	this.filePath = createUriForFile(fileId);
     	this.taskId = taskId;
+    	this.taskName = taskName;
     	this.runId = runId;
     	
 	}
@@ -88,6 +92,7 @@ public class SDocument extends Model{
                 .add("fileId", fileId)
                 .add("filePath", filePath)
                 .add("taskId", taskId)
+                .add("fileName", fileName)
                 .add("runId", runId)
                 .toString();
     }
