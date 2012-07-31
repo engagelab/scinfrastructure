@@ -3,9 +3,7 @@ package controllers;
 
 import static play.libs.Json.toJson;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,12 +16,12 @@ import com.mongodb.gridfs.GridFSDBFile;
 import models.*;
 
 
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Http.MultipartFormData.FilePart;
 import utils.GridFsHelper;
-import views.html.*;
 import views.html.*;
 
 /**
@@ -31,7 +29,19 @@ import views.html.*;
  */
 
 public class SDocuments extends Controller {
+	
+	private static final Form<SDocument> documentForm = form(SDocument.class);
+	
+	
 
+	public static Result showBlank()
+	{
+		return ok(show.render(documentForm));
+		}
+	
+	
+	
+	
 	public static Result list() {
 		
 		List<SDocument> docs = SDocument.find.asList();
@@ -41,6 +51,40 @@ public class SDocuments extends Controller {
 		return ok(list.render(docSet));
 		}
 
+	
+	
+	public static Result save() {
+
+		Form<SDocument> boundForm = documentForm.bindFromRequest();
+		if (boundForm.hasErrors()) {
+			flash("error", "Please correct the form below.");
+			return badRequest(show.render(boundForm));
+		}
+		SDocument document = boundForm.get();
+		// SDocument.add(document);
+		flash("success",
+				String.format("Successfully added product %s", document));
+		return redirect(routes.SDocuments.list());
+
+	}
+	
+	public static Result show(String id) {
+		final SDocument document = SDocument.find.byId(id);
+		if (document == null) {
+		return notFound("Document %s does not exist.");
+		}
+		Form<SDocument> filledForm = documentForm.fill(document);
+		return ok(show.render(filledForm));
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Result fetchAllDocuments() {
 
 		List<SDocument> docs = SDocument.find.asList();

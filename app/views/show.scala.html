@@ -1,0 +1,19 @@
+ @(documentForm: Form[SDocument]) 
+ @import helper._ 
+ @import helper.twitterBootstrap._ 
+ @default("SDocument form") {
+
+<h1>Document form</h1>
+
+@helper.form(action = routes.SDocuments.save()) {
+
+<fieldset>
+	<legend>SDocument (@documentForm("name").valueOr("New"))</legend>
+	@helper.inputText(documentForm("fileName"))
+	@helper.inputText(documentForm("taskName"))
+	@helper.textarea(documentForm("runId"))
+</fieldset>
+
+<input type="submit" class="btn primary">
+
+} }

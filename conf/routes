@@ -154,7 +154,13 @@ DELETE						/doc/:docId									controllers.SDocuments.deleteDocumentById(docId:
 
 GET							/getDoc/:docId								controllers.SDocuments.getDocument(docId:String)
 
-GET							/list/doc									controllers.SDocuments.list
+
+GET							/doc/list/									controllers.SDocuments.list
+GET							/doc/show/									controllers.SDocuments.show(id:String)
+
+GET							/doc/add/									controllers.SDocuments.showBlank
+POST						/doc/save/									controllers.SDocuments.save
+
 
 
 

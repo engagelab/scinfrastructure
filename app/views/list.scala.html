@@ -8,7 +8,7 @@
 
 @for(doc <- docSet) {
 <dt>
-<a href="@routes.SDocuments.getDocument(doc.fileId)">
+<a href="@routes.SDocuments.show(doc.id)">
 @doc.fileName - @doc.taskName 
 </a>
 
@@ -17,6 +17,6 @@
 <dd>@doc.contentType</dd>
 }
 </dl>
-<a href="#" class="btn">
+<a href="@routes.SDocuments.showBlank()" class="btn">
 <i class="icon-plus"></i> New Document</a>
 }

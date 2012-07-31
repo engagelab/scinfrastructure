@@ -17,6 +17,8 @@ import com.mongodb.MongoException;
  * @author Muhammad Fahied
  */
 
+
+
 @Entity(value = "documents", noClassnameStored = true, concern = "NORMAL")
 
 public class SDocument extends Model{
