@@ -1,7 +1,9 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
@@ -81,6 +83,20 @@ public class SProject extends Model {
 	}
 	
 	
+    public static Map<String,String> taskMeta() {
+    	
+    	//hard coded to avoid authorization
+    	SProject project = SProject.find.get();
+    	
+    	
+
+        LinkedHashMap<String,String> metaInfo = new LinkedHashMap<String,String>();
+        
+        for(STask c: project.stasks) {
+        	metaInfo.put(c.id.toString(), c.title);
+        }
+        return metaInfo;
+    }
 	
 	
 	

@@ -155,11 +155,23 @@ DELETE						/doc/:docId									controllers.SDocuments.deleteDocumentById(docId:
 GET							/getDoc/:docId								controllers.SDocuments.getDocument(docId:String)
 
 
-GET							/doc/list/									controllers.SDocuments.list
-GET							/doc/show/									controllers.SDocuments.show(id:String)
+#-------Document upload interface----------#
 
-GET							/doc/add/									controllers.SDocuments.showBlank
-POST						/doc/save/									controllers.SDocuments.save
+# Computers list (look at the default values for pagination parameters)
+GET     /documents                  controllers.SDocuments.list()
+
+# Add document
+GET     /documents/new              controllers.SDocuments.create()
+POST    /documents                  controllers.SDocuments.save()
+
+# Edit existing documents
+GET     /documents/:id              controllers.SDocuments.edit(id:String)
+POST    /documents/:id              controllers.SDocuments.update(id:String)
+
+# Delete a documents
+POST    /documents/:id/delete       controllers.SDocuments.delete(id:String)
+
+
 
 
 

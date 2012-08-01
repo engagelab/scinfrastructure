@@ -249,7 +249,20 @@ public class SProjects extends Controller {
 		return ok(task.title);
 	}
 	
+	public static String getNameOfTaskString(String taskId) {
+		
+		SProject project =  SProject.find.disableValidation().field("stasks.id").equal(taskId).get();
+		
+		STask task = null;
+		for (STask p : project.stasks) {
+			if (p.id.equals(taskId)) {
+				task = p;
+				break;
+			}
+		}
+		return task.title;
+	}
 	
-	
+
 
 }

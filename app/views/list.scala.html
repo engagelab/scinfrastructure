@@ -1,22 +1,85 @@
 
 
-@(docSet: Set[SDocument])
-@default("Document by teachers") {
-<h1>All documents</h1>
-
-<dl>
-
-@for(doc <- docSet) {
-<dt>
-<a href="@routes.SDocuments.show(doc.id)">
-@doc.fileName - @doc.taskName 
-</a>
+@(documents: Set[SDocument])
 
 
-</dt>
-<dd>@doc.contentType</dd>
+
+
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="header">
+        @title
+    </th>
 }
-</dl>
-<a href="@routes.SDocuments.showBlank()" class="btn">
-<i class="icon-plus"></i> New Document</a>
+
+
+@main {
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+    } 
+    
+        <div id="actions">
+        <a class="btn success" id="add" href="@routes.SDocuments.create()">Add a new Document</a>
+    	</div>
+    	
+    	@if(documents.size == 0){
+        
+	        <div class="well">
+	            <em>Nothing to display</em>
+	        </div>
+        
+   		 } else {
+        
+		        <table class="computers zebra-striped">
+		            <thead>
+		                <tr>
+		                    @header("fileName", "Document Name")
+		                    @header("taskName", "Task Name")
+		                    @header("runId", "Run ID")
+		                    @header("postedAt", "Posted At")
+		                </tr>
+		            </thead>
+		            <tbody>
+	                @for(document <- documents) {
+	                    <tr>
+	                        <td>
+	                        <a href="@routes.SDocuments.getDocument(document.fileId)">@document.fileName</a>
+	                         <a href="@routes.SDocuments.edit(document.id)"> <img src="@routes.Assets.at("images/edit-icon.png")" height="15" width="15" alt="edit"/></a>
+	                        </td>
+	                        <td>
+	                            @if(document.taskName == null) {
+	                                <em>-</em>
+	                            } else {
+	                                @document.taskName
+	                            }
+	                        </td>
+	                        <td>
+	                            @if(document.runId == null) {
+	                                <em>-</em>
+	                            } else {
+	                                @document.runId
+	                            }
+	                        </td>
+							<td>
+	                            @if(document.postedAt == null) {
+	                                <em>-</em>
+	                            } else {
+	                                @document.postedAt.format("dd MMM yyyy")
+	                            }
+	                        </td>
+
+	                    </tr>
+	                }
+	
+	            </tbody>
+		            </table>
+            }
+            
+	
 }

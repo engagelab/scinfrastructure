@@ -1,0 +1,38 @@
+@(documentForm: Form[SDocument])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Add a document</h1>
+    
+    @form(routes.SDocuments.save(), 'enctype -> "multipart/form-data") {
+        
+        <fieldset>
+        
+            @inputText(documentForm("fileName"), '_label -> "Document name")
+            @inputText(documentForm("runId"), '_label -> "Run Id", '_value -> "3")
+            @inputFile(documentForm("file"), '_label -> "file")
+
+
+            @select(
+                documentForm("taskId"), 
+                options(SProject.taskMeta), 
+                '_label -> "Task Name", '_default -> "-- Choose a Task --",
+                '_showConstraints -> false
+            )
+            
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this document" class="btn primary"> or 
+            <a href="@routes.SDocuments.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}
+

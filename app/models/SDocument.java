@@ -31,9 +31,7 @@ public class SDocument extends Model{
     
 	@Property("fileName")
     public String fileName;
-	
-	@Property("contentType")
-	public String contentType;
+
 	
 	@Property("filePath")
     public String filePath;
@@ -61,7 +59,7 @@ public class SDocument extends Model{
     public SDocument(File file, String fileName, String contentType, String taskId, String taskName, int runId) throws IOException 
     {
     	this.fileName = fileName;
-    	this.contentType = contentType;
+    	//this.contentType = contentType;
     	//save file in GridFS and retrieve its ID to be stored in fileId
     	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
     	this.filePath = createUriForFile(fileId);
@@ -94,7 +92,7 @@ public class SDocument extends Model{
                 .add("fileId", fileId)
                 .add("filePath", filePath)
                 .add("taskId", taskId)
-                .add("fileName", fileName)
+                .add("taskName", taskName)
                 .add("runId", runId)
                 .toString();
     }
