@@ -25,9 +25,18 @@ public/fahied
 .idea
 .target
 
+<<<<<<< HEAD
 
 .target
 .settings
 
 
 RUNNING_PID
+=======
+.target/controllers/SPostits.class
+.metadata/*
+
+public/.DS_Store
+
+public/.DS_Store
+>>>>>>> ignore
