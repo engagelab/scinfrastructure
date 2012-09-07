@@ -35,7 +35,6 @@ public class GDocuments extends Controller{
 	
     
     
-    
 	public static Result addGDriveFolder() {
 		
 		//parse JSON from request body
