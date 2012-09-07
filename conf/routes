@@ -177,8 +177,10 @@ POST    /documents/:id/delete       controllers.SDocuments.delete(id:String)
 
 
 
+#-----------------------Google Drive local Interface ------------------#
 
-
+GET     			/gdocument/              	controllers.GDocuments.list
+POST     			/gdocument/           		controllers.GDocuments.addGDriveFolder
 
 
 
