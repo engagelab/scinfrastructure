@@ -1,0 +1,62 @@
+@(loginForm: Form[Application.Login])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+<html>
+    <head>
+        <title>SciWork</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+    </head>
+    <body>
+        
+        <header>
+            <a href="@routes.Application.index" id="logo"><span>SciWork</span>tasks</a>
+        </header>
+        
+        @helper.form(routes.Application.authenticate) {
+            
+            <h1>Sign in</h1>
+            
+            @if(loginForm.hasGlobalErrors) { 
+                <p class="error">
+                    @loginForm.globalError.message
+                </p>
+            }
+            
+            @if(flash.contains("success")) {
+                <p class="success">
+                    @flash.get("success")
+                </p>
+            }
+            
+            <fieldset>
+
+            @select(
+                loginForm("id"), 
+                options(SGroup.groupMeta), 
+                '_label -> "Group Name", '_default -> "-- Choose a Group --",
+                '_showConstraints -> false
+            )
+            
+             @inputText(loginForm("password"), '_label -> "Password")
+            
+             </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Login" class="btn primary">
+        </div>
+            
+        }
+        
+        <p class="note">
+            Try <em>guillaume@@sample.com</em> with <em>secret</em> as password.
+        </p>
+            
+    </body>
+</html>
+    
+
+
