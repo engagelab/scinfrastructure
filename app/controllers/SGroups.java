@@ -38,11 +38,11 @@ public static Result GetGroupInfo()
 		  final int runId = 3;
 		  List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
 		  
-		  List  l1 = new LinkedList();
+		  List<Map<String, String>>  l1 = new LinkedList<Map<String, String>>();
 		 
 		  for(SGroup g : groups)
 		  {
-			  Map metaInfo = new HashMap();
+			  Map<String, String> metaInfo = new HashMap<String, String>();
 			  metaInfo.put("id", g.id.toString());
 			  metaInfo.put("name", g.name);
 			  l1.add(metaInfo);
