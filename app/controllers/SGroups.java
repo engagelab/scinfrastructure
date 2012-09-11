@@ -17,13 +17,6 @@ import play.mvc.*;
 
 public class SGroups extends Controller {
 	
-	
-	
-	
-	
-	
-	
-	
 	/*
 	 * 
 	 * Group Services
@@ -57,10 +50,9 @@ public class SGroups extends Controller {
     	JsonNode node =  ctx().request().body().asJson();
     	
     	String name = node.get("name").asText();
-    	String password = node.get("password").asText();
     	int runId = node.get("runId").asInt();
 		
-    	SGroup group = new SGroup(name, password, runId);
+    	SGroup group = new SGroup(name, runId);
 		group.save();
 		// producing customized JSON response
 		//SGroup cGroup = group.datastore.createQuery(SGroup.class).retrievedFields(true, "name").get();

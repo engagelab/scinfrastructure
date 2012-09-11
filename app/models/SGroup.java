@@ -1,11 +1,7 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-
-import views.html.list;
 
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
@@ -22,9 +18,6 @@ public class SGroup extends Model {
 
 	@Property("name")
 	public String name;
-	
-	@Property("password")
-	public String password;
 	
 	@Property("runId")
 	public int runId;
@@ -49,10 +42,9 @@ public class SGroup extends Model {
 	public SGroup() {
 	}
 	
-	public SGroup(String name, String password, int runId) {
+	public SGroup(String name, int runId) {
 		super();
 		this.name = name;
-		this.password = password;
 		this.runId = runId;
 		this.susers = new ArrayList<SUser>();
 		this.spostits = new ArrayList<SPostit>();
@@ -61,38 +53,8 @@ public class SGroup extends Model {
 	}
 	
 	
-    /**
-     * Authenticate a User.
-     */
-    public static SGroup authenticate(String id, String password) {
-//        return find.where()
-//            .eq("id", id)
-//            .eq("password", password)
-//            .findUnique();
-    	
-    	return SGroup.find.filter("id", id).filter("password", password).get();
-    }
 	
-    
-    
-    public static Map<String,String> groupMeta() {
-    	
-    	//hard coded to avoid authorization
-    	;
-    	
-    	//TODO runId is hard-coded
-    	List<SGroup> groups = SGroup.find.filter("runId", 3).asList();
-    	
-        LinkedHashMap<String,String> metaInfo = new LinkedHashMap<String,String>();
-        
-        for(SGroup g: groups) {
-        	metaInfo.put(g.id.toString(), g.name);
-        }
-        return metaInfo;
-    }
 	
-    
-    
 	
 	//Queries
 	
@@ -145,8 +107,7 @@ public class SGroup extends Model {
     public String toString() {
         return Objects.toStringHelper(this).
         		add("_id", id.toString())
-        		.add("name", password)
-        		.add("password", name)
+        		.add("name", name)
                 .add("susers:", susers)
                 .add("spostits:", spostits)
                 .add("simages:", simages)
