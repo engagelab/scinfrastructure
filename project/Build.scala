@@ -12,6 +12,7 @@ object ApplicationBuild extends Build {
     "org.apache.camel" % "camel-bindy" % "2.9.2",
     "org.apache.camel" % "camel-jackson" % "2.9.2",
     "org.apache.camel" % "camel-http" % "2.9.2",
+    "crionics" %% "play2-authenticitytoken" % "1.0-SNAPSHOT",
 
 
 	//jbfilter
@@ -45,7 +46,8 @@ object ApplicationBuild extends Build {
     resolvers += "Codehaus Repository" at "http://repository.codehaus.org/",
     resolvers += "Morphia Repository" at "http://morphia.googlecode.com/svn/mavenrepo/",
     resolvers += "Ibiblio" at "http://www.ibiblio.org/maven2/",
-    resolvers += "Java.NET" at "http://download.java.net/maven/2"
+    resolvers += "Java.NET" at "http://download.java.net/maven/2",
+    resolvers += "Crionics Github Repository" at "http://orefalo.github.com/m2repo/releases/"
 
     //SbtIdeaPlugin.defaultClassifierPolicy := true
   )
