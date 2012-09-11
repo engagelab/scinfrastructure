@@ -1,38 +1,63 @@
 package controllers;
 
-//import com.google.code.morphia.Morphia;
-//import com.google.common.base.CharMatcher;
-//import com.google.common.base.Function;
-//import com.google.common.base.Strings;
-//import com.google.common.collect.Iterables;
-//import com.google.common.collect.Lists;
-//import com.google.inject.Inject;
-//import com.mongodb.BasicDBList;
-//import com.mongodb.BasicDBObject;
-//import com.mongodb.CommandResult;
-//import com.mongodb.DBObject;
-//import models.Model;
-//import models.PostcodeUnit;
-//import play.Logger;
-//import play.data.Form;
-//import play.data.validation.Constraints;
+import models.SGroup;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
-//
-//import javax.annotation.Nullable;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import static play.libs.Json.toJson;
+
 
 public class Application extends Controller {
 	
 
 	public static Result index() {
-return ok(index.render());
-}
+			return ok(index.render());
+	}
 	
+	
+ // -- Authentication
+    
+    public static class Login {
+        
+        public String id;
+        public String password;
+        
+        public String validate() {
+            if(SGroup.authenticate(id, password) == null) {
+                return "Invalid user or password";
+            }
+            return null;
+        }
+        
+    }
+    
+    
+    /**
+     * Login page.
+     */
+    public static Result login() {
+        return ok(
+            login.render(form(Login.class))
+        );
+    }
+	
+    
+    /**
+     * Handle login form submission.
+     */
+    public static Result authenticate() {
+        Form<Login> loginForm = form(Login.class).bindFromRequest();
+        if(loginForm.hasErrors()) {
+            return badRequest(login.render(loginForm));
+        } else {
+            session("id", loginForm.get().id);
+            return redirect(
+                routes.Application.index()
+            );
+        }
+    }
+    
+    
 	  
 //    @Inject
 //    public static Morphia morphia;
