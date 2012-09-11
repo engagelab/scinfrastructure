@@ -18,6 +18,9 @@ POST     				/group									controllers.SGroups.createGroup
 GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:String)
 GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
 
+GET						/groupInfo								controllers.SGroups.GetGroupInfo
+GET						/connect/:groupId/:password				controllers.SGroups.connect(groupId:String, password:String)
+
 
 
 

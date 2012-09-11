@@ -4,10 +4,16 @@ import static play.libs.Json.toJson;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import org.codehaus.jackson.JsonNode;
 import models.SGroup;
 import models.SUser;
+import play.libs.Json;
 import play.mvc.*;
 
 
@@ -15,7 +21,74 @@ import play.mvc.*;
  * @author Muhammad Fahied
  */
 
+
+
 public class SGroups extends Controller {
+	
+	/*
+	 * 
+	 * Authentication Services
+	 * 
+	 * */
+	
+
+public static Result GetGroupInfo()
+  {
+	  	  //runId is hardcoded as there will be only one run
+		  final int runId = 3;
+		  List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
+		  
+		  List  l1 = new LinkedList();
+		 
+		  for(SGroup g : groups)
+		  {
+			  Map metaInfo = new HashMap();
+			  metaInfo.put("id", g.id.toString());
+			  metaInfo.put("name", g.name);
+			  l1.add(metaInfo);
+		  }
+			
+			JsonNode node = Json.toJson(l1);
+			return ok(toJson(node));
+		  
+  }
+		  
+	
+	
+	  public static Result connect(String groupId, String password) {
+		  
+		  if(SGroup.find.filter("id", groupId).filter("password", password).get() == null)
+		  return status(401, "Not Authorized");
+		  else {
+			  return status(200, "OK");
+		}
+		  
+		  
+		  
+		  /*  HTTP STatus Codes
+		   * public static final int OK = 200;
+		  public static final int CREATED = 201;
+		  public static final int ACCEPTED = 202;
+		  public static final int PARTIAL_INFO = 203;
+		  public static final int NO_RESPONSE = 204;
+		  public static final int MOVED = 301;
+		  public static final int FOUND = 302;
+		  public static final int METHOD = 303;
+		  public static final int NOT_MODIFIED = 304;
+		  public static final int BAD_REQUEST = 400;
+		  public static final int UNAUTHORIZED = 401;
+		  public static final int PAYMENT_REQUIERED = 402;
+		  public static final int FORBIDDEN = 403;
+		  public static final int NOT_FOUND = 404;
+		  public static final int INTERNAL_ERROR = 500;
+		  public static final int NOT_IMPLEMENTED = 501;
+		  public static final int OVERLOADED = 502;
+		  public static final int GATEWAY_TIMEOUT = 503;
+		   * 
+		   * 
+		   * */
+	    }
+	
 	
 	/*
 	 * 
@@ -50,9 +123,10 @@ public class SGroups extends Controller {
     	JsonNode node =  ctx().request().body().asJson();
     	
     	String name = node.get("name").asText();
+    	String password = node.get("password").asText();
     	int runId = node.get("runId").asInt();
 		
-    	SGroup group = new SGroup(name, runId);
+    	SGroup group = new SGroup(name,password, runId);
 		group.save();
 		// producing customized JSON response
 		//SGroup cGroup = group.datastore.createQuery(SGroup.class).retrievedFields(true, "name").get();
