@@ -55,8 +55,12 @@ public static Result GetGroupInfo()
 		  
 	
 	
-	  public static Result connect(String groupId, String password) {
+	  public static Result connect() {
 		  
+		  JsonNode node =  ctx().request().body().asJson();
+	      String groupId = node.get("groupId").asText();
+	      String password = node.get("password").asText();
+	
 		  if(SGroup.find.filter("id", groupId).filter("password", password).get() == null)
 		  return status(401, "Not Authorized");
 		  else {
@@ -66,7 +70,7 @@ public static Result GetGroupInfo()
 		  
 		  
 		  /*  HTTP STatus Codes
-		   * public static final int OK = 200;
+		  public static final int OK = 200;
 		  public static final int CREATED = 201;
 		  public static final int ACCEPTED = 202;
 		  public static final int PARTIAL_INFO = 203;
