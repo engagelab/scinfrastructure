@@ -13,10 +13,13 @@ GET     				/										controllers.Application.index
 
 
 # Group Services
-GET     				/group									controllers.SGroups.fetchAllGroups
 POST     				/group									controllers.SGroups.createGroup
+GET     				/group									controllers.SGroups.fetchAllGroups
 GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:String)
 GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
+
+GET						/groupInfo								controllers.SGroups.GetGroupInfo
+POST					/connect								controllers.SGroups.connect
 
 
 
@@ -177,8 +180,10 @@ POST    /documents/:id/delete       controllers.SDocuments.delete(id:String)
 
 
 
+#-----------------------Google Drive local Interface ------------------#
 
-
+GET     			/gdocument/              	controllers.GDocuments.list
+POST     			/gdocument/           		controllers.GDocuments.addGDriveFolder
 
 
 
