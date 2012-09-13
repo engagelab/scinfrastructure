@@ -18,8 +18,6 @@ GET     				/group									controllers.SGroups.fetchAllGroups
 GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:String)
 GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
 
-GET						/groupInfo								controllers.SGroups.GetGroupInfo
-POST					/connect								controllers.SGroups.connect
 
 
 
@@ -28,14 +26,18 @@ POST					/connect								controllers.SGroups.connect
 
 # Member Services
 GET     				/member/group/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
-POST     				/member									controllers.SGroups.addMember
+POST     				/member/group							controllers.SGroups.addMember
 
 
-
-
+# Login Services
+GET						/groupInfo								controllers.SGroups.GetGroupInfo
+POST					/connect								controllers.SGroups.connect
 
 
 # Postit Services
+POST     				/postit/group							controllers.SPostits.addPostit
+
+
 GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
 GET						/group/postit/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 

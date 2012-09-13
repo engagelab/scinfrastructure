@@ -1,11 +1,8 @@
 package controllers;
 
 import static play.libs.Json.toJson;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +19,6 @@ import play.mvc.*;
  */
 
 
-
 public class SGroups extends Controller {
 	
 	/*
@@ -37,7 +33,6 @@ public static Result GetGroupInfo()
 	  	  //runId is hardcoded as there will be only one run
 		  final int runId = 3;
 		  List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
-		  
 		  List<Map<String, String>>  l1 = new LinkedList<Map<String, String>>();
 		 
 		  for(SGroup g : groups)
@@ -50,7 +45,6 @@ public static Result GetGroupInfo()
 			
 			JsonNode node = Json.toJson(l1);
 			return ok(toJson(node));
-		  
   }
 		  
 	
