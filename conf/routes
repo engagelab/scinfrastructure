@@ -23,7 +23,6 @@ GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:
 
 
 
-
 # Member Services
 GET     				/member/group/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
 POST     				/member/group							controllers.SGroups.addMember
