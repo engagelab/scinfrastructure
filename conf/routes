@@ -192,6 +192,15 @@ POST     			/gdocument/           		controllers.GDocuments.addGDriveFolder
 
 
 
+#-----------------------KeywordStore API ------------------#
+
+GET		/keywords 						controllers.IMKeyWordStore.fetchAllKeywordStore()
+POST	/keywords 						controllers.IMKeyWordStore.addKeywordStore()
+GET		/keywords/:groupId 				controllers.IMKeyWordStore.fetchKeywordStorebyGroup(groupId:String)
+PUT 	/keywords/:storeId 				controllers.IMKeyWordStore.updateKeywordStore(storeId:String)
+
+
+
 
 
 # Utilities for debugging server issues
