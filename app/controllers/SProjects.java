@@ -66,8 +66,6 @@ public class SProjects extends Controller {
 				
 				if ( task.sceneId.equals(sceneItem.get("id"))) 
 				{
-					System.out.println("task found");
-					//if (taskItem.size() >= 1) 
 					{
 						taskItem.put("id", task.id);
 						taskItem.put("title", task.title);
