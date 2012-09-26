@@ -100,8 +100,7 @@ POST					/comment/image/							controllers.SImages.postCommentOnImage
 
 #------------------------------ Project data set Services ---------------------------------------#
 
-# Menu Items
-GET     				/menu									controllers.SProjects.fetchMenuItems
+
 
 
 # Group Services
@@ -110,19 +109,22 @@ POST					/project								controllers.SProjects.addProject
 GET     				/project/title/:title					controllers.SProjects.fetchProjectByTitle(title:String)
 
 
+
+
+
 # Act Services
-POST					/act/:projectId						controllers.SProjects.addAct(projectId:String)
+POST					/act/project/:projectId						controllers.SProjects.addAct(projectId:String)
 
 
 # Scene Services
-POST					/scene/:projectId					controllers.SProjects.addScene(projectId:String)
+POST					/scene/project/:projectId					controllers.SProjects.addScene(projectId:String)
 
 
 # Task Services
-POST					/task/:projectId					controllers.SProjects.addTask(projectId:String)
-GET						/task/:projectId					controllers.SProjects.fetchTasksByProject(projectId:String)
+POST					/task/project/:projectId					controllers.SProjects.addTask(projectId:String)
+GET						/task/project/:projectId					controllers.SProjects.fetchTasksByProject(projectId:String)
 
-GET						/task/:taskId						controllers.SProjects.getNameOfTask(taskId:String)
+GET						/task/:taskId								controllers.SProjects.getNameOfTask(taskId:String)
 
 
 
