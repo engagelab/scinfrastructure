@@ -187,9 +187,6 @@ POST     			/gdocument/           		controllers.GDocuments.addGDriveFolder
 
 
 
-# Google Drive Wrapper Services
-#GET     			/gdrive              	controllers.GoogleDriveWrapper.talkingResult
-
 
 
 
