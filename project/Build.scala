@@ -13,9 +13,6 @@ object ApplicationBuild extends Build {
     "org.apache.camel" % "camel-jackson" % "2.9.2",
     "org.apache.camel" % "camel-http" % "2.9.2",
 
-    //Google Drive
-    //"com.google.apis" % "google-api-services-drive" % "v2-rev9-1.8.0-beta2",
-    //"com.google.apis" % "google-api-services-oauth2" %"v2-rev15-1.8.0-beta",
 
 	//jbfilter
 	//"org.jbfilter" % "jbfilter" % "1.6.1-SNAPSHOT",
@@ -49,7 +46,6 @@ object ApplicationBuild extends Build {
     resolvers += "Morphia Repository" at "http://morphia.googlecode.com/svn/mavenrepo/",
     resolvers += "Ibiblio" at "http://www.ibiblio.org/maven2/",
     resolvers += "Java.NET" at "http://download.java.net/maven/2"
-    //resolvers += "google-api Repository" at "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
 
     //SbtIdeaPlugin.defaultClassifierPolicy := true
   )
