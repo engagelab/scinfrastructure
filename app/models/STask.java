@@ -46,8 +46,9 @@ public class  STask{
 
    
    
-    public STask(String title, String actId, String sceneId) {
+    public STask(String title,String description, String actId, String sceneId) {
         this.title = title;
+        this.description = description;
         this.sceneId = sceneId;
         this.actId = actId;
     }
