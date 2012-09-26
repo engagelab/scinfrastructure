@@ -3,7 +3,11 @@ package controllers;
 import static play.libs.Json.toJson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import org.codehaus.jackson.JsonNode;
 import models.*;
 
@@ -29,7 +33,65 @@ public class SProjects extends Controller {
 		return ok(toJson(groups));
 	}
 	
+	/*
+	 * Map group = new HashMap();
+				group.put("name", "NewYork");
+				group.put("runId", 2);
+				
+				JsonNode node = Json.toJson(group);
+	 * */
+	
+	
+	
+	
+	public static Result fetchMenuItems() {
 
+		SProject menu = SProject.find.get();
+		
+		List<SScene> scenes = menu.sscenes;
+		List<STask> tasks = menu.stasks;
+		
+		List<Map<String, Object>> menuMap = new LinkedList<Map<String, Object>>();
+		
+		for(SScene scene : scenes)
+		{
+			Map<String, Object> sceneItem = new HashMap<String, Object>();
+			sceneItem.put("id", scene.id);
+			sceneItem.put("title", scene.title);
+			
+			List<Map<String, String>> taskMap = new LinkedList<Map<String, String>>();
+			for(STask task : tasks)
+			{
+				Map<String, String> taskItem = new HashMap<String, String>();
+				
+				if ( task.sceneId.equals(sceneItem.get("id"))) 
+				{
+					System.out.println("task found");
+					//if (taskItem.size() >= 1) 
+					{
+						taskItem.put("id", task.id);
+						taskItem.put("title", task.title);
+						taskItem.put("description", task.description);
+						taskMap.add(taskItem);
+					}
+				}
+				sceneItem.put("sstaks", taskMap);
+			}
+			
+			menuMap.add(sceneItem);
+		}
+		
+	    response().setContentType("application/json");
+	     
+		return ok(toJson(menuMap));
+	}
+
+	
+	
+	
+	
+	
+	
 	
 	public static Result addProject() {
 		
@@ -200,11 +262,12 @@ public class SProjects extends Controller {
 		// parse JSON from request body
 		JsonNode node = ctx().request().body().asJson();
 		String title = node.get("title").asText();
+		String description = node.get("description").asText();
 		String sceneId = node.get("sceneId").asText();
 		String actId = node.get("actId").asText();
 
 		SProject project = SProject.find.byId(projectId);
-		STask task = new STask(title, actId, sceneId);
+		STask task = new STask(title,description, actId, sceneId);
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}
