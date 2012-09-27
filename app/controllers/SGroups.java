@@ -28,7 +28,7 @@ public class SGroups extends Controller {
 	 * */
 	
 
-public static Result GetGroupInfo()
+public static Result getGroupInfo()
   {
 	  	  //runId is hardcoded as there will be only one run
 		  final int runId = 3;
@@ -40,6 +40,7 @@ public static Result GetGroupInfo()
 			  Map<String, String> metaInfo = new HashMap<String, String>();
 			  metaInfo.put("id", g.id.toString());
 			  metaInfo.put("name", g.name);
+			  metaInfo.put("colour", g.colour);
 			  l1.add(metaInfo);
 		  }
 			
@@ -123,8 +124,9 @@ public static Result GetGroupInfo()
     	String name = node.get("name").asText();
     	String password = node.get("password").asText();
     	int runId = node.get("runId").asInt();
+    	String colour = node.get("colour").asText();
 		
-    	SGroup group = new SGroup(name,password, runId);
+    	SGroup group = new SGroup(name,password, runId, colour);
 		group.save();
 		// producing customized JSON response
 		//SGroup cGroup = group.datastore.createQuery(SGroup.class).retrievedFields(true, "name").get();

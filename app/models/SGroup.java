@@ -22,6 +22,9 @@ public class SGroup extends Model {
 	@Property("password")
 	public String password;
 	
+	@Property("colour")
+	public String colour;
+	
 	@Property("runId")
 	public int runId;
     
@@ -45,11 +48,12 @@ public class SGroup extends Model {
 	public SGroup() {
 	}
 	
-	public SGroup(String name, String password, int runId) {
+	public SGroup(String name, String password, int runId, String colour) {
 		super();
 		this.name = name;
-		this.runId = runId;
 		this.password = password;
+		this.runId = runId;
+		this.colour = colour;
 		this.susers = new ArrayList<SUser>();
 		this.spostits = new ArrayList<SPostit>();
 		this.simages = new ArrayList<SImage>();

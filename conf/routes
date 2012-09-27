@@ -29,7 +29,7 @@ POST     				/member/group							controllers.SGroups.addMember
 
 
 # Login Services
-GET						/groupInfo								controllers.SGroups.GetGroupInfo
+GET						/groupInfo								controllers.SGroups.getGroupInfo
 POST					/connect								controllers.SGroups.connect
 
 
