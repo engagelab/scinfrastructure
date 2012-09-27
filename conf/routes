@@ -194,8 +194,8 @@ POST     			/gdocument/           		controllers.GDocuments.addGDriveFolder
 
 GET		/keywords 						controllers.IMKeyWordStore.fetchAllKeywordStore()
 POST	/keywords 						controllers.IMKeyWordStore.addKeywordStore()
-GET		/keywords/:groupId 				controllers.IMKeyWordStore.fetchKeywordStorebyGroup(groupId:String)
-PUT 	/keywords/:storeId 				controllers.IMKeyWordStore.updateKeywordStore(storeId:String)
+GET		/keywords/:groupId/:taskId 		controllers.IMKeyWordStore.fetchKeywordStorebyGroupAndTask(groupId:String, taskId:String)
+PUT 	/keywords		 				controllers.IMKeyWordStore.updateKeywordStore()
 
 
 

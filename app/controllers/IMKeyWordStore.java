@@ -62,10 +62,10 @@ public class IMKeyWordStore extends Controller{
 	
 	
 	
-	public static Result fetchKeywordStorebyGroup(String groupId)  {
+	public static Result fetchKeywordStorebyGroupAndTask(String groupId, String taskId)  {
 		
 		return async(
-			      WS.url(KeywordServerPath+"/"+groupId).get().map(
+			      WS.url(KeywordServerPath+"/"+groupId+"/"+taskId).get().map(
 			        new Function<WS.Response, Result>() {
 			          public Result apply(WS.Response response) {
 			            return ok(response.asJson());
@@ -80,11 +80,11 @@ public class IMKeyWordStore extends Controller{
 	
 	
 	
-public static Result updateKeywordStore(String storeId)  {
+public static Result updateKeywordStore()  {
 		
 	JsonNode node = request().body().asJson();
 	return async(
-		      WS.url(KeywordServerPath+"/"+storeId)
+		      WS.url(KeywordServerPath)
 		      .setHeader("Content-Type", "application/json")
 		      .put(node.toString()).map(
 		        new Function<WS.Response, Result>() {
