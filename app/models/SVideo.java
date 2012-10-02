@@ -22,14 +22,17 @@ public class  SVideo{
 	@Property("id")
 	public String id = new ObjectId().toString();
 
+	@Property("date")
+	public String postedAt = new Date().toString();
+	
 	@Property("title")
 	public String title;
 	
 	@Property("uri")
 	public String uri;
 	
-	@Property("date")
-	public String postedAt = new Date().toString();
+	@Property("isPortfolio")
+	public Boolean isPortfolio;
 
 	// Variables to store xy position of  on Web App
 	@Property("wxpos")
@@ -41,8 +44,6 @@ public class  SVideo{
 	@Property("taskId")
 	public String taskId;
 	
-	@Property("runId")
-	public int runId;
 	
 	@Embedded()
     public List <SComment> scomments;
@@ -58,11 +59,12 @@ public class  SVideo{
 		// TODO Auto-generated constructor stub
 	}
 
-    public SVideo(String title,String uri, String taskId, int runId) {
+    public SVideo(String title,String uri, String taskId) {
         this.uri = uri;
         this.title = title;
+        //By default all resources will not be part of student Portfolio
+        this.isPortfolio = false;
         this.taskId = taskId;
-        this.runId = runId;
     }
     
     // for flash
@@ -100,11 +102,11 @@ public class  SVideo{
         		.add("id", id)
                 .add("title", title)
                 .add("uri", uri)
+                .add("isPortfolio", isPortfolio)
                 .add("wxpos", wxpos)
                 .add("wypos", wypos)
                 .add("postedAt", postedAt)
                 .add("taskId", taskId)
-                .add("runId", runId)
                 .toString();
     }
 

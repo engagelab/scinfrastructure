@@ -89,11 +89,10 @@ public class SVideos extends Controller {
 		String title = node.get("title").asText();
 		String uri = node.get("uri").asText();
 		String taskId = node.get("taskId").asText();
-		int runId = node.get("runId").asInt();
 
 		String groupId = node.get("groupId").asText();
 
-		SVideo video = new SVideo(title, uri, taskId,runId);
+		SVideo video = new SVideo(title, uri, taskId);
 		SGroup group = SGroup.find.byId(groupId); // GUL
 		if (group.svideos == null) {
 			group.svideos = new ArrayList<SVideo>();
