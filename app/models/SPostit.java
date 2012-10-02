@@ -22,12 +22,15 @@ public class  SPostit{
 	@Indexed
 	@Property("id")
 	public String id = new ObjectId().toString();
+	
+	@Property("date")
+	public String postedAt = new Date().toString();
 
 	@Property("content")
 	public String content;
 	
-	@Property("date")
-	public String postedAt = new Date().toString();
+	@Property("isPortfolio")
+	public Boolean isPortfolio;
 	
 	// Variables to store xy position of  on Flash App
 	@Property("xpos")
@@ -46,8 +49,6 @@ public class  SPostit{
 	@Property("taskId")
 	public String taskId;
 	
-	@Property("runId")
-	public int runId;
 	
 	@Embedded()
     public List <SComment> scomments;
@@ -70,12 +71,12 @@ public class  SPostit{
     
     // for flash
     // {"content":"hurray", "xpos":120, "ypos":32}
-	public SPostit(String content, int xpos, int ypos, String taskId, int runId){
+	public SPostit(String content, int xpos, int ypos, String taskId){
 		this.content = content;
+		this.isPortfolio = false;
 		this.xpos = xpos;
 		this.ypos = ypos;
 		this.taskId = taskId;
-		this.runId = runId;
 	}
 	
 	// for web
@@ -116,7 +117,6 @@ public class  SPostit{
                 .add("wypos", wypos)
                 .add("postedAt", postedAt)
                 .add("taskId", taskId)
-                .add("runId", runId)
                 .toString();
     }
 

@@ -146,9 +146,8 @@ public class SPostits extends Controller {
 		int ypos = node.get("ypos").asInt();
 		String groupId = node.get("groupId").asText();
 		String taskId = node.get("taskId").asText();
-		int runId = node.get("runId").asInt();
 
-		SPostit postit = new SPostit(content, xpos, ypos, taskId, runId);
+		SPostit postit = new SPostit(content, xpos, ypos, taskId);
 		// SGroup group = SGroup.find.byId(groupId);
 		SGroup group = SGroup.find.byId(groupId);
 		if (group.spostits == null) {
@@ -162,7 +161,7 @@ public class SPostits extends Controller {
 
 	
 	
-	
+
 	
 	
 	
