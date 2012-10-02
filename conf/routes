@@ -160,7 +160,7 @@ GET							/getDoc/:docId								controllers.SDocuments.getDocument(docId:String)
 
 #-------Document upload interface----------#
 
-# Computers list (look at the default values for pagination parameters)
+# Document list (look at the default values for pagination parameters)
 GET     /documents                  controllers.SDocuments.list()
 
 # Add document
@@ -181,22 +181,26 @@ POST    /documents/:id/delete       controllers.SDocuments.delete(id:String)
 
 
 #-----------------------Google Drive local Interface ------------------#
-
-GET     			/gdocument/              	controllers.GDocuments.list
-POST     			/gdocument/           		controllers.GDocuments.addGDriveFolder
-
+GET     				/gdocument/              	controllers.GDocuments.list
+POST     				/gdocument/           		controllers.GDocuments.addGDriveFolder
 
 
 
 
+
+
+
+
+#------------------- Wrapper services for GoogleDrive Ruby Services -------------------------------#
+GET					/gdriveFiles/:taskTitle				controllers.WrapperOnRubyGDrive.fetchGDriveFiles(taskTitle:String)
 
 
 #-----------------------KeywordStore API ------------------#
 
-GET		/keywords 						controllers.IMKeyWordStore.fetchAllKeywordStore()
-POST	/keywords 						controllers.IMKeyWordStore.addKeywordStore()
-GET		/keywords/:groupId/:taskId 		controllers.IMKeyWordStore.fetchKeywordStorebyGroupAndTask(groupId:String, taskId:String)
-PUT 	/keywords		 				controllers.IMKeyWordStore.updateKeywordStore()
+GET					/keywords 						controllers.IMKeyWordStore.fetchAllKeywordStore()
+POST				/keywords 						controllers.IMKeyWordStore.addKeywordStore()
+GET					/keywords/:groupId/:taskId 		controllers.IMKeyWordStore.fetchKeywordStorebyGroupAndTask(groupId:String, taskId:String)
+PUT 				/keywords		 				controllers.IMKeyWordStore.updateKeywordStore()
 
 
 
