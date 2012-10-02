@@ -45,6 +45,9 @@ public class SImage {
 	@Property("filePath")
     public String filePath;
 	
+	@Property("isPortfolio")
+	public Boolean isPortfolio;
+	
 	@Property("wxpos")
     public int wxpos;
 	
@@ -54,8 +57,6 @@ public class SImage {
 	@Property("taskId")
 	public String taskId;
 	
-	@Property("runId")
-	public int runId;
 
 	@Embedded()
     public List <SComment> scomments;
@@ -71,15 +72,15 @@ public class SImage {
 	
 	
 	
-    public SImage(File file, String fileName, String contentType, String taskId, int runId) throws IOException 
+    public SImage(File file, String fileName, String contentType, String taskId) throws IOException 
     {
     	this.fileName = fileName;
     	this.contentType = contentType;
     	//save file in GridFS and retrieve its ID to be stored in fileId
     	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
     	this.filePath = createUriForFile(fileId);
+    	this.isPortfolio = false;
     	this.taskId = taskId;
-    	this.runId = runId;
     	
 	}
     
@@ -106,8 +107,8 @@ public class SImage {
                 .add("fileName", fileName)
                 .add("fileId", fileId)
                 .add("filePath", filePath)
+                  .add("isPortfolio", isPortfolio)
                 .add("taskId", taskId)
-                .add("runId", runId)
                 .toString();
     }
     

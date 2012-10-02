@@ -101,18 +101,21 @@ public class SImages extends Controller {
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId, 2);
-			SGroup group = SGroup.find.byId(groupId);
-
-			if (group.simages == null) {
-				group.simages = new ArrayList<SImage>();
-			}
-
-			group.addImage(image);
-			group.save();
-		} catch (IOException e) {
-			flash("uploadError", e.getMessage());
-		}
+				image = new SImage(filePart.getFile(),filePart.getFilename(),filePart.getContentType(), taskId);
+				SGroup group = SGroup.find.byId(groupId);
+	
+				if (group.simages == null) {
+					group.simages = new ArrayList<SImage>();
+				}
+	
+				group.addImage(image);
+				group.save();
+			} 
+		
+		catch (IOException e) {
+				flash("uploadError", e.getMessage());
+				}
+		
 		return ok(toJson(image));
 	}
 	
