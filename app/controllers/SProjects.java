@@ -48,6 +48,10 @@ public class SProjects extends Controller {
 
 		SProject menu = SProject.find.get();
 		
+		if (menu == null) {
+			int empty [] = null;
+			return ok(toJson(empty));
+		}
 		List<SScene> scenes = menu.sscenes;
 		List<STask> tasks = menu.stasks;
 		
