@@ -18,7 +18,6 @@ package controllers;
 //import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.*;
 //
 //import javax.annotation.Nullable;
 //import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class Application extends Controller {
 	
 
 	public static Result index() {
-return ok(index.render());
+return ok();
 }
 	
 	  
