@@ -28,7 +28,6 @@ public class  SVideo{
 	@Property("uri")
 	public String uri;
 	
-	
 	@Property("date")
 	public String postedAt = new Date().toString();
 

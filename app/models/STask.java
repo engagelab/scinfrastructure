@@ -1,5 +1,6 @@
 package models;
 
+
 import java.util.Date;
 
 
@@ -31,14 +32,16 @@ public class  STask{
 	@Property("description")
 	public String description;
 	
+	//FIXME should be enumeration
+	@Property("taskType")
+	public String taskType;
+	
 	@Property("sceneId")
 	public String sceneId;
 	
 	@Property("actId")
 	public String actId;
 	
-
-    
 	
    public STask() {
 	   
@@ -46,15 +49,26 @@ public class  STask{
 
    
    
-    public STask(String title,String description, String actId, String sceneId) {
-        this.title = title;
+    public STask(String title,String description, String taskType, String actId, String sceneId) {
+    	this.postedAt = new Date().toString(); 
+    	this.title = title;
         this.description = description;
+        this.taskType = taskType;
         this.sceneId = sceneId;
         this.actId = actId;
     }
     
     
 
+    public STask(String title,String description, String taskType, String sceneId) {
+    	this.postedAt = new Date().toString(); 
+    	this.title = title;
+        this.description = description;
+        this.taskType = taskType;
+        this.sceneId = sceneId;
+        //Hint : Not using Acts in this Run
+        this.actId = null;
+    }
     
     
     

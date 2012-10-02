@@ -72,6 +72,7 @@ public class SProjects extends Controller {
 						taskItem.put("id", task.id);
 						taskItem.put("title", task.title);
 						taskItem.put("description", task.description);
+						taskItem.put("taskType", task.taskType);
 						taskMap.add(taskItem);
 					}
 				}
@@ -264,10 +265,11 @@ public class SProjects extends Controller {
 		String title = node.get("title").asText();
 		String description = node.get("description").asText();
 		String sceneId = node.get("sceneId").asText();
-		String actId = node.get("actId").asText();
+		String taskType = node.get("taskType").asText();
 
 		SProject project = SProject.find.byId(projectId);
-		STask task = new STask(title,description, actId, sceneId);
+		
+		STask task = new STask(title, description, taskType, sceneId);
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}
