@@ -8,8 +8,8 @@ GET     				/										controllers.Application.index
 
 
 
-#------------------------------ Group data set Services ---------------------------------------#
 
+#------------------------------ Group data set Services -----------------------------------#
 
 
 # Group Services
@@ -19,18 +19,22 @@ GET     				/group/:groupId							controllers.SGroups.fetchGroupById(groupId:Str
 GET     				/group/run/:runId						controllers.SGroups.fetchGroupsByRunId(runId:String)
 
 
-
-
-
-
 # Member Services
 GET     				/member/group/:groupId					controllers.SGroups.fetchGroupMembers(groupId:String)
 POST     				/member/group							controllers.SGroups.addMember
 
 
+
+#------------------------------ Dashboard Services ---------------------------------------#
 # Login Services
 GET						/groupInfo								controllers.SGroups.getGroupInfo
 POST					/connect								controllers.SGroups.connect
+
+GET						/tasksCompleted/:groupId				controllers.SGroups.fetchTasksCompleted(groupId:String)
+POST					/tasksCompleted/:groupId/:taskId		controllers.SGroups.addToTasksCompletedSet(groupId:String, taskId:String)
+
+
+
 
 
 # Postit Services
@@ -90,9 +94,6 @@ PUT     				/group/image/:imageId					controllers.SImages.updateImageOnWeb(image
 
 GET						/comment/image/							controllers.SImages.fetchCommentsByImage(imageId:String)
 POST					/comment/image/							controllers.SImages.postCommentOnImage
-
-
-
 
 
 

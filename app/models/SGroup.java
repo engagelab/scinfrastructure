@@ -1,7 +1,10 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
@@ -24,6 +27,9 @@ public class SGroup extends Model {
 	
 	@Property("colour")
 	public String colour;
+	
+	@Property("taskCompleted")
+	public Set<String> taskCompleted;
 	
 	@Property("runId")
 	public int runId;
@@ -54,6 +60,7 @@ public class SGroup extends Model {
 		this.password = password;
 		this.runId = runId;
 		this.colour = colour;
+		this.taskCompleted = new HashSet<String>();
 		this.susers = new ArrayList<SUser>();
 		this.spostits = new ArrayList<SPostit>();
 		this.simages = new ArrayList<SImage>();

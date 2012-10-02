@@ -3,6 +3,7 @@ package controllers;
 import static play.libs.Json.toJson;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -28,25 +29,25 @@ public class SGroups extends Controller {
 	 * */
 	
 
-public static Result getGroupInfo()
-  {
-	  	  //runId is hardcoded as there will be only one run
-		  final int runId = 3;
-		  List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
-		  List<Map<String, String>>  l1 = new LinkedList<Map<String, String>>();
-		 
-		  for(SGroup g : groups)
-		  {
-			  Map<String, String> metaInfo = new HashMap<String, String>();
-			  metaInfo.put("id", g.id.toString());
-			  metaInfo.put("name", g.name);
-			  metaInfo.put("colour", g.colour);
-			  l1.add(metaInfo);
-		  }
-			
-			JsonNode node = Json.toJson(l1);
-			return ok(toJson(node));
-  }
+	public static Result getGroupInfo()
+	  {
+		  	  //runId is hardcoded as there will be only one run
+			  final int runId = 3;
+			  List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
+			  List<Map<String, String>>  l1 = new LinkedList<Map<String, String>>();
+			 
+			  for(SGroup g : groups)
+			  {
+				  Map<String, String> metaInfo = new HashMap<String, String>();
+				  metaInfo.put("id", g.id.toString());
+				  metaInfo.put("name", g.name);
+				  metaInfo.put("colour", g.colour);
+				  l1.add(metaInfo);
+			  }
+				
+				JsonNode node = Json.toJson(l1);
+				return ok(toJson(node));
+	  }
 		  
 	
 	
@@ -61,7 +62,36 @@ public static Result getGroupInfo()
 		  else {
 			  return status(200, "OK");
 		}
+	  }
 		  
+	
+		public static Result fetchTasksCompleted(String groupId)
+		  {
+			  	  //runId is hardcoded as there will be only one run
+			SGroup group = SGroup.find.byId(groupId);
+			if (group == null) {
+				int arrayt[] = null;
+				return ok(toJson(arrayt));
+			}
+			return ok(toJson(group.taskCompleted));
+			
+		  }
+		
+		public static Result addToTasksCompletedSet(String groupId, String taskId)
+		  {
+			  	  //runId is hardcoded as there will be only one run
+			SGroup group = SGroup.find.byId(groupId);
+			
+			if (group.taskCompleted == null) {
+				group.taskCompleted = new HashSet<String>();
+			}
+			
+			group.taskCompleted.add(taskId);
+			group.save();
+			return ok(toJson(group.taskCompleted));
+			
+		  }
+		
 		  
 		  
 		  /*  HTTP STatus Codes
@@ -86,7 +116,7 @@ public static Result getGroupInfo()
 		   * 
 		   * 
 		   * */
-	    }
+	   
 	
 	
 	/*
