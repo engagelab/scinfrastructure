@@ -136,7 +136,7 @@ GET						/rollcall/runId/					controllers.RollCalls.GetCurrentRunId
 
 
 #------------------- Wrapper services for GoogleDrive Ruby Services -------------------------------#
-GET					/gdriveFiles/:taskTitle				controllers.WrapperOnRubyGDrive.fetchGDriveFiles(taskTitle:String)
+POST					/gdriveFiles				controllers.WrapperOnRubyGDrive.fetchGDriveFiles
 
 
 #-----------------------KeywordStore API ------------------#

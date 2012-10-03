@@ -1,11 +1,10 @@
 package controllers;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 import org.codehaus.jackson.JsonNode;
 
-import play.libs.Json;
+
 import play.libs.WS;
 import play.libs.F.Function;
 import play.mvc.Controller;
@@ -17,11 +16,10 @@ public class WrapperOnRubyGDrive extends Controller{
 	public static String rubyServerPath = "http://localhost:4568/gdriveFiles";
 	
 	
-	public static Result fetchGDriveFiles(String taskTitle)  {
+	public static Result fetchGDriveFiles()  {
 		
-		Map<String, String> req = new HashMap<String, String>();
-		req.put("folderName", taskTitle);
-		JsonNode node = Json.toJson(req);
+		
+		JsonNode node = ctx().request().body().asJson();
 		
 		return async(
 			      WS.url(rubyServerPath)
