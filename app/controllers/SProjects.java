@@ -4,6 +4,7 @@ import static play.libs.Json.toJson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +83,7 @@ public class SProjects extends Controller {
 							taskMap.add(taskItem);
 						}
 					}
-					sceneItem.put("sstaks", taskMap);
+					sceneItem.put("stasks", taskMap);
 				}
 				
 			}
@@ -247,10 +248,10 @@ public class SProjects extends Controller {
 	public static Result fetchTasksByProject(String projectId) {
 		
 		SProject project = SProject.find.byId(projectId);
-		List<STask> tasks = project.stasks;
-		if (tasks == null) {
-			return ok("[]");
+		if (project.stasks == null) {
+			project.stasks = new ArrayList<STask>();;
 		}
+		List<STask> tasks = project.stasks;
 		return ok(toJson(tasks));
 	}
 	
@@ -295,6 +296,14 @@ public class SProjects extends Controller {
 	public static Result fetchTaskById(String taskId) {
 		
 		SProject project =  SProject.find.disableValidation().field("stasks.id").equal(taskId).get();
+		if (project == null) 
+		{
+			return ok(toJson(""));
+		}
+		
+		if (project.stasks == null) {
+			project.stasks = new ArrayList<STask>();
+		}
 		
 		STask task = null;
 		for (STask p : project.stasks) {
