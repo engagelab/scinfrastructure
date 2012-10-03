@@ -69,9 +69,8 @@ public class SGroups extends Controller {
 		  {
 			  	  //runId is hardcoded as there will be only one run
 			SGroup group = SGroup.find.byId(groupId);
-			if (group == null) {
-				int arrayt[] = null;
-				return ok(toJson(arrayt));
+			if (group.taskCompleted == null) {
+				group.taskCompleted = new HashSet<String>();
 			}
 			return ok(toJson(group.taskCompleted));
 			
