@@ -295,12 +295,10 @@ public class SProjects extends Controller {
 	
 	public static Result fetchTaskById(String taskId) {
 		
-		SProject project =  SProject.find.disableValidation().field("stasks.id").equal(taskId).get();
-		if (project == null) 
-		{
-			return ok(toJson(""));
-		}
-		
+		//SProject project =  SProject.find.disableValidation().field("stasks.id").equal(taskId).get();
+		//There is only one project in our experiment
+		SProject project =  SProject.find.get();
+
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}
@@ -311,6 +309,9 @@ public class SProjects extends Controller {
 				task = p;
 				break;
 			}
+		}
+		if (task == null) {
+			return ok();
 		}
 		return ok(toJson(task));
 		
