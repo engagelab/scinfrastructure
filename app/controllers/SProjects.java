@@ -64,25 +64,29 @@ public class SProjects extends Controller {
 			sceneItem.put("title", scene.title);
 			
 			List<Map<String, String>> taskMap = new LinkedList<Map<String, String>>();
-			for(STask task : tasks)
-			{
-				Map<String, String> taskItem = new HashMap<String, String>();
-				
-				if ( task.sceneId.equals(sceneItem.get("id"))) 
+			if (tasks != null) {
+
+				for(STask task : tasks)
 				{
-					System.out.println("task found");
-					//if (taskItem.size() >= 1) 
+					Map<String, String> taskItem = new HashMap<String, String>();
+					
+					if ( task.sceneId.equals(sceneItem.get("id"))) 
 					{
-						taskItem.put("id", task.id);
-						taskItem.put("title", task.title);
-						taskItem.put("description", task.description);
-						taskItem.put("taskType", task.taskType);
-						taskMap.add(taskItem);
+						System.out.println("task found");
+						//if (taskItem.size() >= 1) 
+						{
+							taskItem.put("id", task.id);
+							taskItem.put("title", task.title);
+							taskItem.put("description", task.description);
+							taskItem.put("taskType", task.taskType);
+							taskMap.add(taskItem);
+						}
 					}
+					sceneItem.put("sstaks", taskMap);
 				}
-				sceneItem.put("sstaks", taskMap);
+				
 			}
-			
+
 			menuMap.add(sceneItem);
 		}
 		
