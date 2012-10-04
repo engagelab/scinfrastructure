@@ -276,10 +276,11 @@ public class SProjects extends Controller {
 		String description = node.get("description").asText();
 		String sceneId = node.get("sceneId").asText();
 		String taskType = node.get("taskType").asText();
+		String icon = node.get("icon").asText();
 
 		SProject project = SProject.find.byId(projectId);
 		
-		STask task = new STask(title, description, taskType, sceneId);
+		STask task = new STask(title, description, taskType, icon,sceneId);
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}
