@@ -25,7 +25,7 @@ POST     				/member/group							controllers.SGroups.addMember
 
 
 
-#------------------------------ Dashboard Services ---------------------------------------#
+#------------------------------ Dash board Services ---------------------------------------#
 # Login Services
 GET						/groupInfo								controllers.SGroups.getGroupInfo
 POST					/connect								controllers.SGroups.connect
@@ -33,6 +33,7 @@ POST					/connect								controllers.SGroups.connect
 GET						/tasksCompleted/:groupId				controllers.SGroups.fetchTasksCompleted(groupId:String)
 POST					/tasksCompleted/:groupId/:taskId		controllers.SGroups.addToTasksCompletedSet(groupId:String, taskId:String)
 
+GET						/contributions/:groupId/:taskId			controllers.Portfolio.fetchGroupContributionsByTask(groupId:String, taskId:String)
 
 
 
