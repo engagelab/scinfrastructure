@@ -222,11 +222,13 @@ public class SProjects extends Controller {
 		
 		// parse JSON from request body
 		JsonNode node = ctx().request().body().asJson();
-		String actId = node.get("actId").asText();
+		
 		String title = node.get("title").asText();
+		String icon = node.get("icon").asText();
+		String actId = node.get("actId").asText();
 				
 		SProject project = SProject.find.byId(projectId);
-		SScene scene = new SScene(title, actId);
+		SScene scene = new SScene(title,icon, actId);
 		if (project.sscenes == null) {
 			project.sscenes = new ArrayList<SScene>();
 		}

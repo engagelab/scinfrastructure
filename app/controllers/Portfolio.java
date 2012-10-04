@@ -32,7 +32,7 @@ public class Portfolio extends Controller{
 		
 		if (videos != null) {
 			
-			for(SVideo video :videos)
+			for(SVideo video : videos)
 			{
 				if (video.taskId == taskId) {
 					tvideos.add(video);
@@ -64,7 +64,7 @@ public class Portfolio extends Controller{
 		Map<String, Object>  portfolioMap = new HashMap<String, Object>();
 		portfolioMap.put("spostits", tpostits);
 		portfolioMap.put("simages", timages);
-		portfolioMap.put("svideos", tvideos);
+		portfolioMap.put("svideos", videos);
 
 		return ok(toJson(portfolioMap));
 	}

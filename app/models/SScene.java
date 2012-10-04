@@ -27,6 +27,10 @@ public class  SScene{
 	@Property("title")
 	public String title;
 	
+	@Property("icon")
+	public String icon;
+	
+	
 	@Property("actId")
 	public String actId;
 	
@@ -39,8 +43,9 @@ public class  SScene{
 
    
    
-    public SScene(String title, String actId) {
+    public SScene(String title, String icon, String actId) {
         this.title = title;
+        this.icon = icon;
         this.actId = actId;
     }
     
@@ -51,6 +56,8 @@ public class  SScene{
     public String toString() {
         return Objects.toStringHelper(this)
                 .add("title", title)
+                .add("icon", icon)
+                .add("actId", actId)
                 .toString();
     }
 
