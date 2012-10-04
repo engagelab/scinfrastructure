@@ -112,18 +112,18 @@ GET     				/project/title/:title					controllers.SProjects.fetchProjectByTitle(
 
 
 # Act Services
-POST					/act/:projectId						controllers.SProjects.addAct(projectId:String)
+POST					/act/:projectId							controllers.SProjects.addAct(projectId:String)
 
 
 # Scene Services
-POST					/scene/:projectId					controllers.SProjects.addScene(projectId:String)
+POST					/scene/:projectId						controllers.SProjects.addScene(projectId:String)
 
 
 # Task Services
-POST					/task/project/:projectId					controllers.SProjects.addTask(projectId:String)
-GET						/task/project/:projectId					controllers.SProjects.fetchTasksByProject(projectId:String)
+POST					/task/project/:projectId				controllers.SProjects.addTask(projectId:String)
+GET						/task/project/:projectId				controllers.SProjects.fetchTasksByProject(projectId:String)
 
-GET						/task/:taskId						controllers.SProjects.fetchTaskById(taskId:String)
+GET						/task/:taskId							controllers.SProjects.fetchTaskById(taskId:String)
 
 
 
