@@ -129,6 +129,10 @@ public class SVideos extends Controller {
 
 		JsonNode node = ctx().request().body().asJson();
 		String videoId = node.get("id").asText();
+		if (SGroup.find.field("svideos.id").equal(videoId).get() == null) {
+			return status(401, "Not Authorized");
+		}  
+		
 		int xpos = node.get("xpos").asInt();
 		int ypos = node.get("ypos").asInt();
 		Boolean  isPortfolio =node.get("isPortfolio").asBoolean();
@@ -139,16 +143,15 @@ public class SVideos extends Controller {
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("svideos.$.xpos", xpos).set("svideos.$.ypos", ypos).set("svideos.$.isPortfolio", isPortfolio);
 		
-		SGroup group = SGroup.datastore.findAndModify(query, ops);
-
-		SVideo video = null;
-		for (SVideo p : group.svideos) {
-			if (p.id.equals(videoId)) {
-				video = p;
-				break;
-			}
-		}
-		return ok(toJson(video));
+		SGroup group = SGroup.datastore.findAndModify(query, ops); 
+		  return status(200, "OK");
+//		SVideo video = null;
+//		for (SVideo p : group.svideos) {
+//			if (p.id.equals(videoId)) {
+//				video = p;
+//				break;
+//			}
+//		}
 
 	}
 
