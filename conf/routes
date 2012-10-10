@@ -91,7 +91,7 @@ DELETE     				/image/:imageId							controllers.SImages.deleteImageById(imageId
 
 
 GET						/image/:imageId							controllers.SImages.showImage(imageId:String)
-PUT     				/group/image/:imageId					controllers.SImages.updateImageOnWeb(imageId:String)
+PUT     				/group/image/							controllers.SImages.updateImage()
 
 GET						/comment/image/							controllers.SImages.fetchCommentsByImage(imageId:String)
 POST					/comment/image/							controllers.SImages.postCommentOnImage

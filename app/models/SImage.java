@@ -48,11 +48,11 @@ public class SImage {
 	@Property("isPortfolio")
 	public Boolean isPortfolio;
 	
-	@Property("wxpos")
-    public int wxpos;
+	@Property("xpos")
+    public int xpos;
 	
-	@Property("wypos")
-    public int wypos;
+	@Property("ypos")
+    public int ypos;
 	
 	@Property("taskId")
 	public String taskId;

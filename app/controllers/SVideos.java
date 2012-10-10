@@ -143,7 +143,7 @@ public class SVideos extends Controller {
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("svideos.$.xpos", xpos).set("svideos.$.ypos", ypos).set("svideos.$.isPortfolio", isPortfolio);
 		
-		SGroup group = SGroup.datastore.findAndModify(query, ops); 
+		SGroup.datastore.findAndModify(query, ops); 
 		  return status(200, "OK");
 //		SVideo video = null;
 //		for (SVideo p : group.svideos) {

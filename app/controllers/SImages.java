@@ -150,29 +150,30 @@ public class SImages extends Controller {
 	
 	
 	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
-	public static Result updateImageOnWeb(String imageId ) {
+	public static Result updateImage() {
 		
 		JsonNode node = ctx().request().body().asJson();
+		String imageId = node.get("xpos").asText();
 		
-		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wypos").asInt();
+		if (SGroup.find.field("svideos.id").equal(imageId).get() == null) {
+			return status(401, "Not Authorized");
+		} 
+		
+		int xpos = node.get("xpos").asInt();
+		int ypos = node.get("ypos").asInt();
+		Boolean  isPortfolio =node.get("isPortfolio").asBoolean();
 		
 		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("simages.id").equal(imageId);
 		UpdateOperations<SGroup> ops = SGroup.datastore.createUpdateOperations(SGroup.class).disableValidation()
-				.set("simages.$.wxpos", wxpos)
-				.set("simages.$.wypos", wypos);
+				.set("simages.$.xpos", xpos)
+				.set("simages.$.ypos", ypos)
+				.set("simages.$.isPortfolio", isPortfolio);
 		
-		SGroup group = SGroup.datastore.findAndModify(query, ops);
+		SGroup.datastore.findAndModify(query, ops);
 
-		SImage image = null;
-		for (SImage p : group.simages) {
-			if (p.id.equals(imageId)) {
-				image = p;
-				break;
-			}
-		}
-		return ok(toJson(image));
+		return status(200, "OK");
+		
 	}
 
 	
