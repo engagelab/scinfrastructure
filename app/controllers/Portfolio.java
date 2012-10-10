@@ -2,12 +2,14 @@ package controllers;
 
 import static play.libs.Json.toJson;
 
+
+
+import models.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import models.*;
 
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -28,14 +30,17 @@ public class Portfolio extends Controller{
 		List<SImage> timages = new ArrayList<SImage>();
 		List<SPostit> tpostits = new ArrayList<SPostit>();
 		
+
+		
 		// FIXME use java templates
 		
 		if (videos != null) {
 			
 			for(SVideo video : videos)
 			{
-				if (video.taskId == taskId) {
+				if (video.taskId.equals(taskId) ) {
 					tvideos.add(video);
+					System.out.println("ya ya");
 				}
 			}
 		}
@@ -44,7 +49,7 @@ public class Portfolio extends Controller{
 			
 			for(SImage image :images)
 			{
-				if (image.taskId == taskId) {
+				if (image.taskId.equals(taskId)) {
 					timages.add(image);
 				}
 			}
@@ -55,16 +60,18 @@ public class Portfolio extends Controller{
 			
 			for(SPostit postit :postits)
 			{
-				if (postit.taskId == taskId) {
+				if (postit.equals(taskId)) {
 					tpostits.add(postit);
 				}
 			}
 		}
 		
+		
+		
 		Map<String, Object>  portfolioMap = new HashMap<String, Object>();
 		portfolioMap.put("spostits", tpostits);
 		portfolioMap.put("simages", timages);
-		portfolioMap.put("svideos", videos);
+		portfolioMap.put("svideos", tvideos);
 
 		return ok(toJson(portfolioMap));
 	}
