@@ -71,7 +71,7 @@ POST     				/group/video/							controllers.SVideos.addVideo
 DELETE     				/video/:videoId							controllers.SVideos.deleteVideoById(videoId:String)
 
 
-PUT     				/group/video/:videoId					controllers.SVideos.updateVideoOnWeb(videoId:String)
+PUT     				/group/video/							controllers.SVideos.updateVideo()
 
 
 POST					/comment/video/							controllers.SVideos.postCommentOnVideo

@@ -35,11 +35,11 @@ public class  SVideo{
 	public Boolean isPortfolio;
 
 	// Variables to store xy position of  on Web App
-	@Property("wxpos")
-	public int wxpos;
+	@Property("xpos")
+	public int xpos;
 	
-	@Property("wypos")
-	public int wypos;
+	@Property("ypos")
+	public int ypos;
 	
 	@Property("taskId")
 	public String taskId;
@@ -69,9 +69,9 @@ public class  SVideo{
     
     // for flash
     // {"content":"hurray", "xpos":120, "ypos":32}
-	public SVideo(int wxpos, int wypos){
-		this.wxpos = wxpos;
-		this.wypos = wypos;
+	public SVideo(int xpos, int ypos){
+		this.xpos = xpos;
+		this.ypos = ypos;
 	}
 	
 	
@@ -103,8 +103,8 @@ public class  SVideo{
                 .add("title", title)
                 .add("uri", uri)
                 .add("isPortfolio", isPortfolio)
-                .add("wxpos", wxpos)
-                .add("wypos", wypos)
+                .add("xpos", xpos)
+                .add("ypos", ypos)
                 .add("postedAt", postedAt)
                 .add("taskId", taskId)
                 .toString();

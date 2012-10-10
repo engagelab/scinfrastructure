@@ -125,20 +125,19 @@ public class SVideos extends Controller {
 	 */
 
 	// TODO : Validation required
-	public static Result updateVideoOnWeb(String videoId) {
+	public static Result updateVideo() {
 
 		JsonNode node = ctx().request().body().asJson();
-		// String videoId2 = node.get("videoId").asText();
-		int wxpos = node.get("wxpos").asInt();
-		int wypos = node.get("wypos").asInt();
-
-	
+		String videoId = node.get("id").asText();
+		int xpos = node.get("xpos").asInt();
+		int ypos = node.get("ypos").asInt();
+		Boolean  isPortfolio =node.get("isPortfolio").asBoolean();
 		
 		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("svideos.id").equal(videoId);
 		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
-				.set("svideos.$.wxpos", wxpos).set("svideos.$.wypos", wypos);
+				.set("svideos.$.xpos", xpos).set("svideos.$.ypos", ypos).set("svideos.$.isPortfolio", isPortfolio);
 		
 		SGroup group = SGroup.datastore.findAndModify(query, ops);
 
@@ -153,6 +152,14 @@ public class SVideos extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Result deleteVideoById(String videoId) {
 
 		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
