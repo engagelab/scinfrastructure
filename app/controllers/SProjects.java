@@ -55,6 +55,7 @@ public class SProjects extends Controller {
 		List<SScene> scenes = menu.sscenes;
 		List<STask> tasks = menu.stasks;
 		
+		
 		List<Map<String, Object>> menuMap = new LinkedList<Map<String, Object>>();
 		
 		for(SScene scene : scenes)
@@ -62,6 +63,7 @@ public class SProjects extends Controller {
 			Map<String, Object> sceneItem = new HashMap<String, Object>();
 			sceneItem.put("id", scene.id);
 			sceneItem.put("title", scene.title);
+			sceneItem.put("icon", scene.icon);
 			
 			List<Map<String, String>> taskMap = new LinkedList<Map<String, String>>();
 			if (tasks != null) {
