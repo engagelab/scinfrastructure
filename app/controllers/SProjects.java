@@ -72,13 +72,14 @@ public class SProjects extends Controller {
 					
 					if ( task.sceneId.equals(sceneItem.get("id"))) 
 					{
-						System.out.println("task found");
+						//System.out.println("task found");
 						//if (taskItem.size() >= 1) 
 						{
 							taskItem.put("id", task.id);
 							taskItem.put("title", task.title);
 							taskItem.put("description", task.description);
 							taskItem.put("taskType", task.taskType);
+							taskItem.put("icon", task.icon);
 							taskMap.add(taskItem);
 						}
 					}
