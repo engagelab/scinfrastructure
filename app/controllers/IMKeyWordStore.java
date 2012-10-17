@@ -46,7 +46,8 @@ public class IMKeyWordStore extends Controller{
 	public static Result fetchAllKeywordStore()  {
 		
 		return async(
-			      WS.url(KeywordServerPath).get().map(
+			      WS.url(KeywordServerPath)
+			      .get().map(
 			        new Function<WS.Response, Result>() {
 			          public Result apply(WS.Response response) {
 			            return ok(response.asJson());
@@ -65,7 +66,8 @@ public class IMKeyWordStore extends Controller{
 	public static Result fetchKeywordStorebyGroupAndTask(String groupId, String taskId)  {
 		
 		return async(
-			      WS.url(KeywordServerPath+"/"+groupId+"/"+taskId).get().map(
+			      WS.url(KeywordServerPath+"/"+groupId+"/"+taskId)
+			      .get().map(
 			        new Function<WS.Response, Result>() {
 			          public Result apply(WS.Response response) {
 			            return ok(response.asJson());

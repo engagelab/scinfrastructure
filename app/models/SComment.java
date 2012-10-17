@@ -18,7 +18,7 @@ public class  SComment{
 	public String content;
 	
 	@Property("date")
-	public String postedAt = new Date().toString();;
+	public String postedAt = new Date().toString();
 	//public Date postedAt;
 
     
