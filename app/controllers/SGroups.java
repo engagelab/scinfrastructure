@@ -76,17 +76,36 @@ public class SGroups extends Controller {
 			
 		  }
 		
-		public static Result addToTasksCompletedSet(String groupId, String taskId)
+		public static Result addToTasksCompletedSet()
 		  {
+			JsonNode node =  ctx().request().body().asJson();
+			String groupId = node.get("groupId").asText();
+			String taskId = node.get("taskId").asText();
+			Boolean isTaskCompleted = node.get("isTaskCompleted").asBoolean();
+			
 			  	  //runId is hardcoded as there will be only one run
 			SGroup group = SGroup.find.byId(groupId);
+			
+			if (group == null) {
+				group = new SGroup();
+				return ok(toJson(group.taskCompleted));
+			}
+			
 			
 			if (group.taskCompleted == null) {
 				group.taskCompleted = new HashSet<String>();
 			}
 			
-			group.taskCompleted.add(taskId);
-			group.save();
+			if (isTaskCompleted) {
+				group.taskCompleted.add(taskId);
+				group.save();
+			}
+			
+			else if (!isTaskCompleted) {
+				group.taskCompleted.remove(taskId);
+				group.save();
+			}
+			
 			return ok(toJson(group.taskCompleted));
 			
 		  }
