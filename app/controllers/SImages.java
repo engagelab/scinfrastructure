@@ -153,9 +153,9 @@ public class SImages extends Controller {
 	public static Result updateImage() {
 		
 		JsonNode node = ctx().request().body().asJson();
-		String imageId = node.get("xpos").asText();
+		String imageId = node.get("id").asText();
 		
-		if (SGroup.find.field("svideos.id").equal(imageId).get() == null) {
+		if (SGroup.find.field("simages.id").equal(imageId).get() == null) {
 			return status(401, "Not Authorized");
 		} 
 		
