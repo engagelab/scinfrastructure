@@ -30,7 +30,7 @@ POST     				/member/group							controllers.SGroups.addMember
 GET						/groupInfo								controllers.SGroups.getGroupInfo
 POST					/connect								controllers.SGroups.connect
 
-GET						/tasksCompleted/:groupId				 +controllers.SGroups.fetchTasksCompleted(groupId:String)
+GET						/tasksCompleted/:groupId				 controllers.SGroups.fetchTasksCompleted(groupId:String)
 PUP						/tasksCompleted/						controllers.SGroups.addToTasksCompletedSet()
 
 GET						/contributions/:groupId/:taskId			controllers.Portfolio.fetchGroupContributionsByTask(groupId:String, taskId:String)
