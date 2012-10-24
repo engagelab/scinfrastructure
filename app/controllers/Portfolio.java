@@ -29,9 +29,6 @@ public class Portfolio extends Controller{
 		List<SVideo> tvideos = new ArrayList<SVideo>();
 		List<SImage> timages = new ArrayList<SImage>();
 	
-		
-
-		
 		// FIXME use java templates
 		
 		if (videos != null) {
