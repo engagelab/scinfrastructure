@@ -37,8 +37,6 @@ public class SGroup extends Model {
 	@Reference()
     public List <SUser> susers;
 	
-	@Embedded()
-    public List <SPostit> spostits;
 	
 	@Embedded()
     public List <SImage> simages;
@@ -62,7 +60,6 @@ public class SGroup extends Model {
 		this.colour = colour;
 		this.taskCompleted = new HashSet<String>();
 		this.susers = new ArrayList<SUser>();
-		this.spostits = new ArrayList<SPostit>();
 		this.simages = new ArrayList<SImage>();
 		this.svideos = new ArrayList<SVideo>();
 	}
@@ -80,9 +77,6 @@ public class SGroup extends Model {
 	}
 	
 	
-	public void addPostit(SPostit postit) {
-		this.spostits.add(postit);
-	}
 	
 	public void addImage(SImage image) {
 		this.simages.add(image);
@@ -101,9 +95,6 @@ public class SGroup extends Model {
 	}
 	
 	
-	public void removePostit(SPostit postit) {
-		this.spostits.remove(postit);
-	}
 	
 	public void removeImage(SImage image) {
 		this.simages.remove(image);
@@ -124,7 +115,6 @@ public class SGroup extends Model {
         		add("_id", id.toString())
         		.add("name", name)
                 .add("susers:", susers)
-                .add("spostits:", spostits)
                 .add("simages:", simages)
                 .add("svideos:", svideos)
                 .toString();

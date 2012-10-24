@@ -23,12 +23,12 @@ public class Portfolio extends Controller{
 		
 		List<SVideo> videos = group.svideos;
 		List<SImage> images = group.simages;
-		List<SPostit> postits = group.spostits;
+
 		
 		//temporary storage
 		List<SVideo> tvideos = new ArrayList<SVideo>();
 		List<SImage> timages = new ArrayList<SImage>();
-		List<SPostit> tpostits = new ArrayList<SPostit>();
+	
 		
 
 		
@@ -56,20 +56,8 @@ public class Portfolio extends Controller{
 		}
 		
 		
-		if (postits != null) {
-			
-			for(SPostit postit :postits)
-			{
-				if (postit.equals(taskId)) {
-					tpostits.add(postit);
-				}
-			}
-		}
-		
-		
 		
 		Map<String, Object>  portfolioMap = new HashMap<String, Object>();
-		portfolioMap.put("spostits", tpostits);
 		portfolioMap.put("simages", timages);
 		portfolioMap.put("svideos", tvideos);
 
