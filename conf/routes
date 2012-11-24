@@ -104,7 +104,7 @@ POST					/comment/image/							controllers.SImages.postCommentOnImage
 
 # Menu Items
 GET     				/menu									controllers.SProjects.fetchMenuItems
-
+GET     				/iPhoneMenu								controllers.SProjects.menuForIphone
 
 # Group Services
 GET     				/project								controllers.SProjects.fetchAllProjects
@@ -146,6 +146,18 @@ GET					/keywords 						controllers.IMKeyWordStore.fetchAllKeywordStore()
 POST				/keywords 						controllers.IMKeyWordStore.addKeywordStore()
 GET					/keywords/:groupId/:taskId 		controllers.IMKeyWordStore.fetchKeywordStorebyGroupAndTask(groupId:String, taskId:String)
 PUT 				/keywords		 				controllers.IMKeyWordStore.updateKeywordStore()
+
+
+
+
+#===========================Energy Sources CRUD Services=================================#
+GET				/energySources						controllers.MiracleTweetWrapper.fetchAllEnergySources()
+POST			/energySources						controllers.MiracleTweetWrapper.saveSession()
+PUT 			/energySources						controllers.MiracleTweetWrapper.updateSession()
+
+
+
+
 
 
 

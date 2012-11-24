@@ -153,8 +153,61 @@ public class MiracleTweetWrapper extends Controller{
 
 	
 	
+	
+	/*//// Wrapper for Energy Srouces */////////////////////////////////////
+	public static Result fetchAllEnergySources()  {
+		
+		String rout = "/energySources";
+		return async(
+			      WS.url(SERVER_PATH + rout).get().map(
+			        new Function<WS.Response, Result>() {
+			          public Result apply(WS.Response response) {
+			            return ok(response.asJson());
+			          }
+			        }
+			      )
+			    ); 
+	  }
 
 	
+	public static Result saveSession()  {
+		
+		String rout = "/energySources";
+		JsonNode node = request().body().asJson();
+		return async(
+			      WS.url(SERVER_PATH+rout)
+			      .setHeader("Content-Type", "application/json")
+			      .post(node.toString()).map(
+			        new Function<WS.Response, Result>() {
+			          public Result apply(WS.Response response) {
+			            return ok(response.asJson());
+			          }
+			        }
+			      )
+			    ); 
+	}
+	
+	
+	
+	
+	
+	
+	public static Result updateSession()  {
+		
+		String rout = "/energySources";
+		JsonNode node = request().body().asJson();
+		return async(
+			      WS.url(SERVER_PATH+rout)
+			      .setHeader("Content-Type", "application/json")
+			      .put(node.toString()).map(
+			        new Function<WS.Response, Result>() {
+			          public Result apply(WS.Response response) {
+			            return ok(response.asJson());
+			          }
+			        }
+			      )
+			    ); 	
+		  }
 	
 	
 	
