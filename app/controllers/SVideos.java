@@ -135,13 +135,17 @@ public class SVideos extends Controller {
 		
 		int xpos = node.get("xpos").asInt();
 		int ypos = node.get("ypos").asInt();
-		Boolean  isPortfolio =node.get("isPortfolio").asBoolean();
+		Boolean isPortfolio =node.get("isPortfolio").asBoolean();
+		Boolean isFinalPortfolio =node.get("isFinalPortfolio").asBoolean();
 		
 		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("svideos.id").equal(videoId);
 		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
-				.set("svideos.$.xpos", xpos).set("svideos.$.ypos", ypos).set("svideos.$.isPortfolio", isPortfolio);
+				.set("svideos.$.xpos", xpos)
+				.set("svideos.$.ypos", ypos)
+				.set("svideos.$.isPortfolio", isPortfolio)
+				.set("svideos.$.isFinalPortfolio", isFinalPortfolio);
 		
 		SGroup.datastore.findAndModify(query, ops); 
 		  return status(200, "OK");

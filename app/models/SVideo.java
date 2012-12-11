@@ -33,6 +33,9 @@ public class  SVideo{
 	
 	@Property("isPortfolio")
 	public Boolean isPortfolio;
+	
+	@Property("isFinalPortfolio")
+	public Boolean isFinalPortfolio;
 
 	// Variables to store xy position of  on Web App
 	@Property("xpos")
@@ -64,6 +67,7 @@ public class  SVideo{
         this.title = title;
         //By default all resources will not be part of student Portfolio
         this.isPortfolio = false;
+        this.isFinalPortfolio = false;
         this.taskId = taskId;
     }
     
@@ -103,6 +107,7 @@ public class  SVideo{
                 .add("title", title)
                 .add("uri", uri)
                 .add("isPortfolio", isPortfolio)
+                .add("isFinalPortfolio", isFinalPortfolio)
                 .add("xpos", xpos)
                 .add("ypos", ypos)
                 .add("postedAt", postedAt)
