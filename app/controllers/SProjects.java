@@ -293,16 +293,12 @@ public class SProjects extends Controller {
 
 		SProject project = SProject.find.byId(projectId);
 
-<<<<<<< HEAD
-		STask task = new STask(title, description, taskType, icon, sceneId);
-=======
 		
 		STask task = new STask(title, description, taskType, icon,sceneId, portFolioSceneId);
 
 
 		//STask task = new STask(title, description, taskType, icon, sceneId);
 
->>>>>>> master
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}
