@@ -8,8 +8,6 @@ import java.util.List;
 import models.*;
 
 import org.codehaus.jackson.JsonNode;
-
-import play.mvc.Content;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -150,7 +148,7 @@ public class SVideos extends Controller {
 		
 		SGroup.datastore.findAndModify(query, ops); 
 		
-		return ok((Content) fetchVideoById(videoId));
+		return ok(toJson(fetchVideoById(videoId)));
 		 
 		//return status(200, "OK");
 //		SVideo video = null;
