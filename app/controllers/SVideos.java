@@ -148,7 +148,19 @@ public class SVideos extends Controller {
 		
 		SGroup.datastore.findAndModify(query, ops); 
 		
-		return ok(toJson(fetchVideoById(videoId)));
+		SGroup group = SGroup.find.filter("svideos.id", videoId).get();
+		SVideo res = null;
+		for (SVideo p : group.svideos) {
+			if (p.id.equals(videoId)) {
+				res = p;
+				break;
+			}
+		}
+
+		if (res == null) {
+			return ok("{}");
+		}
+		return ok(toJson(res));
 		 
 		//return status(200, "OK");
 //		SVideo video = null;
