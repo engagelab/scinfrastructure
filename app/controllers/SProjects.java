@@ -292,13 +292,13 @@ public class SProjects extends Controller {
 		String portFolioSceneId = node.get("portFolioSceneId").asText();
 
 		SProject project = SProject.find.byId(projectId);
-<<<<<<< HEAD
+
 		
 		STask task = new STask(title, description, taskType, icon,sceneId, portFolioSceneId);
-=======
 
-		STask task = new STask(title, description, taskType, icon, sceneId);
->>>>>>> iphone Menu Services added
+
+		//STask task = new STask(title, description, taskType, icon, sceneId);
+
 		if (project.stasks == null) {
 			project.stasks = new ArrayList<STask>();
 		}
