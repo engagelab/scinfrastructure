@@ -161,14 +161,16 @@ public class SImages extends Controller {
 		
 		int xpos = node.get("xpos").asInt();
 		int ypos = node.get("ypos").asInt();
-		Boolean  isPortfolio =node.get("isPortfolio").asBoolean();
+		Boolean isPortfolio =node.get("isPortfolio").asBoolean();
+		Boolean isFinalPortfolio =node.get("isFinalPortfolio").asBoolean();
 		
 		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
 				.field("simages.id").equal(imageId);
 		UpdateOperations<SGroup> ops = SGroup.datastore.createUpdateOperations(SGroup.class).disableValidation()
 				.set("simages.$.xpos", xpos)
 				.set("simages.$.ypos", ypos)
-				.set("simages.$.isPortfolio", isPortfolio);
+				.set("simages.$.isPortfolio", isPortfolio)
+				.set("simages.$.isFinalPortfolio", isFinalPortfolio);
 		
 		SGroup.datastore.findAndModify(query, ops);
 

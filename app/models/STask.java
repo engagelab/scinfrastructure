@@ -42,6 +42,9 @@ public class  STask{
 	@Property("sceneId")
 	public String sceneId;
 	
+	@Property("portFolioSceneId")
+	public String portFolioSceneId;
+	
 	@Property("actId")
 	public String actId;
 	
@@ -52,7 +55,7 @@ public class  STask{
 
    
    
-    public STask(String title,String description, String taskType, String icon, String actId, String sceneId) {
+    public STask(String title,String description, String taskType, String icon, String actId, String sceneId, String portFolioSceneId) {
     	this.postedAt = new Date().toString(); 
     	this.title = title;
         this.description = description;
@@ -60,11 +63,12 @@ public class  STask{
         this.icon = icon;
         this.sceneId = sceneId;
         this.actId = actId;
+        this.portFolioSceneId = portFolioSceneId;
     }
     
     
     // without ActID
-    public STask(String title,String description, String taskType, String icon, String sceneId) {
+    public STask(String title,String description, String taskType, String icon, String sceneId, String portFolioSceneId) {
     	this.postedAt = new Date().toString(); 
     	this.title = title;
         this.description = description;
@@ -73,6 +77,7 @@ public class  STask{
         this.sceneId = sceneId;
         //Hint : Not using Acts in this Run
         this.actId = null;
+        this.portFolioSceneId = portFolioSceneId;
     }
     
     
@@ -88,6 +93,7 @@ public class  STask{
                 .add("icon", icon)
                 .add("sceneId", sceneId)
                 .add("actId", actId)
+                .add("portFolioSceneId", portFolioSceneId)
                 .toString();
     }
 

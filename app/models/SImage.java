@@ -48,6 +48,9 @@ public class SImage {
 	@Property("isPortfolio")
 	public Boolean isPortfolio;
 	
+	@Property("isFinalPortfolio")
+	public Boolean isFinalPortfolio;
+	
 	@Property("xpos")
     public int xpos;
 	
@@ -80,6 +83,7 @@ public class SImage {
     	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
     	this.filePath = createUriForFile(fileId);
     	this.isPortfolio = false;
+    	this.isFinalPortfolio = false;
     	this.taskId = taskId;
     	
 	}
@@ -107,7 +111,8 @@ public class SImage {
                 .add("fileName", fileName)
                 .add("fileId", fileId)
                 .add("filePath", filePath)
-                  .add("isPortfolio", isPortfolio)
+                .add("isPortfolio", isPortfolio)
+                .add("isFinalPortfolio", isFinalPortfolio)
                 .add("taskId", taskId)
                 .toString();
     }
