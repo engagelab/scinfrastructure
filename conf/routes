@@ -35,7 +35,7 @@ PUT						/tasksCompleted/						controllers.SGroups.addToTasksCompletedSet()
 
 GET						/contributions/:groupId/:taskId			controllers.Portfolio.fetchGroupContributionsByTask(groupId:String, taskId:String)
 
-
+GET 					/sceneContributions/:groupId/:sceneId 	controllers.Portfolio.getSelectedItemsForTemporaryPortfolio(groupId:String, sceneId:String)
 
 
 # Postit Services
