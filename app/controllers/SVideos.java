@@ -8,6 +8,8 @@ import java.util.List;
 import models.*;
 
 import org.codehaus.jackson.JsonNode;
+
+import play.mvc.Content;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -138,8 +140,7 @@ public class SVideos extends Controller {
 		Boolean isPortfolio =node.get("isPortfolio").asBoolean();
 		Boolean isFinalPortfolio =node.get("isFinalPortfolio").asBoolean();
 		
-		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class)
-				.field("svideos.id").equal(videoId);
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class).field("svideos.id").equal(videoId);
 		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("svideos.$.xpos", xpos)
@@ -148,7 +149,10 @@ public class SVideos extends Controller {
 				.set("svideos.$.isFinalPortfolio", isFinalPortfolio);
 		
 		SGroup.datastore.findAndModify(query, ops); 
-		  return status(200, "OK");
+		
+		return ok((Content) fetchVideoById(videoId));
+		 
+		//return status(200, "OK");
 //		SVideo video = null;
 //		for (SVideo p : group.svideos) {
 //			if (p.id.equals(videoId)) {
