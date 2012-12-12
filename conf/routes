@@ -156,8 +156,9 @@ POST			/energySources						controllers.MiracleTweetWrapper.saveSession()
 PUT 			/energySources						controllers.MiracleTweetWrapper.updateSession()
 
 
-
-
+#-----------------------PortfolioTaskComment API ------------------#
+POST			/finalPortfolioTaskComment						controllers.FinalPortfolioTaskComments.addTaskComment()
+PUT 			/finalPortfolioTaskComment						controllers.FinalPortfolioTaskComments.updateTaskComment()
 
 
 

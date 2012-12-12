@@ -4,19 +4,17 @@ import static play.libs.Json.toJson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import models.FinalPortFolioTaskComment;
 import models.SGroup;
 import models.SImage;
 import models.SProject;
-import models.SScene;
 import models.STask;
 import models.SVideo;
 import play.mvc.Controller;
 import play.mvc.Result;
-import scala.util.parsing.combinator.testing.Str;
 
 public class Portfolio extends Controller {
 
@@ -27,10 +25,12 @@ public class Portfolio extends Controller {
 
 		List<SVideo> videos = group.svideos;
 		List<SImage> images = group.simages;
+		List<FinalPortFolioTaskComment> finalPortFolioTaskComments = group.finalPortfolioTaskComments;
 
 		// temporary storage
 		List<SVideo> tvideos = new ArrayList<SVideo>();
 		List<SImage> timages = new ArrayList<SImage>();
+		List<FinalPortFolioTaskComment> tfinalPortFolioTaskComments = new ArrayList<FinalPortFolioTaskComment>();
 
 		// FIXME use java templates
 
@@ -51,10 +51,20 @@ public class Portfolio extends Controller {
 				}
 			}
 		}
+		
+		if (finalPortFolioTaskComments != null) {
+
+			for (FinalPortFolioTaskComment finalPortFolioTaskComment : finalPortFolioTaskComments) {
+				if (finalPortFolioTaskComment.taskId.equals(taskId)) {
+					tfinalPortFolioTaskComments.add(finalPortFolioTaskComment);
+				}
+			}
+		}
 
 		Map<String, Object> portfolioMap = new HashMap<String, Object>();
 		portfolioMap.put("simages", timages);
 		portfolioMap.put("svideos", tvideos);
+		portfolioMap.put("finalPortFolioTaskComments", tfinalPortFolioTaskComments);
 
 		return ok(toJson(portfolioMap));
 	}

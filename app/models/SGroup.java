@@ -44,6 +44,9 @@ public class SGroup extends Model {
 	@Embedded()
     public List <SVideo> svideos;
 	
+	@Embedded()
+    public List <FinalPortFolioTaskComment> finalPortfolioTaskComments;
+	
 	// FINDERS ----------
 
     public static final Finder<SGroup> find = new Finder<SGroup>(SGroup.class);
@@ -86,7 +89,9 @@ public class SGroup extends Model {
 		this.svideos.add(video);
 	}
 	
-	
+	public void addPortFolioTaskComment(FinalPortFolioTaskComment portFolioTaskComment) {
+		this.finalPortfolioTaskComments.add(portFolioTaskComment);
+	}
 	
 	
 	
@@ -117,6 +122,7 @@ public class SGroup extends Model {
                 .add("susers:", susers)
                 .add("simages:", simages)
                 .add("svideos:", svideos)
+                .add("finalPortfolioTaskComments:", finalPortfolioTaskComments)
                 .toString();
     }
 
