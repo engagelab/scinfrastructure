@@ -32,9 +32,16 @@ public class FinalPortfolioTaskComments extends Controller {
 		
 		if (group.finalPortfolioTaskComments == null) {
 			group.finalPortfolioTaskComments = new ArrayList<FinalPortFolioTaskComment>();
-		} 
+		}
 		
-		if (SGroup.find.field("finalPortfolioTaskComments.taskId").equal(taskId).get() == null) {
+		boolean fptcExists = false;
+		for (FinalPortFolioTaskComment fptc : group.finalPortfolioTaskComments) {
+			if(fptc.taskId.equals(taskId)) {
+				fptcExists = true;
+			}
+		}		
+		
+		if(!fptcExists) {
 			group.addPortFolioTaskComment(finalPortFolioTaskComment);
 			group.save();
 			
