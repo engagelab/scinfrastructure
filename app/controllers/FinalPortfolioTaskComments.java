@@ -30,13 +30,20 @@ public class FinalPortfolioTaskComments extends Controller {
 		FinalPortFolioTaskComment finalPortFolioTaskComment = new FinalPortFolioTaskComment(
 				text, taskId);
 		SGroup group = SGroup.find.byId(groupId); // GUL
+		
 		if (group.finalPortfolioTaskComments == null) {
 			group.finalPortfolioTaskComments = new ArrayList<FinalPortFolioTaskComment>();
+		} 
+		
+		if (SGroup.find.field("finalPortfolioTaskComments.taskId").equal(taskId).get() == null) {
+			group.addPortFolioTaskComment(finalPortFolioTaskComment);
+			group.save();
+			
+			return ok(toJson(finalPortFolioTaskComment));
 		}
-		group.addPortFolioTaskComment(finalPortFolioTaskComment);
-		group.save();
-
-		return ok(toJson(finalPortFolioTaskComment));
+		else {
+			return status(401, "Not Authorized");
+		}
 	}
 
 	public static Result updateTaskComment() {
