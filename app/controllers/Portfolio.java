@@ -25,13 +25,11 @@ public class Portfolio extends Controller {
 
 		List<SVideo> videos = group.svideos;
 		List<SImage> images = group.simages;
-		List<FinalPortFolioTaskComment> finalPortFolioTaskComments = group.finalPortfolioTaskComments;
-
+		
 		// temporary storage
 		List<SVideo> tvideos = new ArrayList<SVideo>();
 		List<SImage> timages = new ArrayList<SImage>();
-		List<FinalPortFolioTaskComment> tfinalPortFolioTaskComments = new ArrayList<FinalPortFolioTaskComment>();
-
+		
 		// FIXME use java templates
 
 		if (videos != null) {
@@ -52,24 +50,15 @@ public class Portfolio extends Controller {
 			}
 		}
 		
-		if (finalPortFolioTaskComments != null) {
-
-			for (FinalPortFolioTaskComment finalPortFolioTaskComment : finalPortFolioTaskComments) {
-				if (finalPortFolioTaskComment.taskId.equals(taskId)) {
-					tfinalPortFolioTaskComments.add(finalPortFolioTaskComment);
-				}
-			}
-		}
-
 		Map<String, Object> portfolioMap = new HashMap<String, Object>();
 		portfolioMap.put("simages", timages);
 		portfolioMap.put("svideos", tvideos);
-		portfolioMap.put("finalPortFolioTaskComments", tfinalPortFolioTaskComments);
 
 		return ok(toJson(portfolioMap));
 	}
 
-	public static Result getSelectedItemsForTemporaryPortfolio(String groupId, String sceneId) {
+	public static Result getSelectedItemsForTemporaryPortfolio(String groupId,
+			String sceneId) {
 		SGroup group = SGroup.find.byId(groupId);
 
 		List<SVideo> videos = group.svideos;
@@ -78,19 +67,19 @@ public class Portfolio extends Controller {
 		// temporary storage
 		List<SVideo> tvideos = new ArrayList<SVideo>();
 		List<SImage> timages = new ArrayList<SImage>();
-		
+
 		for (String taskId : getTasksForSceneId(sceneId)) {
 			if (videos != null) {
-				
+
 				for (SVideo video : videos) {
 					if (video.taskId.equals(taskId) && video.isPortfolio) {
 						tvideos.add(video);
 					}
 				}
 			}
-			
+
 			if (images != null) {
-				
+
 				for (SImage image : images) {
 					if (image.taskId.equals(taskId) && image.isPortfolio) {
 						timages.add(image);
@@ -98,7 +87,6 @@ public class Portfolio extends Controller {
 				}
 			}
 		}
-
 
 		Map<String, Object> portfolioMap = new HashMap<String, Object>();
 		portfolioMap.put("simages", timages);
@@ -126,5 +114,24 @@ public class Portfolio extends Controller {
 		}
 
 		return retrievedTaskIds;
+	}
+	
+	public static Result fetchGroupPortfolioCommentByTask(String groupId,
+			String taskId) {
+
+		SGroup group = SGroup.find.byId(groupId);
+
+		List<FinalPortFolioTaskComment> finalPortFolioTaskComments = group.finalPortfolioTaskComments;
+		List<FinalPortFolioTaskComment> tfinalPortFolioTaskComments = new ArrayList<FinalPortFolioTaskComment>();
+
+		if (finalPortFolioTaskComments != null) {
+			for (FinalPortFolioTaskComment finalPortFolioTaskComment : finalPortFolioTaskComments) {
+				if (finalPortFolioTaskComment.taskId.equals(taskId)) {
+					tfinalPortFolioTaskComments.add(finalPortFolioTaskComment);
+				}
+			}
+		}
+
+		return ok(toJson(tfinalPortFolioTaskComments));
 	}
 }

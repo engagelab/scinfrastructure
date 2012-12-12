@@ -157,6 +157,7 @@ PUT 			/energySources						controllers.MiracleTweetWrapper.updateSession()
 
 
 #-----------------------PortfolioTaskComment API ------------------#
+GET				/finalPortfolioTaskComment/:groupId/:taskId		controllers.Portfolio.fetchGroupPortfolioCommentByTask(groupId:String, taskId:String)
 POST			/finalPortfolioTaskComment						controllers.FinalPortfolioTaskComments.addTaskComment()
 PUT 			/finalPortfolioTaskComment						controllers.FinalPortfolioTaskComments.updateTaskComment()
 
