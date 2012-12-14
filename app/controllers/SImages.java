@@ -5,6 +5,7 @@ import static play.libs.Json.toJson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -129,6 +130,16 @@ public class SImages extends Controller {
 
 				group.addImage(image);
 				group.save();
+				
+				
+				if (group.taskCompleted == null) {
+					group.taskCompleted = new HashSet<String>();
+				}
+				
+				if (!group.taskCompleted.contains(taskId)) {
+					group.taskCompleted.add(taskId);
+					group.save();
+				}
 			}
 		}
 		catch (IOException e) {

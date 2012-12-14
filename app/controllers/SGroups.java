@@ -96,7 +96,7 @@ public class SGroups extends Controller {
 				group.taskCompleted = new HashSet<String>();
 			}
 			
-			if (isTaskCompleted) {
+			if (isTaskCompleted && !group.taskCompleted.contains(taskId)) {
 				group.taskCompleted.add(taskId);
 				group.save();
 			}

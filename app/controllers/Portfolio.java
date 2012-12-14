@@ -116,8 +116,7 @@ public class Portfolio extends Controller {
 		return retrievedTaskIds;
 	}
 	
-	public static Result fetchGroupPortfolioCommentByTask(String groupId,
-			String taskId) {
+	public static Result fetchGroupPortfolioCommentByTask(String groupId, String taskId) {
 
 		SGroup group = SGroup.find.byId(groupId);
 
