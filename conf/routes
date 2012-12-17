@@ -96,7 +96,7 @@ PUT     				/group/image/							controllers.SImages.updateImage()
 GET						/comment/image/							controllers.SImages.fetchCommentsByImage(imageId:String)
 POST					/comment/image/							controllers.SImages.postCommentOnImage
 
-
+POST					/teacher/image/							controllers.SImages.teacherAddImage()
 
 
 
