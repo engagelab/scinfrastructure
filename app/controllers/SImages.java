@@ -130,8 +130,7 @@ public class SImages extends Controller {
 			taskIds.add("50ab46d2300480c12ec3695d"); // spry box
 			taskIds.add("50ab4724300480c12ec36967"); // SYKKELPUMPE
 			taskIds.add("50ab4779300480c12ec36972");
-			// fetch 3 tasks
-			// create 3 images for each task
+
 			for (String taskId : taskIds) {
 				SImage one;
 				try {
