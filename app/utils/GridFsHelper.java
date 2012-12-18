@@ -85,7 +85,8 @@ public class GridFsHelper {
 
 	private static GridFS getGridFS( ) throws IOException, MongoException {
 		
-		String host = Play.application().configuration().getString("mongodb.uri");
+		//String host = Play.application().configuration().getString("mongodb.uri");
+		String host  = "localhost";
 		Mongo mongo = new Mongo(host , 27017);
 		String dbName = Play.application().configuration().getString("mongodb.db");
 		DB db = mongo.getDB(dbName);
