@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.util.List;
 import org.bson.types.ObjectId;
 
-import play.Play;
-
-
 
 import com.google.code.morphia.Datastore;
 import com.google.inject.Inject;
@@ -85,11 +82,9 @@ public class GridFsHelper {
 
 	private static GridFS getGridFS( ) throws IOException, MongoException {
 		
-		//String host = Play.application().configuration().getString("mongodb.uri");
-		String host  = "localhost";
+		String host = "localhost";
 		Mongo mongo = new Mongo(host , 27017);
-		String dbName = Play.application().configuration().getString("mongodb.db");
-		DB db = mongo.getDB(dbName);
+		DB db = mongo.getDB("scinfrastructure");
 		
 		//DB db = datastore.getDB();
 		// GridfsCollectionName = upload; define whater you like
