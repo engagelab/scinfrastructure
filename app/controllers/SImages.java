@@ -140,8 +140,7 @@ public class SImages extends Controller {
 							taskId);
 					images.add(one);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					flash("uploadError", e.getMessage());
 				}
 				
 			}
