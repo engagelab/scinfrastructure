@@ -31,6 +31,9 @@ import utils.GridFsHelper;
 
 public class SImages extends Controller {
 
+	
+	
+	
 	public static Result fetchImagesById(String imageId) {
 
 		SGroup group = SGroup.find.filter("simages.id", imageId).get();
@@ -48,6 +51,13 @@ public class SImages extends Controller {
 		return ok(toJson(res));
 
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	public static Result fetchImagesByGroupId(String groupId) {
 		SGroup group = SGroup.find.byId(groupId);
@@ -58,6 +68,11 @@ public class SImages extends Controller {
 			return ok(toJson(images));
 	}
 
+	
+	
+	
+	
+	
 	//
 	// private static final Form<SImage> uploadForm = form(SImage.class);
 	//
@@ -67,20 +82,6 @@ public class SImages extends Controller {
 
 	public static Result addImage(String groupId, String taskId, String runId) {
 
-		//
-		// if (filledForm.hasErrors()) {
-		// return badRequest(views.html.upload.render(filledForm));
-		// } else {
-		// UploadResource resource = filledForm.get();
-		// MultipartFormData body = request().body().asMultipartFormData();
-		// FilePart resourceFile = body.getFile("resourceFile");
-		//
-		// /* Check resourceFile for null, then extract the File object and
-		// process it */
-		// }
-		// String parm =
-		// ctx().request().body().asMultipartFormData().asFormUrlEncoded().toString();
-		// int runIdINT = Integer.getInteger(runId);
 		FilePart filePart = ctx().request().body().asMultipartFormData()
 				.getFile("picture");
 		SImage image = null;
@@ -107,6 +108,11 @@ public class SImages extends Controller {
 		return ok(toJson(image));
 	}
 
+	
+	
+	
+	
+	
 	public static Result teacherAddImage() {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData()
@@ -149,6 +155,11 @@ public class SImages extends Controller {
 		return ok(toJson("Upload Completed"));
 	}
 
+	
+	
+	
+	
+	
 	public static Result showImage(String imageId) throws IOException {
 
 		GridFSDBFile file = GridFsHelper.getFile(imageId);
@@ -159,6 +170,12 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
 	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
 	public static Result updateImage() {
 
@@ -188,6 +205,11 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
 	public static Result deleteImageById(String imageId) throws MongoException,
 			IOException {
 
@@ -207,6 +229,13 @@ public class SImages extends Controller {
 		return ok("deleted successfully");
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public static Result postCommentOnImage() {
 
 		JsonNode node = ctx().request().body().asJson();
@@ -235,6 +264,14 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Result fetchCommentsByImage(String imageId) {
 
 		SGroup group = SGroup.find.filter("simages.id", imageId).get();
@@ -254,6 +291,13 @@ public class SImages extends Controller {
 		return ok(toJson(comments));
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public static String getFileExtension(String filePath) {
 		StringTokenizer stk = new StringTokenizer(filePath, ".");
 		String FileExt = "";
