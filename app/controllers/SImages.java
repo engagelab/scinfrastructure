@@ -5,7 +5,9 @@ import static play.libs.Json.toJson;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import org.apache.commons.io.IOUtils;
@@ -22,6 +24,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Http.MultipartFormData.FilePart;
+import scala.util.control.Exception.Finally;
 import utils.GridFsHelper;
 
 /**
@@ -121,7 +124,7 @@ public class SImages extends Controller {
 
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
-		try {
+
 
 			Set<String> taskIds = new HashSet<String>();
 			taskIds.add("50ab46d2300480c12ec3695d"); // spry box
@@ -130,23 +133,31 @@ public class SImages extends Controller {
 			// fetch 3 tasks
 			// create 3 images for each task
 			for (String taskId : taskIds) {
-				SImage one = new SImage(filePart.getFile(),
-						filePart.getFilename(), filePart.getContentType(),
-						taskId);
-				images.add(one);
+				SImage one;
+				try {
+					one = new SImage(filePart.getFile(),
+							filePart.getFilename(), filePart.getContentType(),
+							taskId);
+					images.add(one);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 
 			List<SGroup> groups = SGroup.find.asList();
-
 			for (SGroup group : groups) {
 				if (group.simages == null) {
 					group.simages = new ArrayList<SImage>();
+					group.simages = images;
+					group.save();
 				}
-				group.simages = images;
-				group.save();
+				
 			}
-
-		}
+			
+			return ok(toJson("Status Code"));
+	}
 
 
 
