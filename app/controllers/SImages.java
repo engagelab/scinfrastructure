@@ -4,10 +4,8 @@ import static play.libs.Json.toJson;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.apache.commons.io.IOUtils;
@@ -108,46 +106,8 @@ public class SImages extends Controller {
 		return ok(toJson(image));
 	}
 
-	public static Result addTeacherImageByTaskId(String taskId) {
 
-		FilePart filePart = ctx().request().body().asMultipartFormData()
-				.getFile("picture");
-		SImage image = null;
 
-		if (filePart.getFile() == null)
-			return ok(toJson("{status: No Image found}"));
-		try {
-			image = new SImage(filePart.getFile(), filePart.getFilename(),
-					filePart.getContentType(), taskId);
-
-			final int runId = 3;
-			List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
-
-			for (SGroup group : groups) {
-				if (group.simages == null) {
-					group.simages = new ArrayList<SImage>();
-				}
-
-				group.addImage(image);
-				group.save();
-				
-				
-				if (group.taskCompleted == null) {
-					group.taskCompleted = new HashSet<String>();
-				}
-				
-				if (!group.taskCompleted.contains(taskId)) {
-					group.taskCompleted.add(taskId);
-					group.save();
-				}
-			}
-		}
-		catch (IOException e) {
-			flash("uploadError", e.getMessage());
-		}
-
-		return ok(toJson(image));
-	}
 
 	public static Result showImage(String imageId) throws IOException {
 
