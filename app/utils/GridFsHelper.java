@@ -66,7 +66,7 @@ public class GridFsHelper {
 	
 	public static String  storeFile(File image, String fileName, String contentType) throws IOException {
 		GridFS fs = getGridFS();
-		fs.remove(fileName); // delete the old file
+		//fs.remove(fileName); // delete the old file
 		GridFSInputFile gridFile = fs.createFile(image);
 		//gridFile.save();
 		gridFile.setContentType(contentType);
