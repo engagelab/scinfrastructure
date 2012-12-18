@@ -151,6 +151,12 @@ public class SImages extends Controller {
 					group.simages = images;
 					group.save();
 				}
+				else {
+					
+					group.simages.addAll(images);
+					group.save();
+					
+				}
 				
 			}
 			
