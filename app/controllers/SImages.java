@@ -30,6 +30,9 @@ import utils.GridFsHelper;
 
 public class SImages extends Controller {
 
+	
+	
+	
 	public static Result fetchImagesById(String imageId) {
 
 		SGroup group = SGroup.find.filter("simages.id", imageId).get();
@@ -47,6 +50,13 @@ public class SImages extends Controller {
 		return ok(toJson(res));
 
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	public static Result fetchImagesByGroupId(String groupId) {
 		SGroup group = SGroup.find.byId(groupId);
@@ -57,6 +67,11 @@ public class SImages extends Controller {
 			return ok(toJson(images));
 	}
 
+	
+	
+	
+	
+	
 	//
 	// private static final Form<SImage> uploadForm = form(SImage.class);
 	//
@@ -66,20 +81,6 @@ public class SImages extends Controller {
 
 	public static Result addImage(String groupId, String taskId, String runId) {
 
-		//
-		// if (filledForm.hasErrors()) {
-		// return badRequest(views.html.upload.render(filledForm));
-		// } else {
-		// UploadResource resource = filledForm.get();
-		// MultipartFormData body = request().body().asMultipartFormData();
-		// FilePart resourceFile = body.getFile("resourceFile");
-		//
-		// /* Check resourceFile for null, then extract the File object and
-		// process it */
-		// }
-		// String parm =
-		// ctx().request().body().asMultipartFormData().asFormUrlEncoded().toString();
-		// int runIdINT = Integer.getInteger(runId);
 		FilePart filePart = ctx().request().body().asMultipartFormData()
 				.getFile("picture");
 		SImage image = null;
@@ -107,8 +108,96 @@ public class SImages extends Controller {
 	}
 
 
+	
+	
+	
+	
+	
+	public static Result teacherAddImage() {
+
+		FilePart filePart = ctx().request().body().asMultipartFormData()
+				.getFile("picture");
+		List<SImage> images = new ArrayList<SImage>();
+
+		if (filePart.getFile() == null)
+			return ok(toJson("{status: No Image found}"));
+		try {
+
+			Set<String> taskIds = new HashSet<String>();
+			taskIds.add("50ab46d2300480c12ec3695d"); // spry box
+			taskIds.add("50ab4724300480c12ec36967"); // SYKKELPUMPE
+			taskIds.add("50ab4779300480c12ec36972");
+			// fetch 3 tasks
+			// create 3 images for each task
+			for (String taskId : taskIds) {
+				SImage one = new SImage(filePart.getFile(),
+						filePart.getFilename(), filePart.getContentType(),
+						taskId);
+				images.add(one);
+			}
+
+			List<SGroup> groups = SGroup.find.asList();
+
+			for (SGroup group : groups) {
+				if (group.simages == null) {
+					group.simages = new ArrayList<SImage>();
+				}
+				group.simages = images;
+				group.save();
+			}
+
+		}
 
 
+
+
+	
+	
+	
+	
+	
+	public static Result addTeacherImageByTaskId(String taskId) {
+
+		FilePart filePart = ctx().request().body().asMultipartFormData()
+				.getFile("picture");
+		SImage image = null;
+
+		if (filePart.getFile() == null)
+			return ok(toJson("{status: No Image found}"));
+		try {
+			image = new SImage(filePart.getFile(), filePart.getFilename(),
+					filePart.getContentType(), taskId);
+
+			final int runId = 3;
+			List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
+
+			for (SGroup group : groups) {
+				if (group.simages == null) {
+					group.simages = new ArrayList<SImage>();
+				}
+
+				group.addImage(image);
+				group.save();
+
+				if (group.taskCompleted == null) {
+					group.taskCompleted = new HashSet<String>();
+				}
+
+				if (!group.taskCompleted.contains(taskId)) {
+					group.taskCompleted.add(taskId);
+					group.save();
+				}
+			}
+		} catch (IOException e) {
+			flash("uploadError", e.getMessage());
+		}
+
+		return ok(toJson(image));
+	}
+	
+	
+	
+	
 	public static Result showImage(String imageId) throws IOException {
 
 		GridFSDBFile file = GridFsHelper.getFile(imageId);
@@ -119,6 +208,12 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
 	// {"imageId":"3423j342kjl23h1", "wxpos":120, "wypos":32}
 	public static Result updateImage() {
 
@@ -148,6 +243,11 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
 	public static Result deleteImageById(String imageId) throws MongoException,
 			IOException {
 
@@ -167,6 +267,13 @@ public class SImages extends Controller {
 		return ok("deleted successfully");
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public static Result postCommentOnImage() {
 
 		JsonNode node = ctx().request().body().asJson();
@@ -195,6 +302,14 @@ public class SImages extends Controller {
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Result fetchCommentsByImage(String imageId) {
 
 		SGroup group = SGroup.find.filter("simages.id", imageId).get();
@@ -214,6 +329,13 @@ public class SImages extends Controller {
 		return ok(toJson(comments));
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public static String getFileExtension(String filePath) {
 		StringTokenizer stk = new StringTokenizer(filePath, ".");
 		String FileExt = "";
