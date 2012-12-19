@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.node.ObjectNode;
 
 import com.google.code.morphia.query.Query;
 import com.google.code.morphia.query.UpdateOperations;
@@ -20,6 +21,7 @@ import com.mongodb.gridfs.GridFSDBFile;
 
 import models.*;
 
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
@@ -94,13 +96,20 @@ public class SImages extends Controller {
 			image = new SImage(filePart.getFile(), filePart.getFilename(),
 					filePart.getContentType(), taskId);
 			SGroup group = SGroup.find.byId(groupId);
-
-			if (group.simages == null) {
-				group.simages = new ArrayList<SImage>();
+			
+			if(group == null) {
+				ObjectNode rObj = Json.newObject();
+				rObj.put("groupExists", false);
+				return ok(rObj);
 			}
-
-			group.addImage(image);
-			group.save();
+			else {
+				if (group.simages == null) {
+					group.simages = new ArrayList<SImage>();
+				}
+				
+				group.addImage(image);
+				group.save();
+			}
 		}
 
 		catch (IOException e) {
