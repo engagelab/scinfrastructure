@@ -86,8 +86,7 @@ public class SImages extends Controller {
 
 	public static Result addImage(String groupId, String taskId, String runId) {
 
-		FilePart filePart = ctx().request().body().asMultipartFormData()
-				.getFile("picture");
+		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
 
 		if (filePart.getFile() == null)
