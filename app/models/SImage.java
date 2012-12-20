@@ -75,14 +75,14 @@ public class SImage {
 	
 	
 	
-    public SImage(File file, String fileName, String contentType, String taskId) throws IOException 
+    public SImage(File file, String fileName, String contentType, String taskId, boolean isPortFolio) throws IOException 
     {
     	this.fileName = fileName;
     	this.contentType = contentType;
     	//save file in GridFS and retrieve its ID to be stored in fileId
     	this.fileId = GridFsHelper.storeFile(file,fileName,contentType);
     	this.filePath = createUriForFile(fileId);
-    	this.isPortfolio = false;
+    	this.isPortfolio = isPortFolio;
     	this.isFinalPortfolio = false;
     	this.taskId = taskId;
     	
