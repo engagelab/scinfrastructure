@@ -126,8 +126,7 @@ public class SImages extends Controller {
 	
 	public static Result teacherAddImage() {
 
-		FilePart filePart = ctx().request().body().asMultipartFormData()
-				.getFile("picture");
+		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		List<SImage> images = new ArrayList<SImage>();
 
 		if (filePart.getFile() == null)
@@ -181,8 +180,7 @@ public class SImages extends Controller {
 	
 	public static Result addTeacherImageByTaskId(String taskId) {
 
-		FilePart filePart = ctx().request().body().asMultipartFormData()
-				.getFile("picture");
+		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
 
 		if (filePart.getFile() == null)
