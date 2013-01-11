@@ -215,6 +215,7 @@ public class SImages extends Controller {
 	
 	public static Result showImage(String imageId) throws IOException {
 
+		//Promise
 		GridFSDBFile file = GridFsHelper.getFile(imageId);
 
 		byte[] bytes = IOUtils.toByteArray(file.getInputStream());

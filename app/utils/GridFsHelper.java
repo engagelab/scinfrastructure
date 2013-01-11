@@ -17,6 +17,8 @@ import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSInputFile;
 
+
+
 /**
  * @author Muhammad Fahied
  */
@@ -26,6 +28,7 @@ public class GridFsHelper {
 	@Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
+	public static GridFS gridFS;
 	
 	
 	
@@ -75,22 +78,37 @@ public class GridFsHelper {
 	
 	
 	
-	
+	public static GridFS getGridFS() throws IOException 
+	{
+		if( gridFS == null)
+		{
+			String host = "intermedia-prod03.uio.no";
+			Mongo mongo = new Mongo(host , 27017);
+			DB db = mongo.getDB("scinfrastructure");
+			gridFS = new GridFS(db, "upload");
+		}
+		return gridFS;
+	}
 	
 	
 	
 
-	private static GridFS getGridFS( ) throws IOException, MongoException {
-		
-		String host = "localhost";
-		Mongo mongo = new Mongo(host , 27017);
-		DB db = mongo.getDB("scinfrastructure");
-		
-		//DB db = datastore.getDB();
-		// GridfsCollectionName = upload; define whater you like
-		GridFS fs = new GridFS(db, "upload");
-		return fs;
-	}
+//	private static GridFS getGridFS( ) throws IOException, MongoException {
+//		
+//		//String host = "localhost";
+//		//Mongo mongo = new Mongo(host , 27017);
+//		//DB db = mongo.getDB("scinfrastructure");
+//		//DB db = datastore.getDB();
+//		//DB db = datastore.getDB();
+//		// GridfsCollectionName = upload; define whater you like
+//		//GridFS fs = new GridFS(db, "upload");
+//		
+//		if( gridFS == null)
+//		{
+//			gridFS = new GridFS(ds.getDB());
+//		}
+//		return gridFS;
+//	}
 	
 
 }
