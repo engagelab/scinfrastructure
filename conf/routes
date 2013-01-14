@@ -43,10 +43,10 @@ GET 					/sceneContributions/:groupId/:sceneId 	controllers.Portfolio.getSelecte
 
 
 #GET     				/postit/:postitId						controllers.SPostits.fetchPostitById(postitId:String)
-#GET						/group/postit/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
+#GET					/group/postit/							controllers.SPostits.fetchPostitsByGroupId(groupId:String)
 
 
-#GET						/task/postit/							controllers.SPostits.fetchPostitsByTPRG(taskId:String, runId:String, groupId:String)
+#GET					/task/postit/							controllers.SPostits.fetchPostitsByTPRG(taskId:String, runId:String, groupId:String)
 #POST     				/task/postit/							controllers.SPostits.addPostit
 #PUT     				/task/postit/:postitId					controllers.SPostits.updatePostitInFlash(postitId:String)
 #DELETE					/task/postit/:postitId					controllers.SPostits.deletePostitById(postitId:String)
@@ -55,7 +55,7 @@ GET 					/sceneContributions/:groupId/:sceneId 	controllers.Portfolio.getSelecte
 #PUT     				/group/postit/:postitId					controllers.SPostits.updatePostitOnWeb(postitId:String)
 
 
-#GET						/comment/postit/						controllers.SPostits.fetchCommentOnPostit(postitId:String)
+#GET					/comment/postit/						controllers.SPostits.fetchCommentOnPostit(postitId:String)
 #POST					/comment/postit/						controllers.SPostits.postCommentOnPostit
 
 
