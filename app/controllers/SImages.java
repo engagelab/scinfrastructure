@@ -120,8 +120,7 @@ public class SImages extends Controller {
 		for (String taskId : taskIds) {
 			SImage one;
 			try {
-				one = new SImage(filePart.getFile(), filePart.getFilename(),
-						filePart.getContentType(), taskId, true);
+				one = new SImage(filePart.getFile(), filePart.getFilename(),filePart.getContentType(), taskId, true);
 				images.add(one);
 			} catch (IOException e) {
 				flash("uploadError", e.getMessage());
@@ -149,8 +148,7 @@ public class SImages extends Controller {
 
 	public static Result addTeacherImageByTaskId(String taskId) {
 
-		FilePart filePart = ctx().request().body().asMultipartFormData()
-				.getFile("picture");
+		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
 
 		if (filePart.getFile() == null)
@@ -201,8 +199,9 @@ public class SImages extends Controller {
 
 		JsonNode node = ctx().request().body().asJson();
 		String imageId = node.get("id").asText();
-
-		if (SGroup.find.field("simages.id").equal(imageId).get() == null) {
+		String groupId = node.get("groupId").asText();
+		
+		if (SGroup.find.byId(groupId) == null) {
 			return status(401, "Not Authorized");
 		}
 
@@ -211,7 +210,7 @@ public class SImages extends Controller {
 		Boolean isPortfolio = node.get("isPortfolio").asBoolean();
 		Boolean isFinalPortfolio = node.get("isFinalPortfolio").asBoolean();
 
-		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class).field("simages.id").equal(imageId);
+		Query<SGroup> query = SGroup.datastore.createQuery(SGroup.class).field("simages.id").equal(imageId).field("id").equal(groupId);
 		UpdateOperations<SGroup> ops = SGroup.datastore
 				.createUpdateOperations(SGroup.class).disableValidation()
 				.set("simages.$.xpos", xpos).set("simages.$.ypos", ypos)
@@ -219,7 +218,7 @@ public class SImages extends Controller {
 				.set("simages.$.isFinalPortfolio", isFinalPortfolio);
 
 		SGroup.datastore.findAndModify(query, ops);
-
+		
 		return status(200, "OK");
 
 	}
