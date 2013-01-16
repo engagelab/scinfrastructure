@@ -154,8 +154,12 @@ public class SImages extends Controller {
 		if (filePart.getFile() == null)
 			return ok(toJson("{status: No Image found}"));
 		try {
-			image = new SImage(filePart.getFile(), filePart.getFilename(),
-					filePart.getContentType(), taskId, true);
+			if(taskId.equals("50c5c602b760a8ae9a3bcb37") ) {
+				image = new SImage(filePart.getFile(), filePart.getFilename(),filePart.getContentType(), taskId, false);		
+			}
+			else {
+				image = new SImage(filePart.getFile(), filePart.getFilename(),filePart.getContentType(), taskId, true);				
+			}
 
 			final int runId = 3;
 			List<SGroup> groups = SGroup.find.filter("runId", runId).asList();
