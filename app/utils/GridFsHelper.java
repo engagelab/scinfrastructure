@@ -26,13 +26,30 @@ public class GridFsHelper {
 	@Inject
     public static Datastore datastore; // requestStaticInjection(..)
 
+	private static String host = "intermedia-prod03.uio.no";
+    private static String db = "scinfrastructure";
+    
+    private static Mongo _mongo = null;
+    private static Mongo getMongo()
+        throws Exception {
+        if ( _mongo == null )
+            _mongo = new Mongo( host );
+        return _mongo;
+    }
+    
+    private static GridFS _gridfs;
+    private static GridFS getGridFS()
+        throws Exception {
+        if ( _gridfs == null )
+            _gridfs = new GridFS( getMongo().getDB( db ),"upload" );
+        return _gridfs;
+    }
 	
 	
 	
-	
-	public static GridFSDBFile getFile(String id) throws MongoException, IOException {
+	public static GridFSDBFile getFile(String id) throws Exception {
 		
-		GridFSDBFile file = getGridFS().findOne(new ObjectId(id));
+		GridFSDBFile file =  getGridFS().findOne(new ObjectId(id));
 		return file;
 	}
 	
@@ -41,7 +58,7 @@ public class GridFsHelper {
 	
 	
 	
-	public static void deleteFile(String id) throws MongoException, IOException {
+	public static void deleteFile(String id) throws Exception {
 		
 		getGridFS().remove(new ObjectId(id));
 	
@@ -51,7 +68,7 @@ public class GridFsHelper {
 	
 	
 	
-	public static List<GridFSDBFile> getFiles() throws MongoException, IOException {
+	public static List<GridFSDBFile> getFiles() throws Exception {
 		return getGridFS().find(new BasicDBObject());
 	}
 
@@ -61,7 +78,7 @@ public class GridFsHelper {
 	
 	
 	
-	public static String  storeFile(File image, String fileName, String contentType) throws IOException {
+	public static String  storeFile(File image, String fileName, String contentType) throws Exception {
 		GridFS fs = getGridFS();
 		//fs.remove(fileName); // delete the old file
 		GridFSInputFile gridFile = fs.createFile(image);
@@ -79,18 +96,7 @@ public class GridFsHelper {
 	
 	
 	
-
-	private static GridFS getGridFS( ) throws IOException, MongoException {
-		
-		String host = "localhost";
-		Mongo mongo = new Mongo(host , 27017);
-		DB db = mongo.getDB("scinfrastructure");
-		
-		//DB db = datastore.getDB();
-		// GridfsCollectionName = upload; define whater you like
-		GridFS fs = new GridFS(db, "upload");
-		return fs;
-	}
+	   
 	
 
 }

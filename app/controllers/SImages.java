@@ -69,7 +69,7 @@ public class SImages extends Controller {
 	// return ok(upload.render(uploadForm));
 	// }
 
-	public static Result addImage(String groupId, String taskId, String runId) {
+	public static Result addImage(String groupId, String taskId, String runId) throws Exception {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData()
 				.getFile("picture");
@@ -103,7 +103,7 @@ public class SImages extends Controller {
 		return ok(toJson(image));
 	}
 
-	public static Result teacherAddImage() {
+	public static Result teacherAddImage() throws Exception {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData()
 				.getFile("picture");
@@ -146,7 +146,7 @@ public class SImages extends Controller {
 		return ok(toJson("Status Code"));
 	}
 
-	public static Result addTeacherImageByTaskId(String taskId) {
+	public static Result addTeacherImageByTaskId(String taskId) throws Exception {
 
 		FilePart filePart = ctx().request().body().asMultipartFormData().getFile("picture");
 		SImage image = null;
@@ -188,7 +188,7 @@ public class SImages extends Controller {
 		return ok(toJson(image));
 	}
 
-	public static Result showImage(String imageId) throws IOException {
+	public static Result showImage(String imageId) throws Exception {
 
 		GridFSDBFile file = GridFsHelper.getFile(imageId);
 
@@ -227,8 +227,7 @@ public class SImages extends Controller {
 
 	}
 
-	public static Result deleteImageById(String imageId) throws MongoException,
-			IOException {
+	public static Result deleteImageById(String imageId) throws Exception {
 
 		SGroup group = SGroup.find.filter("simages.id", imageId).get();
 		// Second locate the fruit and remove it:

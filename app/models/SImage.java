@@ -65,7 +65,7 @@ public class SImage {
 
 	}
 
-	public SImage(File file, String fileName, String contentType, String taskId, boolean isPortFolio) throws IOException {
+	public SImage(File file, String fileName, String contentType, String taskId, boolean isPortFolio) throws Exception {
 		this.fileName = fileName;
 		this.contentType = contentType;
 		// save file in GridFS and retrieve its ID to be stored in fileId
@@ -77,7 +77,7 @@ public class SImage {
 
 	}
 
-	public void deleteImage(String fileId) throws MongoException, IOException {
+	public void deleteImage(String fileId) throws Exception {
 		GridFsHelper.deleteFile(fileId);
 
 	}
